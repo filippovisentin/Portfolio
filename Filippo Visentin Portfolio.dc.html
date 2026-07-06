@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Filippo Visentin — Portfolio</title>
+<meta name="description" content="Filippo Antonio Visentin — Product & Interior Design portfolio. Politecnico di Milano.">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F3EFE8;color:#191512;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#191512;text-decoration:none}
+a:hover{color:#A65A3F}
+::selection{background:#A65A3F;color:#F3EFE8}
+@media (hover:hover) and (pointer:fine){[data-cc="1"],[data-cc="1"] *{cursor:none !important}}
+[data-hscroll]::-webkit-scrollbar{display:none}
+@keyframes fvWordUp{from{transform:translateY(112%)}to{transform:translateY(0)}}
+@keyframes fvFade{from{opacity:0}to{opacity:1}}
+@keyframes fvLine{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" data-cc="{{ ccAttr }}" style="min-height:100vh;background:#F3EFE8;color:#191512;font-family:'Archivo',sans-serif;overflow-x:hidden">
+
+  <header style="position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(20px,4vw,48px);background:rgba(243,239,232,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(25,21,18,.1);box-sizing:border-box">
+    <a href="#/" onClick="{{ goHomeClick }}" data-cursor="link" style="font-family:'Instrument Serif',serif;font-size:22px;letter-spacing:.01em;color:#191512">Filippo <span style="font-style:italic;color:var(--ac,#A65A3F)">Visentin</span></a>
+    <nav style="display:flex;align-items:center;gap:26px;font-size:12px;letter-spacing:.12em;text-transform:uppercase">
+      <a href="#fv-work" onClick="{{ goWork }}" data-cursor="link">{{ t.navWork }}</a>
+      <a href="#fv-about" onClick="{{ goAbout }}" data-cursor="link">{{ t.navAbout }}</a>
+      <a href="#fv-contact" onClick="{{ goContact }}" data-cursor="link">{{ t.navContact }}</a>
+      <div style="display:flex;gap:2px;border:1px solid rgba(25,21,18,.25);border-radius:999px;padding:2px">
+        <button onClick="{{ setIt }}" data-cursor="link" style="{{ itBtnStyle }}">IT</button>
+        <button onClick="{{ setEn }}" data-cursor="link" style="{{ enBtnStyle }}">EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <main data-screen-label="Home">
+
+      <section style="min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px clamp(20px,4vw,48px) 44px;box-sizing:border-box">
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6E655B;display:flex;gap:18px;margin-bottom:26px;animation:fvFade 1.2s .5s both">
+          <span>Portfolio 2024 — 2026</span>
+          <span style="color:var(--ac,#A65A3F)">·</span>
+          <span>Product &amp; Interior Design</span>
+          <span style="color:var(--ac,#A65A3F)">·</span>
+          <span>Politecnico di Milano</span>
+        </div>
+        <h1 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(60px,10.5vw,168px);line-height:.94;letter-spacing:-.015em">
+          <span style="display:block;overflow:hidden;padding-bottom:.04em"><span style="display:inline-block;animation:fvWordUp .9s cubic-bezier(.2,.65,.2,1) .12s both">Filippo Antonio</span></span>
+          <span style="display:block;overflow:hidden;padding-bottom:.06em"><span style="display:inline-block;animation:fvWordUp .9s cubic-bezier(.2,.65,.2,1) .28s both;font-style:italic;color:var(--ac,#A65A3F)">Visentin</span></span>
+        </h1>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:44px;gap:40px;flex-wrap:wrap;animation:fvFade 1.2s .7s both">
+          <p style="margin:0;max-width:540px;font-size:17px;line-height:1.65;color:#3E3830">{{ t.heroStatement }}</p>
+          <div style="display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6E655B">
+            <span>{{ t.scroll }}</span>
+            <span style="width:1px;height:46px;background:#191512;display:inline-block;animation:fvLine 1.9s ease-in-out infinite"></span>
+          </div>
+        </div>
+      </section>
+
+      <section id="fv-work" style="padding:72px clamp(20px,4vw,48px) 32px">
+        <div data-reveal style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(25,21,18,.2);padding-top:18px;margin-bottom:44px">
+          <h2 style="margin:0;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase">{{ t.selectedWork }}</h2>
+          <span style="font-size:12px;letter-spacing:.14em;color:#6E655B">01 — 07</span>
+        </div>
+
+        <a href="{{ featured.href }}" onClick="{{ featured.open }}" data-cursor="view" data-cursor-label="{{ t.view }}" data-reveal style="display:block;color:inherit;margin-bottom:100px">
+          <div style="overflow:hidden;aspect-ratio:21/10;background:#E4DDD2">
+            <img data-parallax="0.06" src="{{ featured.cover }}" alt="{{ featured.title }}" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.14)" />
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;border-top:1px solid rgba(25,21,18,.15);padding-top:14px;gap:24px;flex-wrap:wrap">
+            <div style="display:flex;gap:16px;align-items:baseline">
+              <span style="font-size:12px;color:var(--ac,#A65A3F)">{{ featured.num }}</span>
+              <span style="font-family:'Instrument Serif',serif;font-size:clamp(32px,3.4vw,48px);line-height:1">{{ featured.title }}</span>
+            </div>
+            <span style="font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#6E655B">{{ featured.cat }} · {{ featured.year }}</span>
+          </div>
+        </a>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:96px 32px;align-items:start">
+          <sc-for list="{{ gridProjects }}" as="gp" hint-placeholder-count="6">
+            <a href="{{ gp.href }}" onClick="{{ gp.open }}" data-cursor="view" data-cursor-label="{{ gp.viewLabel }}" data-reveal style="{{ gp.wrapStyle }}">
+              <div style="overflow:hidden;aspect-ratio: {{ gp.aspect }};background:#E4DDD2">
+                <img src="{{ gp.cover }}" alt="{{ gp.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.6,.2,1)" style-hover="transform:scale(1.06)" />
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;border-top:1px solid rgba(25,21,18,.15);padding-top:12px;gap:16px">
+                <div style="display:flex;gap:14px;align-items:baseline;min-width:0">
+                  <span style="font-size:12px;color:var(--ac,#A65A3F)">{{ gp.num }}</span>
+                  <span style="font-family:'Instrument Serif',serif;font-size:clamp(24px,2.2vw,32px);line-height:1.05">{{ gp.title }}</span>
+                </div>
+                <span style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#6E655B;white-space:nowrap">{{ gp.cat }} · {{ gp.year }}</span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+
+      <section id="fv-about" style="padding:130px clamp(20px,4vw,48px) 120px;margin-top:60px;border-top:1px solid rgba(25,21,18,.12);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;align-items:start">
+        <div data-reveal>
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6E655B;margin-bottom:28px">{{ t.aboutLabel }}</div>
+          <div style="overflow:hidden;max-width:420px;aspect-ratio:1/1.08;background:#E4DDD2">
+            <img src="assets/p02-1.jpg" alt="Filippo Antonio Visentin" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);transition:filter .7s ease" style-hover="filter:grayscale(0)" />
+          </div>
+        </div>
+        <div style="max-width:640px">
+          <p data-reveal style="margin:0 0 32px;font-family:'Instrument Serif',serif;font-size:clamp(26px,2.6vw,36px);line-height:1.3">{{ t.bioLead }}</p>
+          <p data-reveal style="margin:0 0 20px;font-size:16px;line-height:1.75;color:#3E3830">{{ t.bio1 }}</p>
+          <p data-reveal style="margin:0 0 44px;font-size:16px;line-height:1.75;color:#3E3830">{{ t.bio2 }}</p>
+          <div data-reveal style="margin-bottom:44px">
+            <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6E655B;margin-bottom:8px">{{ t.eduLabel }}</div>
+            <div style="display:flex;justify-content:space-between;gap:24px;border-top:1px solid rgba(25,21,18,.18);padding:14px 0;font-size:15px">
+              <span>{{ t.edu1 }}</span><span style="color:#6E655B;white-space:nowrap">{{ t.edu1y }}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:24px;border-top:1px solid rgba(25,21,18,.18);border-bottom:1px solid rgba(25,21,18,.18);padding:14px 0;font-size:15px">
+              <span style="font-style:italic;font-family:'Instrument Serif',serif;font-size:17px">{{ t.edu2 }}</span><span style="color:#6E655B;white-space:nowrap">{{ t.edu2y }}</span>
+            </div>
+          </div>
+          <div data-reveal style="display:flex;gap:14px;flex-wrap:wrap">
+            <a href="uploads/Visentin_portfolio.pdf" download="Visentin_portfolio.pdf" data-cursor="link" style="display:inline-flex;align-items:center;gap:10px;background:#191512;color:#F3EFE8;border-radius:999px;padding:14px 26px;font-size:13px;letter-spacing:.06em" style-hover="background:#A65A3F;color:#F3EFE8">{{ t.download }} ↓</a>
+            <a href="mailto:filippovise2003@gmail.com" data-cursor="link" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(25,21,18,.35);color:#191512;border-radius:999px;padding:14px 26px;font-size:13px;letter-spacing:.06em" style-hover="border-color:#A65A3F;color:#A65A3F">filippovise2003@gmail.com</a>
+          </div>
+        </div>
+      </section>
+
+      <footer id="fv-contact" style="background:#14100D;color:#F3EFE8;padding:110px clamp(20px,4vw,48px) 36px">
+        <div style="display:flex;justify-content:space-between;gap:24px;align-items:baseline">
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(243,239,232,.45)">{{ t.contactLabel }}</div>
+          <div style="font-size:13px;color:rgba(243,239,232,.55);max-width:320px;text-align:right">{{ t.contactLead }}</div>
+        </div>
+        <a href="mailto:filippovise2003@gmail.com" data-cursor="link" style="display:block;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(30px,5.2vw,82px);color:#F3EFE8;margin:30px 0 90px;line-height:1.08;overflow-wrap:anywhere;transition:color .3s" style-hover="color:#C98B6F">filippovise2003@gmail.com</a>
+        <div style="display:flex;justify-content:space-between;gap:24px;border-top:1px solid rgba(243,239,232,.15);padding-top:20px;font-size:12px;letter-spacing:.08em;color:rgba(243,239,232,.5);flex-wrap:wrap">
+          <span>© 2026 Filippo Antonio Visentin</span>
+          <span>{{ t.footerNote }}</span>
+          <a href="#/" onClick="{{ goTop }}" data-cursor="link" style="color:rgba(243,239,232,.7)" style-hover="color:#F3EFE8">{{ t.topLabel }} ↑</a>
+        </div>
+      </footer>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isProject }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="Project" style="padding-top:64px">
+      <section style="padding:52px clamp(20px,4vw,48px) 0">
+        <div style="display:flex;justify-content:space-between;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6E655B">
+          <a href="#/" onClick="{{ goHomeClick }}" data-cursor="link" style="color:#191512">← {{ t.backIndex }}</a>
+          <span>{{ p.num }} / 07</span>
+        </div>
+        <h1 style="margin:34px 0 6px;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(54px,8.5vw,128px);line-height:.95;letter-spacing:-.01em">{{ p.title }}</h1>
+        <p style="margin:0 0 44px;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(20px,2.2vw,30px);color:var(--ac,#A65A3F)">{{ p.tagline }}</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;border-top:1px solid rgba(25,21,18,.18);padding:20px 0 44px">
+          <div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6E655B;margin-bottom:6px">{{ t.metaYear }}</div><div style="font-size:15px">{{ p.year }}</div></div>
+          <div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6E655B;margin-bottom:6px">{{ t.metaField }}</div><div style="font-size:15px">{{ p.cat }}</div></div>
+          <div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6E655B;margin-bottom:6px">{{ t.metaTeam }}</div><div style="font-size:15px">{{ p.team }}</div></div>
+          <div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6E655B;margin-bottom:6px">{{ t.metaPlace }}</div><div style="font-size:15px">{{ p.place }}</div></div>
+        </div>
+      </section>
+
+      <div style="overflow:hidden;height:74vh;background:#E4DDD2">
+        <img data-parallax="0.07" src="{{ p.hero }}" alt="{{ p.title }}" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.16)" />
+      </div>
+
+      <section style="padding:100px clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px">
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6E655B">{{ t.conceptLabel }}</div>
+        <div style="grid-column:span 2;max-width:780px">
+          <p data-reveal style="margin:0 0 36px;font-family:'Instrument Serif',serif;font-size:clamp(24px,2.3vw,33px);line-height:1.34">{{ p.lead }}</p>
+          <sc-for list="{{ p.paras }}" as="para" hint-placeholder-count="2">
+            <p data-reveal style="margin:0 0 26px;font-size:16px;line-height:1.8;color:#3E3830">{{ para }}</p>
+          </sc-for>
+        </div>
+      </section>
+
+      <sc-if value="{{ p.hasFacts }}" hint-placeholder-val="{{ true }}">
+        <section style="padding:0 clamp(20px,4vw,48px) 90px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px">
+            <sc-for list="{{ p.facts }}" as="f" hint-placeholder-count="3">
+              <div data-reveal style="border-top:1px solid rgba(25,21,18,.22);padding-top:20px">
+                <div style="font-family:'Instrument Serif',serif;font-size:clamp(44px,4.5vw,64px);line-height:1;color:var(--ac,#A65A3F)">{{ f.k }}</div>
+                <div style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#6E655B;margin-top:12px;line-height:1.5">{{ f.v }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ p.hasGallery }}" hint-placeholder-val="{{ true }}">
+        <section style="padding:0 0 110px">
+          <div style="padding:0 clamp(20px,4vw,48px) 18px;display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#191512">{{ t.galleryLabel }}</span>
+            <span style="font-size:12px;letter-spacing:.1em;color:#6E655B">{{ t.dragHint }}</span>
+          </div>
+          <div data-hscroll data-cursor="drag" data-cursor-label="←→" style="display:flex;gap:16px;overflow-x:auto;padding:0 clamp(20px,4vw,48px);scrollbar-width:none">
+            <sc-for list="{{ p.gallery }}" as="g" hint-placeholder-count="4">
+              <div style="flex:0 0 auto;height:56vh;overflow:hidden;background:#E4DDD2;display:flex">
+                <img src="{{ g }}" alt="" loading="lazy" draggable="false" style="height:100%;width:auto;max-width:80vw;object-fit:cover;display:block;user-select:none" />
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+
+      <a href="{{ next.href }}" onClick="{{ next.open }}" data-cursor="view" data-cursor-label="{{ t.view }}" style="display:block;color:inherit;border-top:1px solid rgba(25,21,18,.18);background:#ECE6DA;padding:70px clamp(20px,4vw,48px) 96px">
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6E655B;margin-bottom:22px">{{ t.nextLabel }}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:24px">
+          <span style="font-family:'Instrument Serif',serif;font-size:clamp(44px,7vw,104px);line-height:1;letter-spacing:-.01em">{{ next.title }}</span>
+          <span style="font-size:clamp(32px,4vw,56px);color:var(--ac,#A65A3F)">→</span>
+        </div>
+      </a>
+    </main>
+  </sc-if>
+
+  <div style="{{ overlayStyle }}"></div>
+
+  <sc-if value="{{ grainOn }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:940;pointer-events:none;opacity:.05;mix-blend-mode:multiply;background-image:url(data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='240'%20height='240'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.85'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='240'%20height='240'%20filter='url(%23n)'/%3E%3C/svg%3E)"></div>
+  </sc-if>
+
+  <sc-if value="{{ cursorOn }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ dotRef }}" style="position:fixed;left:0;top:0;width:6px;height:6px;border-radius:50%;background:#F3EFE8;mix-blend-mode:difference;z-index:1000;pointer-events:none;transform:translate(-100px,-100px)"></div>
+    <div ref="{{ ringRef }}" style="position:fixed;left:0;top:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(243,239,232,.9);mix-blend-mode:difference;z-index:999;pointer-events:none;display:flex;align-items:center;justify-content:center;transform:translate(-100px,-100px);background:transparent;transition:background-color .25s ease">
+      <span ref="{{ cursorLabelRef }}" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#14100D;opacity:0;transition:opacity .2s;white-space:nowrap"></span>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;accentColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#A65A3F&quot;, &quot;options&quot;: [&quot;#A65A3F&quot;, &quot;#8E3B2F&quot;, &quot;#5A6B54&quot;, &quot;#31424E&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Style&quot; },
+  &quot;customCursor&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Effects&quot; },
+  &quot;grain&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Effects&quot; }
+}">
+const UI = {
+  it: {
+    navWork: 'Lavori', navAbout: 'Profilo', navContact: 'Contatti',
+    heroStatement: 'Designer del prodotto e d’interni. Osservo come spazi e oggetti vengono realmente abitati e usati: la forma deriva dall’uso, non lo precede.',
+    scroll: 'Scorri', selectedWork: 'Lavori selezionati', view: 'Vedi',
+    aboutLabel: 'Profilo',
+    bioLead: 'Il design come gesto che accompagna l’esperienza, senza imporsi.',
+    bio1: 'Sono Filippo Antonio Visentin, designer del prodotto e d’interni, studente al Politecnico di Milano. La mia ricerca progettuale muove dall’osservazione delle interazioni tra le persone e dei modi reali in cui spazi e oggetti vengono abitati.',
+    bio2: 'Cerco l’equilibrio tra rigore tecnico e qualità materica: materiali e luce sono strumenti di progetto, che impiego per dare calore e carattere, traducendo il riferimento alla natura in un linguaggio contemporaneo.',
+    eduLabel: 'Percorso', edu1: 'Design degli Interni (BSc) — Politecnico di Milano', edu1y: '2023 — 2026',
+    edu2: 'Prossimo passo: MSc Interior Spatial Design', edu2y: '2026 →',
+    download: 'Scarica il portfolio (PDF)',
+    contactLabel: 'Contatti', contactLead: 'Aperto a tirocini, collaborazioni e nuovi progetti.',
+    footerNote: 'Milano, Italia', topLabel: 'Torna su',
+    backIndex: 'Indice', conceptLabel: 'Concept',
+    metaYear: 'Anno', metaField: 'Ambito', metaTeam: 'Team', metaPlace: 'Contesto',
+    galleryLabel: 'Galleria', dragHint: 'Trascina per esplorare', nextLabel: 'Prossimo progetto'
+  },
+  en: {
+    navWork: 'Work', navAbout: 'About', navContact: 'Contact',
+    heroStatement: 'Product and interior designer. I observe how spaces and objects are actually inhabited and used: form follows use — it never precedes it.',
+    scroll: 'Scroll', selectedWork: 'Selected work', view: 'View',
+    aboutLabel: 'About',
+    bioLead: 'Design as a gesture that accompanies experience, without imposing itself.',
+    bio1: 'I’m Filippo Antonio Visentin, a product and interior designer studying at Politecnico di Milano. My design research starts from observing how people interact with spaces and objects in everyday life — the point where form begins.',
+    bio2: 'I look for the balance between technical rigour and material quality: materials and light are design tools I use to bring warmth and character, translating references to nature into a contemporary language.',
+    eduLabel: 'Path', edu1: 'Interior Design (BSc) — Politecnico di Milano', edu1y: '2023 — 2026',
+    edu2: 'Next step: MSc Interior Spatial Design', edu2y: '2026 →',
+    download: 'Download portfolio (PDF)',
+    contactLabel: 'Contact', contactLead: 'Open to internships, collaborations and new projects.',
+    footerNote: 'Milan, Italy', topLabel: 'Back to top',
+    backIndex: 'Index', conceptLabel: 'Concept',
+    metaYear: 'Year', metaField: 'Field', metaTeam: 'Team', metaPlace: 'Context',
+    galleryLabel: 'Gallery', dragHint: 'Drag to explore', nextLabel: 'Next project'
+  }
+};
+
+const PROJECTS = [
+  {
+    slug: 'oltreetrusco', title: 'OltreEtrusco', year: '2025',
+    cover: 'assets/p06-3.jpg', hero: 'assets/p06-3.jpg', aspect: '4/3', offset: 0,
+    gallery: ['assets/p06-1.jpg', 'assets/p05-11.jpg', 'assets/p05-10.jpg', 'assets/p06-2.jpg', 'assets/p05-4.jpg', 'assets/p05-5.jpg', 'assets/p05-9.jpg'],
+    team: { it: 'N. Bartolini, J. Dellanoce, L. Mastromatteo, A. Qerkini, F. A. Visentin', en: 'N. Bartolini, J. Dellanoce, L. Mastromatteo, A. Qerkini, F. A. Visentin' },
+    it: {
+      cat: 'Allestimento', tagline: 'Attraverso ogni confine', place: 'Politecnico di Milano',
+      lead: 'Sconfinare è la metafora che guida l’allestimento: raccontare come la civiltà etrusca sia sconfinata nell’era moderna, mettendo a confronto artefatti antichi e contemporanei fino a farli sembrare della stessa epoca.',
+      paras: [
+        'Il percorso attraversa sei sale in cui i confini si rompono progressivamente: netti e obbligati nella prima, semi-liberi nella seconda, distribuiti nello spazio nella terza, fino a dissolversi tra tendaggi sottili nelle ultime. Gli “Oltre” — strutture espositive modulari in acciaio inox e alluminio — dividono gli spazi e li contaminano con artefatti dell’epoca opposta, confondendo deliberatamente il visitatore.',
+        'L’interazione è parte del racconto: pannelli scratch-and-sniff rilasciano fragranze ispirate alla cultura etrusca, piattaforme girevoli rivelano le facce nascoste delle opere e sedute dedicate portano il visitatore all’altezza dello sguardo dei volti etruschi.'
+      ],
+      facts: [
+        { k: '6', v: 'sale espositive' },
+        { k: '4', v: 'componenti principali per ogni Oltre' },
+        { k: '15′', v: 'di percorrenza per sala' }
+      ]
+    },
+    en: {
+      cat: 'Exhibition design', tagline: 'Across every boundary', place: 'Politecnico di Milano',
+      lead: 'Boundary-crossing is the metaphor guiding the exhibition: showing how Etruscan civilisation spilled over into the modern era, pairing ancient and contemporary artefacts until they gradually seem to belong to the same age.',
+      paras: [
+        'The route crosses six rooms where boundaries progressively break down: sharp and mandatory in the first, half-open in the second, scattered through space in the third, until they dissolve among thin curtains in the last ones. The “Oltre” — modular display structures in stainless steel and aluminium — divide the spaces and contaminate them with artefacts from the opposite era, deliberately disorienting the visitor.',
+        'Interaction is part of the narrative: scratch-and-sniff panels release fragrances inspired by Etruscan culture, rotating platforms reveal the hidden faces of the works, and dedicated seats bring visitors eye-to-eye with the Etruscan heads.'
+      ],
+      facts: [
+        { k: '6', v: 'exhibition rooms' },
+        { k: '4', v: 'main components per display unit' },
+        { k: '15′', v: 'walkthrough time per room' }
+      ]
+    }
+  },
+  {
+    slug: 'bivacuum', title: 'Bivacuum', year: '2025',
+    cover: 'assets/p09-3.jpg', hero: 'assets/p09-5.jpg', aspect: '4/3', offset: 0,
+    gallery: ['assets/p09-3.jpg', 'assets/p09-1.jpg', 'assets/p07-12.jpg', 'assets/p07-6.jpg', 'assets/p07-9.jpg'],
+    team: { it: 'F. A. Visentin, A. Qerkini', en: 'F. A. Visentin, A. Qerkini' },
+    it: {
+      cat: 'Interni', tagline: 'Un bivacco per tutti', place: 'Grignetta, 2000 m s.l.m.',
+      lead: 'Un rifugio preassemblato per otto persone, di facile trasporto e minimo montaggio in loco, pensato per terrazzi naturali fino a 2000 metri sul sentiero per la cima della Grignetta.',
+      paras: [
+        'Lo spazio interno è auto-organizzabile: una griglia modulare a soffitto permette di appendere amache e sfruttare lo spazio verticale, mentre tavoli a scomparsa nelle pareti nascondono sedute pieghevoli. Un binario elettrificato in alluminio alimenta le luci e accoglie ganci configurabili in qualsiasi punto.',
+        'L’involucro è stratificato per l’uso all-season: struttura balloon frame in legno, isolamento in lana di pecora, camera ventilata e pannelli metallici esterni. Fondazioni a vite e cavi ancorano il volume al terreno; quattro pannelli fotovoltaici a inclinazione regolabile lo rendono autonomo.'
+      ],
+      facts: [
+        { k: '8', v: 'posti in amaca sulla griglia a soffitto' },
+        { k: '2000', v: 'metri s.l.m. di quota massima' },
+        { k: '4', v: 'pannelli fotovoltaici orientabili' }
+      ]
+    },
+    en: {
+      cat: 'Interiors', tagline: 'A bivouac for everyone', place: 'Grignetta, 2000 m a.s.l.',
+      lead: 'A pre-assembled shelter for eight people, easy to transport with minimal on-site assembly, designed for natural terraces up to 2000 metres on the trail to the Grignetta summit.',
+      paras: [
+        'The interior is self-organising: a modular ceiling grid lets users hang hammocks and exploit vertical space, while fold-away wall tables conceal folding seats. An electrified aluminium track powers the lights and hosts hooks that can be placed at any point.',
+        'The envelope is layered for all-season use: timber balloon-frame structure, sheep-wool insulation, ventilated cavity and external metal panels. Screw foundations and cables anchor the volume to the ground; four tilt-adjustable photovoltaic panels make it self-sufficient.'
+      ],
+      facts: [
+        { k: '8', v: 'hammock spots on the ceiling grid' },
+        { k: '2000', v: 'metres a.s.l. maximum altitude' },
+        { k: '4', v: 'tilt-adjustable PV panels' }
+      ]
+    }
+  },
+  {
+    slug: 'soundplace', title: 'Soundplace', year: '2026',
+    cover: 'assets/p11-1.jpg', hero: 'assets/p11-1.jpg', aspect: '3/4', offset: 90,
+    gallery: ['assets/p10-6.jpg', 'assets/p10-2.jpg', 'assets/p10-1.jpg'],
+    team: { it: 'F. A. Visentin, F. J. Cuello Ramirez, M. Sarkar', en: 'F. A. Visentin, F. J. Cuello Ramirez, M. Sarkar' },
+    it: {
+      cat: 'Arredo urbano', tagline: 'La musica come un falò', place: 'Ponte Vanoni, Morbegno',
+      lead: 'Un arredo urbano interattivo nato per favorire l’incontro attraverso la musica: una cassa di risonanza analogica che amplifica il suono dello smartphone senza energia elettrica.',
+      paras: [
+        'Il progetto nasce da un’indagine sul territorio di Morbegno, da cui è emersa la carenza di spazi autogestiti per l’aggregazione giovanile. La risposta è un “walking tree” di 80×160 cm: inserendo lo smartphone nell’apposita bocchetta, il suono viene amplificato in modo puramente analogico.',
+        'Il nome unisce sound e fireplace: la musica come un falò attorno al quale riunirsi. Un servizio prenotabile via app completa l’esperienza, trasformando un semplice oggetto in un punto di ritrovo accessibile e partecipativo.'
+      ],
+      facts: [
+        { k: '80×160', v: 'centimetri di ingombro' },
+        { k: '0', v: 'energia elettrica necessaria' },
+        { k: '1', v: 'cassa di risonanza analogica' }
+      ]
+    },
+    en: {
+      cat: 'Urban furniture', tagline: 'Music as a bonfire', place: 'Ponte Vanoni, Morbegno',
+      lead: 'An interactive piece of urban furniture born to encourage gathering through music: an analogue soundbox that amplifies a smartphone with no electricity at all.',
+      paras: [
+        'The project stems from a survey of the Morbegno area, which revealed a lack of self-managed spaces for young people to gather. The answer is an 80×160 cm “walking tree”: slide a smartphone into its slot and the sound is amplified in a purely analogue way.',
+        'The name merges sound and fireplace: music as a bonfire people gather around. A bookable app service completes the experience, turning a simple object into an accessible, participatory meeting point.'
+      ],
+      facts: [
+        { k: '80×160', v: 'centimetres footprint' },
+        { k: '0', v: 'electricity required' },
+        { k: '1', v: 'analogue resonance box' }
+      ]
+    }
+  },
+  {
+    slug: 'poliedro', title: 'POLIEDRO', year: '2026',
+    cover: 'assets/p15-2.jpg', hero: 'assets/p15-2.jpg', aspect: '4/3', offset: 0,
+    gallery: ['assets/p15-1.jpg', 'assets/p14-3.jpg', 'assets/p15-3.jpg', 'assets/p17-2.jpg', 'assets/p17-4.jpg', 'assets/p15-5.jpg', 'assets/p14-2.jpg'],
+    team: { it: 'F. A. Visentin, L. Sedra, A. Varsavia, N. R. Patanè', en: 'F. A. Visentin, L. Sedra, A. Varsavia, N. R. Patanè' },
+    it: {
+      cat: 'Prodotto', tagline: 'Lo spazio non impone: guida', place: 'Spazio pubblico urbano',
+      lead: 'Un sistema di sedute modulari che trasforma l’arredo urbano in piccole “isole sociali”, ispirato alla geometria organica delle rocce basaltiche irlandesi.',
+      paras: [
+        'POLIEDRO si compone di una panca di sei unità modulari e di una lampada esagonale integrata che funge anche da piccolo tavolo: sorgente luminosa fisica e calore simbolico dell’interazione. Fori di drenaggio e scanalature per la movimentazione incorporano i requisiti funzionali nel disegno complessivo.',
+        'La mostra immersiva “A matter of presence” espone il sistema in uno spazio crepuscolare circondato da specchi, come nei meandri di un vulcano: la modularità si amplifica nei riflessi e la composizione centrale diventa il punto nevralgico dell’interazione.'
+      ],
+      facts: [
+        { k: '6', v: 'unità modulari componibili' },
+        { k: '1', v: 'lampada-tavolo esagonale' },
+        { k: '3000K', v: 'luce calda integrata' }
+      ]
+    },
+    en: {
+      cat: 'Product', tagline: 'Space doesn’t impose — it guides', place: 'Urban public space',
+      lead: 'A modular seating system that turns street furniture into small “social islands”, inspired by the organic geometry of Irish basalt columns.',
+      paras: [
+        'POLIEDRO consists of a bench of six modular units and an integrated hexagonal lamp that doubles as a small table: a physical light source and the symbolic warmth of interaction. Drainage holes and handling grooves fold the functional requirements into the overall design.',
+        'The immersive exhibition “A matter of presence” displays the system in a twilight space surrounded by mirrors, like the depths of a volcano: modularity multiplies in the reflections and the central composition becomes the focal point of interaction.'
+      ],
+      facts: [
+        { k: '6', v: 'stackable modular units' },
+        { k: '1', v: 'hexagonal lamp-table' },
+        { k: '3000K', v: 'integrated warm light' }
+      ]
+    }
+  },
+  {
+    slug: 'compluvio', title: 'Compluvio', year: '2025',
+    cover: 'assets/p13-2.jpg', hero: 'assets/p13-2.jpg', aspect: '4/3', offset: 90,
+    gallery: ['assets/p13-4.jpg', 'assets/p13-6.jpg', 'assets/p12-2.jpg', 'assets/p12-1.jpg'],
+    team: { it: 'Progetto individuale', en: 'Solo project' },
+    it: {
+      cat: 'Architettura', tagline: 'La copertura è il dispositivo', place: 'Cascina Linterno, Milano',
+      lead: 'Due volte vetrate dal profilo morbido si piegano verso il centro come il tetto di una domus romana: è la forma stessa a intercettare la pioggia e condurla, per sola gravità, verso il compluvio centrale.',
+      paras: [
+        'All’interno il ciclo continua: una rete di irrigazione a bassa pressione riporta l’acqua della cisterna alle vasche di coltura, le piante la restituiscono all’aria traspirando, il vapore condensa sul vetro e scivola lungo la curvatura fino a rientrare nel circuito.',
+        'Nessuna goccia lascia il sistema: la serra non consuma acqua, la trattiene e la fa girare. Il fabbisogno esterno si riduce al solo reintegro delle perdite e un edificio di produzione diventa un sistema quasi chiuso, dove forma architettonica e ciclo dell’acqua coincidono.'
+      ],
+      facts: [
+        { k: '2', v: 'volte vetrate convergenti' },
+        { k: '0', v: 'gocce lasciano il sistema' },
+        { k: '100%', v: 'raccolta per sola gravità' }
+      ]
+    },
+    en: {
+      cat: 'Architecture', tagline: 'The roof is the device', place: 'Cascina Linterno, Milan',
+      lead: 'Two soft-profiled glazed vaults fold towards the centre like the roof of a Roman domus: the form itself intercepts the rain and leads it, by gravity alone, to the central compluvium.',
+      paras: [
+        'Inside, the cycle continues: a low-pressure irrigation network brings the cistern water back to the growing beds, the plants return it to the air through transpiration, the vapour condenses on the glass and slides down the curve back into the circuit.',
+        'Not a drop leaves the system: the greenhouse doesn’t consume water, it holds it and keeps it moving. External demand shrinks to merely topping up losses, and a production building becomes a nearly closed system where architectural form and water cycle coincide.'
+      ],
+      facts: [
+        { k: '2', v: 'converging glazed vaults' },
+        { k: '0', v: 'drops leave the system' },
+        { k: '100%', v: 'collected by gravity alone' }
+      ]
+    }
+  },
+  {
+    slug: 'progettare-con-ai', title: 'Progettare con l’AI', year: '2026',
+    cover: 'assets/ai-tile.jpg', hero: 'assets/ai-tile.jpg', aspect: '4/3', offset: 0,
+    gallery: [],
+    team: { it: 'Ricerca individuale', en: 'Solo research' },
+    it: {
+      cat: 'Ricerca UX', tagline: 'Il prompt è il nuovo schizzo', place: 'Claude · MCP · Blender',
+      lead: 'La macchina genera. Il designer decide. Una ricerca sul Model Context Protocol e su cosa succede quando l’AI entra nello strumento, non accanto.',
+      paras: [
+        'Attraverso la sperimentazione diretta con Claude, MCP e Blender, la ricerca esplora un flusso in cui si modella parlando: creare, ispezionare e modificare una scena 3D in linguaggio naturale, senza conoscere l’interfaccia. Il ciclo è brief, prompt, generazione, critica, iterazione — e l’esito ridefinisce i vincoli.',
+        'Le criticità sono parte della tesi: autorialità e rischio di omologazione, sicurezza del codice eseguito da un modello, e una soglia d’accesso che si abbassa mentre il giudizio vale sempre di più. Il ruolo del progettista si sposta da esecutore a regista: definisce vincoli e criteri, e firma la scelta.'
+      ],
+      facts: [
+        { k: '97M', v: 'download mensili SDK MCP · 2026' },
+        { k: '64', v: 'varianti generate al secondo' },
+        { k: '1', v: 'scelta motivata: quella del designer' }
+      ]
+    },
+    en: {
+      cat: 'UX research', tagline: 'The prompt is the new sketch', place: 'Claude · MCP · Blender',
+      lead: 'The machine generates. The designer decides. A research project on the Model Context Protocol and on what happens when AI enters the tool, not beside it.',
+      paras: [
+        'Through direct experimentation with Claude, MCP and Blender, the research explores a workflow where you model by talking: creating, inspecting and editing a 3D scene in natural language, without knowing the interface. The cycle is brief, prompt, generation, critique, iteration — and each outcome redefines the constraints.',
+        'The critical questions are part of the thesis: authorship and the risk of homogenisation, the safety of code executed by a model, and an entry threshold that keeps lowering while judgement keeps gaining value. The designer’s role shifts from executor to director: setting constraints and criteria, and signing off the choice.'
+      ],
+      facts: [
+        { k: '97M', v: 'monthly MCP SDK downloads · 2026' },
+        { k: '64', v: 'variants generated per second' },
+        { k: '1', v: 'motivated choice: the designer’s' }
+      ]
+    }
+  },
+  {
+    slug: 'fpv', title: 'FPV', year: '2024 —',
+    cover: 'assets/p20-1.jpg', hero: 'assets/p20-1.jpg', aspect: '4/3', offset: 90,
+    gallery: ['assets/p21-12.jpg', 'assets/p21-6.jpg', 'assets/p21-1.jpg', 'assets/p20-2.jpg', 'assets/p21-7.jpg', 'assets/p21-5.jpg'],
+    team: { it: 'F. A. Visentin, M. Soffiato', en: 'F. A. Visentin, M. Soffiato' },
+    it: {
+      cat: 'Ricerca', tagline: 'Rompere per capire', place: 'Autoproduzione',
+      lead: 'Un problema strutturale puro: costruire un oggetto volante capace di sopportare urti ripetuti mantenendo un peso minimo. Rigidezza torsionale, assorbimento degli impatti, protezione delle eliche — tutto dentro un budget di pochi grammi.',
+      paras: [
+        'Il processo è interamente iterativo: geometria parametrica, cicli di stampa FDM, test in volo e revisione. I primi prototipi hanno rivelato punti di rottura nei bracci, risolti ispessendo le sezioni critiche e orientando la stampa lungo le linee di sforzo; le paraeliche sono evolute da anelli pieni a strutture alleggerite a nervature — la materia rimane solo dove la fisica la richiede.',
+        'La scheda dei circuiti è stata disegnata su misura del telaio, in dialogo diretto con la geometria stampata, e prodotta da un’azienda esterna: file esecutivi, tolleranze, standard industriali. Ogni crash è diventato dato di progetto: la rottura non come fallimento ma come informazione, il prototipo come strumento di misura.'
+      ],
+      facts: [
+        { k: 'FDM', v: 'ristampabile in poche ore' },
+        { k: 'PCB', v: 'su misura del telaio' },
+        { k: '↻', v: 'ogni crash diventa dato di progetto' }
+      ]
+    },
+    en: {
+      cat: 'Research', tagline: 'Breaking to understand', place: 'Self-production',
+      lead: 'A pure structural problem: building a flying object able to withstand repeated impacts while keeping weight to a minimum. Torsional stiffness, impact absorption, propeller protection — all within a budget of a few grams.',
+      paras: [
+        'The process is entirely iterative: parametric geometry, FDM print cycles, flight tests and revision. Early prototypes revealed failure points in the arms, solved by thickening critical sections and orienting the print along the main stress lines; the prop guards evolved from solid rings into lightened ribbed structures — material remains only where physics demands it.',
+        'The circuit board was designed around the frame, in direct dialogue with the printed geometry, and manufactured externally: production files, tolerances, industrial standards. Every crash became design data: failure not as defeat but as information, the prototype as a measuring instrument.'
+      ],
+      facts: [
+        { k: 'FDM', v: 'reprintable in a few hours' },
+        { k: 'PCB', v: 'custom-fitted to the frame' },
+        { k: '↻', v: 'every crash becomes design data' }
+      ]
+    }
+  }
+];
+
+class Component extends DCLogic {
+  state = {
+    lang: (() => { try { return localStorage.getItem('fv-lang') || 'it'; } catch (e) { return 'it'; } })(),
+    route: (() => { const m = (typeof location !== 'undefined' ? location.hash : '').match(/^#\/p\/([a-z0-9-]+)/i); return m ? m[1] : null; })(),
+    phase: 'idle'
+  };
+  rootRef = React.createRef();
+  dotRef = React.createRef();
+  ringRef = React.createRef();
+  cursorLabelRef = React.createRef();
+
+  parseHash() {
+    const m = location.hash.match(/^#\/p\/([a-z0-9-]+)/i);
+    return m ? m[1] : null;
+  }
+
+  cursorEnabled() {
+    return (this.props.customCursor ?? true) && typeof matchMedia !== 'undefined' && matchMedia('(hover:hover) and (pointer:fine)').matches;
+  }
+
+  componentDidMount() {
+    this.applyAccent();
+    this.onHash = () => {
+      const r = this.parseHash();
+      if (r !== this.state.route) {
+        this.setState({ route: r });
+        window.scrollTo(0, 0);
+      }
+    };
+    window.addEventListener('hashchange', this.onHash);
+
+    this.io = new IntersectionObserver((entries) => {
+      for (const en of entries) {
+        if (en.isIntersecting) {
+          en.target.style.opacity = '1';
+          en.target.style.transform = 'translateY(0px)';
+          this.io.unobserve(en.target);
+        }
+      }
+    }, { threshold: 0.08 });
+
+    this.scrollPending = false;
+    this.onScroll = () => {
+      if (this.scrollPending) return;
+      this.scrollPending = true;
+      requestAnimationFrame(() => {
+        this.scrollPending = false;
+        const vh = window.innerHeight;
+        for (const el of (this.plxEls || [])) {
+          const parent = el.parentElement;
+          if (!parent) continue;
+          const r = parent.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > vh + 100) continue;
+          const sp = parseFloat(el.getAttribute('data-parallax')) || 0.08;
+          const d = (r.top + r.height / 2 - vh / 2) * sp;
+          el.style.transform = 'translateY(' + d.toFixed(1) + 'px) scale(1.16)';
+        }
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+
+    this.onDown = (e) => {
+      const g = e.target.closest && e.target.closest('[data-hscroll]');
+      if (!g) return;
+      e.preventDefault();
+      const startX = e.clientX, startL = g.scrollLeft;
+      const mm = (ev) => { g.scrollLeft = startL - (ev.clientX - startX); };
+      const up = () => {
+        document.removeEventListener('mousemove', mm);
+        document.removeEventListener('mouseup', up);
+      };
+      document.addEventListener('mousemove', mm);
+      document.addEventListener('mouseup', up);
+    };
+    document.addEventListener('mousedown', this.onDown);
+
+    this.setupCursor();
+    requestAnimationFrame(() => this.scanFX());
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.onHash);
+    window.removeEventListener('scroll', this.onScroll);
+    document.removeEventListener('mousedown', this.onDown);
+    if (this.onMove) document.removeEventListener('mousemove', this.onMove);
+    if (this.onOver) document.removeEventListener('mouseover', this.onOver);
+    if (this.cursorRaf) cancelAnimationFrame(this.cursorRaf);
+    if (this.io) this.io.disconnect();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    this.applyAccent();
+    if (prevState && (prevState.route !== this.state.route || prevState.lang !== this.state.lang)) {
+      requestAnimationFrame(() => this.scanFX());
+    }
+  }
+
+  applyAccent() {
+    const r = this.rootRef.current;
+    if (r) r.style.setProperty('--ac', this.props.accentColor || '#A65A3F');
+  }
+
+  scanFX() {
+    const root = this.rootRef.current;
+    if (!root) return;
+    this.plxEls = Array.from(root.querySelectorAll('[data-parallax]'));
+    root.querySelectorAll('[data-reveal]').forEach((el) => {
+      if (el.__fx) return;
+      el.__fx = true;
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.9) return;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity .85s cubic-bezier(.22,.61,.21,1), transform .85s cubic-bezier(.22,.61,.21,1)';
+      this.io.observe(el);
+    });
+    this.onScroll && this.onScroll();
+  }
+
+  setupCursor() {
+    if (!this.cursorEnabled()) return;
+    this.cur = { x: -100, y: -100, rx: -100, ry: -100, s: 1, ts: 1 };
+    this.onMove = (e) => {
+      this.cur.x = e.clientX;
+      this.cur.y = e.clientY;
+      const d = this.dotRef.current;
+      if (d) d.style.transform = 'translate(' + (e.clientX - 3) + 'px,' + (e.clientY - 3) + 'px)';
+    };
+    document.addEventListener('mousemove', this.onMove);
+    this.onOver = (e) => {
+      const t = e.target.closest && e.target.closest('[data-cursor]');
+      const ring = this.ringRef.current;
+      const label = this.cursorLabelRef.current;
+      if (!ring) return;
+      if (t) {
+        const mode = t.getAttribute('data-cursor');
+        if (mode === 'view' || mode === 'drag') {
+          this.cur.ts = 2.3;
+          ring.style.backgroundColor = '#F3EFE8';
+          if (label) {
+            label.textContent = t.getAttribute('data-cursor-label') || '';
+            label.style.opacity = '1';
+          }
+        } else {
+          this.cur.ts = 1.5;
+          ring.style.backgroundColor = 'transparent';
+          if (label) label.style.opacity = '0';
+        }
+      } else {
+        this.cur.ts = 1;
+        ring.style.backgroundColor = 'transparent';
+        if (label) label.style.opacity = '0';
+      }
+    };
+    document.addEventListener('mouseover', this.onOver);
+    const loop = () => {
+      const c = this.cur;
+      c.rx += (c.x - c.rx) * 0.16;
+      c.ry += (c.y - c.ry) * 0.16;
+      c.s += (c.ts - c.s) * 0.16;
+      const r = this.ringRef.current;
+      if (r) r.style.transform = 'translate(' + (c.rx - 20) + 'px,' + (c.ry - 20) + 'px) scale(' + c.s.toFixed(3) + ')';
+      this.cursorRaf = requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  navigate(slug) {
+    if (slug === this.state.route) {
+      if (!slug) window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (this._navLock) return;
+    this._navLock = true;
+    this.setState({ phase: 'in' });
+    setTimeout(() => {
+      location.hash = slug ? '#/p/' + slug : '#/';
+      setTimeout(() => {
+        if (this.pendingScroll) {
+          const el = document.getElementById(this.pendingScroll);
+          if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 70);
+          this.pendingScroll = null;
+        }
+        this.setState({ phase: 'out' });
+        setTimeout(() => {
+          this.setState({ phase: 'idle' });
+          this._navLock = false;
+        }, 560);
+      }, 60);
+    }, 500);
+  }
+
+  scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+  }
+
+  goSection(id, e) {
+    e.preventDefault();
+    if (this.state.route) {
+      this.pendingScroll = id;
+      this.navigate(null);
+    } else {
+      this.scrollToSection(id);
+    }
+  }
+
+  setLang(l) {
+    try { localStorage.setItem('fv-lang', l); } catch (e) {}
+    this.setState({ lang: l });
+  }
+
+  renderVals() {
+    const lang = this.state.lang === 'en' ? 'en' : 'it';
+    const t = UI[lang];
+    const route = this.state.route;
+    const phase = this.state.phase;
+
+    const list = PROJECTS.map((pr, i) => ({
+      slug: pr.slug,
+      num: String(i + 1).padStart(2, '0'),
+      title: pr.title,
+      year: pr.year,
+      cover: pr.cover,
+      aspect: pr.aspect,
+      cat: pr[lang].cat,
+      href: '#/p/' + pr.slug,
+      viewLabel: t.view,
+      open: (e) => { e.preventDefault(); this.navigate(pr.slug); },
+      wrapStyle: {
+        display: 'block', color: 'inherit', textDecoration: 'none',
+        marginTop: (pr.offset || 0) + 'px'
+      }
+    }));
+
+    const featured = list[0];
+    const gridProjects = list.slice(1);
+
+    const idx = PROJECTS.findIndex((pr) => pr.slug === route);
+    let p = null, next = null;
+    if (idx >= 0) {
+      const cur = PROJECTS[idx];
+      const loc = cur[lang];
+      p = {
+        num: String(idx + 1).padStart(2, '0'),
+        title: cur.title, year: cur.year, hero: cur.hero,
+        cat: loc.cat, tagline: loc.tagline, team: cur.team[lang], place: loc.place,
+        lead: loc.lead, paras: loc.paras,
+        facts: loc.facts, hasFacts: loc.facts.length > 0,
+        gallery: cur.gallery, hasGallery: cur.gallery.length > 0
+      };
+      const nx = PROJECTS[(idx + 1) % PROJECTS.length];
+      next = {
+        title: nx.title,
+        href: '#/p/' + nx.slug,
+        open: (e) => { e.preventDefault(); this.navigate(nx.slug); }
+      };
+    }
+
+    const btn = (a) => ({
+      border: 'none', cursor: 'pointer', fontFamily: 'inherit',
+      background: a ? '#191512' : 'transparent',
+      color: a ? '#F3EFE8' : '#191512',
+      borderRadius: '999px', padding: '4px 10px',
+      fontSize: '11px', letterSpacing: '.08em', lineHeight: '1.4'
+    });
+
+    const overlayStyle = {
+      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+      background: '#14100D', zIndex: 950, pointerEvents: 'none',
+      transform: phase === 'in' ? 'translateY(0%)' : phase === 'out' ? 'translateY(-101%)' : 'translateY(101%)',
+      transition: phase === 'idle' ? 'none' : 'transform .5s cubic-bezier(.65,.05,.36,1)'
+    };
+
+    return {
+      t, lang,
+      isHome: !route || idx < 0,
+      isProject: idx >= 0,
+      featured, gridProjects, p, next,
+      overlayStyle,
+      itBtnStyle: btn(lang === 'it'),
+      enBtnStyle: btn(lang === 'en'),
+      setIt: () => this.setLang('it'),
+      setEn: () => this.setLang('en'),
+      goHomeClick: (e) => { e.preventDefault(); this.navigate(null); },
+      goWork: (e) => this.goSection('fv-work', e),
+      goAbout: (e) => this.goSection('fv-about', e),
+      goContact: (e) => this.goSection('fv-contact', e),
+      goTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      rootRef: this.rootRef,
+      dotRef: this.dotRef,
+      ringRef: this.ringRef,
+      cursorLabelRef: this.cursorLabelRef,
+      ccAttr: this.cursorEnabled() ? '1' : null,
+      cursorOn: this.cursorEnabled(),
+      grainOn: this.props.grain ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>
