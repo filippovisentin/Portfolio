@@ -24,6 +24,8 @@ Trascinamento della scena, frecce a schermo e tastiera, indice alternativo, conf
 
 ## Verifica
 
-Controlli di sintassi e integrità delle immagini inclusi. La verifica visiva nel browser dipende dall'accesso al server locale o alla pubblicazione; non è sostituita dai controlli automatici.
+Controlli di sintassi e integrità delle immagini inclusi. Verificato nel browser sul sito pubblico: scena e trascinamento, navigazione dei progetti, selettore IT/EN, confronto giorno/notte da tastiera, apertura e chiusura della galleria, contatto email e assenza di overflow nelle viste mobile controllate. Testati viewport desktop 1280×720 e mobile 375×812. Nessun errore JavaScript rilevato nelle interazioni verificate. Non costituisce un benchmark su tutti i dispositivi.
 
 I contenuti e le immagini restano dei rispettivi autori. Il sito presenta progetti e proposte progettuali, non servizi di prenotazione attivi.
+
+Sito pubblico: https://filippovisentin.github.io/Portfolio/
