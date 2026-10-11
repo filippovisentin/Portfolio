@@ -1,0 +1,1 @@
+{"name":"spazi-portfolio","private":true,"version":"1.0.0","scripts":{"dev":"node server.mjs","check":"node --check dist/app.js && node --check server.mjs"}}
