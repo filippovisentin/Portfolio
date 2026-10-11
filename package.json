@@ -1,1 +1,9 @@
-{"name":"filippo-visentin-portfolio","private":true,"version":"2.0.0","scripts":{"dev":"node server.mjs","check":"node --check dist/app.js && node --check dist/data.js && node --check server.mjs && node check.mjs"}}
+{
+  "name": "filippo-visentin-portfolio",
+  "private": true,
+  "version": "3.0.0",
+  "scripts": {
+    "dev": "node server.mjs",
+    "check": "node --check dist/app.js && node --check dist/research.js && node --check dist/notebook.js && node --check server.mjs && node check.mjs"
+  }
+}

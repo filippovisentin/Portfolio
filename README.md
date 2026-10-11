@@ -29,3 +29,7 @@ Controlli di sintassi e integrità delle immagini inclusi. Verificato nel browse
 I contenuti e le immagini restano dei rispettivi autori. Il sito presenta progetti e proposte progettuali, non servizi di prenotazione attivi.
 
 Sito pubblico: https://filippovisentin.github.io/Portfolio/
+
+## Edizione 3 — archivio personale
+
+Homepage monocromatica con accento fluorescente, risposta al puntatore e selezione prioritaria MONOBLOCK, BIVACUUM, Oltre Etrusco, POLIEDRO. I progetti restano a colori. `research.js` contiene i racconti approfonditi e il catalogo tecnico; `notebook.js` gestisce lettura a capitoli e atlante interattivo con filtri, zoom 100–300%, scorrimento, schermo intero e download. Le tavole originali mantengono la loro lingua di origine. Le nuove tavole sono renderizzate a 2800 pixel sul lato lungo dai PDF forniti; vengono caricate solo quando selezionate.
