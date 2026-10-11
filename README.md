@@ -1,23 +1,29 @@
-# Spazi — portfolio personale
+# Filippo Antonio Visentin — Portfolio
 
-Progetto indipendente: nessun file di FORMA CAD è stato modificato.
+Portfolio bilingue IT/EN con galleria spaziale CSS 3D, sette progetti, bio e contatto email. Nessuna dipendenza da installare, nessun tracciamento, nessun servizio a pagamento.
 
 ## Avvio
 
-Serve Node.js 20 o successivo. Nella cartella del progetto esegui `npm run dev`, quindi apri http://127.0.0.1:4173. Non occorre installare dipendenze. `npm run check` verifica la sintassi JavaScript.
-
-## Contenuti
-
-Questa è un'anteprima di direzione visiva. Compluvio e Soundplace sono titoli da verificare. Mùrcia è escluso. Gli studi architettonici sono composizioni CSS dimostrative, non render dei progetti. Nome, bio, date, competenze e contatti non sono stati inventati. Per completare il portfolio occorre il PDF originale e la conferma dei contatti pubblici.
-
-Modifica `dist/index.html` per contenuti e immagini reali, `dist/style.css` per la direzione grafica e `dist/app.js` per le schede progetto. Quando inserisci immagini, usa WebP/AVIF con dimensioni esplicite, testo alternativo appropriato e caricamento differito sotto la prima schermata. I font Google hanno fallback locali.
+Con Node.js 20+: `npm run dev`, poi aprire http://127.0.0.1:4173. `npm run check` verifica sintassi e riferimenti alle immagini.
 
 ## Pubblicazione
 
-La cartella `dist` è il sito pronto: può essere caricata su un hosting statico. Per GitHub Pages, configura un workflow che carichi `dist` con `actions/upload-pages-artifact` e distribuisca con `actions/deploy-pages`, poi seleziona GitHub Actions nelle impostazioni Pages. Non occorrono build o segreti nel codice. La configurazione `.openai` appartiene a Sites: non copiarla nella repository GitHub personale.
+`dist/` contiene l'intero sito statico. I percorsi sono relativi e funzionano anche sotto /Portfolio/. Il workflow `.github/workflows/pages.yml` pubblica `dist` su GitHub Pages. Nella repository, Settings → Pages → Source: GitHub Actions. Avviare il workflow manualmente oppure effettuare un push su main.
 
-Prima della pubblicazione pubblica, sostituisci i contenuti provvisori con i materiali verificati e configura un contatto reale. Il pulsante contatti dell'anteprima spiega lo stato e non simula l'invio di messaggi.
+La configurazione `.openai` è riservata al mirror Sites e non serve su GitHub.
 
-## Interazioni e accessibilità
+## Contenuti
 
-Navigazione mobile, schede progetto in dialogo, tab con frecce/Home/End, percorso a comparsa, controllo della luce da tastiera, progresso di lettura e animazioni all'ingresso. Rispetta la preferenza di movimento ridotto; i contenuti restano leggibili senza JavaScript. Il dialogo nativo gestisce Escape, focus e contenimento della navigazione. Nessuna libreria di animazione o tracciamento.
+Fonte principale: BBB_Portfolio.pdf; tesi: BOOK_tesi_da_stampare.pdf. Bio e immagini dagli archivi forniti dall'autore. MONOBLOCK è una scheda autonoma. A matter of presence è esplicitamente collegato a POLIEDRO. I crediti dei progetti di gruppo sono riportati nelle schede.
+
+Modificare `dist/data.js` per testi e progetti, `dist/app.js` per didascalie e interazioni, `dist/style.css` per aspetto e layout. Il sito usa immagini WebP: miniature per la scena, immagini grandi solo nelle schede. Non contiene i PDF originali, molto pesanti. La risoluzione dei materiali già compressi non viene aumentata artificialmente.
+
+## Interazioni
+
+Trascinamento della scena, frecce a schermo e tastiera, indice alternativo, confronto giorno/notte, capitoli interattivi, galleria a schermo intero con Escape e frecce, selettore lingua persistente. Il movimento si ferma a riposo e quando la pagina non è visibile. La preferenza di movimento ridotto viene rispettata.
+
+## Verifica
+
+Controlli di sintassi e integrità delle immagini inclusi. La verifica visiva nel browser dipende dall'accesso al server locale o alla pubblicazione; non è sostituita dai controlli automatici.
+
+I contenuti e le immagini restano dei rispettivi autori. Il sito presenta progetti e proposte progettuali, non servizi di prenotazione attivi.
