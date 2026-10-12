@@ -119,9 +119,9 @@ body[data-route=home]{overflow:hidden;overscroll-behavior:none}
 .ring-nav>button:active,.filters button:active,.copy:active,.atlas-tools button:active{transform:scale(.96)}
 @media(hover:hover){.ring-nav>button:hover{background:var(--acid)}}
 .dots{display:flex;gap:2px}
-.dots button{width:16px;height:44px;position:relative}
-.dots button::after{content:'';position:absolute;left:5px;right:5px;top:19px;height:6px;background:var(--line);transition:background .3s,left .4s var(--ease-out),right .4s var(--ease-out)}
-.dots button[aria-current=true]::after{background:var(--ink);left:0;right:0}
+.dots button{width:24px;height:44px;position:relative}
+.dots button::after{content:'';position:absolute;left:8px;right:8px;top:19px;height:6px;background:var(--line);transition:background .3s,left .4s var(--ease-out),right .4s var(--ease-out)}
+.dots button[aria-current=true]::after{background:var(--ink);left:2px;right:2px}
 .count{min-width:62px;text-align:right;font-variant-numeric:tabular-nums}
 
 /* =========================================================
@@ -529,4 +529,13 @@ body[data-route=code]{background:#0f0f0e}
   .phone{max-width:340px;justify-self:center;width:100%}
   .ai-examples li{grid-template-columns:30px 1fr}
   .ai-examples li span:last-child{grid-column:2}
+}
+
+/* ---------- Lighthouse fixes ---------- */
+/* next-project name: solid ink at rest, inverted only while the image is revealed */
+.p-next-name{color:var(--ink);mix-blend-mode:normal}
+@media(hover:hover){.p-next:hover .p-next-name{color:#fff;mix-blend-mode:difference}}
+/* small mono labels stay legible on phones (12px minimum) */
+@media(max-width:700px){
+  .card-label,.hint a,.now-type,.ring-nav,.count,.row-num,.row-type,.row-year,.section-label,.page-head,.p-hero-top,.p-hero-bottom,.site-footer,.sf figcaption,.hg-item figcaption,.tag,.atlas-tools,.a-status,.note,.step-num,.cv dt,.tool-g,.phone figcaption,.p-meta,.c-stats dd,.ai-examples li span:last-child,.avail,.ai-badge,.filters button,.repo-lang,.repo-live,.p-next-label,.compare-tag,.light-count,#lightbox figcaption,nav,#language{font-size:12px}
 }

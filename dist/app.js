@@ -10,10 +10,10 @@ const clamp = (x, a, b) => Math.min(b, Math.max(a, x)), lerp = (a, b, k) => a + 
 const dims = window.IMAGE_DIMS || {};
 const src = (n, s = '') => `assets/${n}${s}.webp`;
 const at = (d, side) => d[0] >= d[1] ? Math.min(side, d[0]) : Math.round(Math.min(side, d[1]) * d[0] / d[1]);
-function pic(name, alt, { sizes = '100vw', eager = false, cls = '', vt = '' } = {}) {
+function pic(name, alt, { sizes = '100vw', eager = false, cls = '', vt = '', high = false } = {}) {
   const d = dims[name] || [1600, 1000], seen = new Set();
   const set = [['-s', at(d, 720)], ['-m', at(d, 1600)], ['', d[0]]].filter(([, w]) => !seen.has(w) && seen.add(w)).map(([s, w]) => `${src(name, s)} ${w}w`).join(', ');
-  return `<img${cls ? ` class="${cls}"` : ''} src="${src(name, '-m')}" srcset="${set}" sizes="${sizes}" width="${d[0]}" height="${d[1]}" alt="${esc(alt)}" loading="${eager ? 'eager' : 'lazy'}"${vt === 'hero' ? ' fetchpriority="high"' : ''} decoding="async" draggable="false"${vt ? ` style="view-transition-name:${vt}"` : ''}>`;
+  return `<img${cls ? ` class="${cls}"` : ''} src="${src(name, '-m')}" srcset="${set}" sizes="${sizes}" width="${d[0]}" height="${d[1]}" alt="${esc(alt)}" loading="${eager ? 'eager' : 'lazy'}"${vt === 'hero' || high ? ' fetchpriority="high"' : ''} decoding="async" draggable="false"${vt ? ` style="view-transition-name:${vt}"` : ''}>`;
 }
 const letters = (s, cls = 'ch') => [...s].map((c, i) => c === ' ' ? '<span class="sp"> </span>' : `<span class="${cls}" style="--i:${i}">${esc(c)}</span>`).join('');
 const words = s => s.split(/(\s+|<br>)/).map((w, i) => w === '<br>' ? '<br>' : /^\s+$/.test(w) ? ' ' : `<span class="w"><span style="--i:${i}">${w}</span></span>`).join('');
@@ -82,7 +82,7 @@ function home() {
   <p class="home-claim rv">${words(t('Osservo come viviamo.<br>Progetto ciò che ci<br>mette in relazione.', 'I observe how we live.<br>I design what brings<br>us together.'))}</p>
   <div class="home-meta"><span>${t('Archivio aperto', 'Open archive')} — ${num(N)} ${t('progetti', 'projects')}</span><span>${t('Product & interior design · Politecnico di Milano', 'Product & interior design · Politecnico di Milano')}</span></div>
   <div class="ring-stage" role="region" aria-roledescription="carousel" aria-label="${t('Galleria tridimensionale dei progetti', 'Three-dimensional project gallery')}" data-cursor="${C('Trascina', 'Drag')}">
-    <div class="ring-world"><div class="ring">${projects.map((p, i) => `<a class="card" href="#${p.id}" data-i="${i}" aria-label="${t('Apri', 'Open')} ${p.name}" draggable="false"><span class="card-media">${pic(p.cover.name, p.name, { sizes: '(max-width:700px) 60vw, 26vw', eager: true })}</span><span class="card-label"><span>${num(i + 1)}</span><span>${p.name}</span></span></a>`).join('')}</div></div>
+    <div class="ring-world"><div class="ring">${projects.map((p, i) => `<a class="card" href="#${p.id}" data-i="${i}" draggable="false"><span class="card-media">${pic(p.cover.name, '', { sizes: '(max-width:700px) 56vw, 340px', eager: true, high: i === sel })}</span><span class="card-label"><span>${num(i + 1)}</span><span>${p.name}</span></span></a>`).join('')}</div></div>
   </div>
   <div class="home-bottom">
     <div class="hint"><span class="hint-icon" aria-hidden="true"></span>${t('Trascina, scorri o usa le frecce', 'Drag, scroll or use the arrow keys')}<br><a href="#index">${t('Oppure vedi l’indice', 'Or view the index')} ↗</a></div>
@@ -494,7 +494,7 @@ function staticText() {
   document.documentElement.lang = lang;
   $$('[data-it]').forEach(e => e.textContent = e.dataset[lang]);
   $('#language').textContent = lang === 'it' ? 'EN' : 'IT';
-  $('#language').setAttribute('aria-label', lang === 'it' ? 'Switch to English' : 'Passa a italiano');
+  $('#language').setAttribute('aria-label', lang === 'it' ? 'EN — Switch to English' : 'IT — Passa a italiano');
   lb.setAttribute('aria-label', t('Galleria immagini', 'Image gallery'));
   $('.close', lb).setAttribute('aria-label', t('Chiudi', 'Close'));
   $('.light-prev').setAttribute('aria-label', t('Immagine precedente', 'Previous image'));
