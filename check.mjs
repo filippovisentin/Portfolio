@@ -35,4 +35,7 @@ if(external.length)throw Error('Third-party scripts or stylesheets are not allow
 for(const f of ['app.js','data.js','dims.js']){const s=fs.readFileSync('dist/'+f,'utf8');if(/\beval\s*\(|new\s+Function\s*\(|document\.write\s*\(/.test(s))throw Error('Unsafe dynamic code in dist/'+f)}
 const app=fs.readFileSync('dist/app.js','utf8');
 for(const m of app.matchAll(/target="_blank"[^>]*/g))if(!/rel="noopener noreferrer"/.test(m[0]))throw Error('target=_blank link without rel="noopener noreferrer"');
+const pre=/<link rel="preload" as="image" href="assets\/([\w-]+)-m\.webp"/.exec(html);
+if(!pre||pre[1]!==context.items[0].cover.name)throw Error('The LCP image preload must match the first project cover ('+context.items[0].cover.name+')');
+const vers=new Set([...html.matchAll(/\?v=([\d.]+)/g)].map(m=>m[1]));if(vers.size!==1)throw Error('All ?v= versions in index.html must match (long-term caching relies on them)');
 console.log('Security rules passed: CSP present, no inline or third-party scripts, no eval, safe external links.');
