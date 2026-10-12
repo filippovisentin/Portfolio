@@ -16,6 +16,7 @@ for(const p of context.items){
   p.technical.forEach(s=>{use(s.name,p.id+' atlas');both(s.cap,s.name)});
 }
 use('about-ritratto','about');
+for(const f of [context.forma.ai.video,context.forma.ai.poster])if(!fs.existsSync('dist/'+f))throw Error('Missing dist/'+f);both(context.forma.ai.label,'ai label');
 context.forma.shots.forEach(s=>{use(s.name,'code');both(s.cap,s.name)});
 const files=fs.readdirSync('dist/assets').filter(f=>!/-(m|s)\.webp$/.test(f)).map(f=>f.replace('.webp',''));
 const unused=files.filter(f=>!used.has(f));if(unused.length)throw Error('Unused assets: '+unused.join(', '));

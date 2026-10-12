@@ -376,22 +376,35 @@ function code() {
       <div class="p-text rv"><p class="lead">${v(f.intro)}</p><p>${v(f.text)}</p></div>
     </div>
   </section>
+  <section class="c-block c-ai">
+    <div class="section-label"><span>01 / Ask AI</span><span>${t('AI locale, nessun cloud', 'Local AI, no cloud')}</span></div>
+    <div class="ai-grid">
+      <figure class="phone rv"><div class="phone-screen"><video class="ai-video" muted loop playsinline preload="none" poster="${f.ai.poster}" aria-label="${esc(v(f.ai.label))}"><source src="${f.ai.video}" type="video/mp4"></video><button type="button" class="ai-toggle" aria-pressed="false" aria-label="${t('Riproduci la demo', 'Play the demo')}" data-cursor="${C('Play', 'Play')}"><i aria-hidden="true"></i></button></div><figcaption>${v(f.ai.label)}</figcaption></figure>
+      <div class="ai-text">
+        <h2 class="h2 rv">${words(v(f.ai.title))}</h2>
+        <p class="lead rv">${v(f.ai.text)}</p>
+        <ol class="ai-examples rv">${f.ai.examples.map(([a, b], k) => `<li><span class="mono">${num(k + 1)}</span><b>${v(a)}</b><span>${v(b)}</span></li>`).join('')}</ol>
+        <div class="ai-steps rv"><span class="tag">${t('Come si attiva', 'How to turn it on')}</span><ol>${f.ai.steps.map(s => `<li>${esc(v(s)).replace(/(ollama pull \S+)/, '<code>$1</code>')}</li>`).join('')}</ol></div>
+        <p class="ai-badge rv"><span class="dot" aria-hidden="true"></span>${v(f.ai.badge)}</p>
+      </div>
+    </div>
+  </section>
   <section class="c-block">
-    <div class="section-label"><span>01 / ${t('Riga di comando', 'Command line')}</span><span>${t('Scrivi e la stanza prende forma', 'Type and the room takes shape')}</span></div>
+    <div class="section-label"><span>02 / ${t('Riga di comando', 'Command line')}</span><span>${t('Scrivi e la stanza prende forma', 'Type and the room takes shape')}</span></div>
     <div class="terminal rv" role="img" aria-label="${esc(f.terminal.map(([c]) => c).join(', '))}"><div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>forma — command line</span></div><pre class="terminal-body" aria-hidden="true"></pre></div>
   </section>
   <section class="c-block">
-    <div class="section-label"><span>02 / ${t('Interfaccia', 'Interface')}</span><span>${rest.length} ${t('schermate', 'screenshots')}</span></div>
+    <div class="section-label"><span>03 / ${t('Interfaccia', 'Interface')}</span><span>${rest.length} ${t('schermate', 'screenshots')}</span></div>
     <div class="c-shots">${rest.map((s, k) => `<figure class="hg-item rv" style="--ar:${(dims[s.name][0] / dims[s.name][1]).toFixed(3)}"><button type="button" data-light="${k + 1}" data-cursor="${C('Ingrandisci', 'Enlarge')}" aria-label="${t('Ingrandisci', 'Enlarge')} ${esc(v(s.cap))}">${pic(s.name, v(s.cap), { sizes: '(max-width:900px) 100vw, 50vw' })}</button><figcaption><span>${num(k + 1)}</span><span>${v(s.cap)}</span></figcaption></figure>`).join('')}</div>
   </section>
   <section class="c-block">
-    <div class="section-label"><span>03 / ${t('Architettura', 'Architecture')}</span><span>${t('Ogni strato dipende solo da quelli sotto', 'Each layer depends only on those below')}</span></div>
+    <div class="section-label"><span>04 / ${t('Architettura', 'Architecture')}</span><span>${t('Ogni strato dipende solo da quelli sotto', 'Each layer depends only on those below')}</span></div>
     <h2 class="h2 rv">${words(t('Tutto è<br>un comando.', 'Everything is<br>a command.'))}</h2>
     <ol class="c-layers">${f.layers.map(([n, d], k) => `<li class="rv" style="--k:${k}"><span class="mono">${n}</span><span>${v(d)}</span></li>`).join('')}</ol>
     <ul class="c-stack" aria-label="${t('Tecnologie', 'Technologies')}">${f.stack.map(s => `<li>${s}</li>`).join('')}</ul>
   </section>
   <section class="c-block">
-    <div class="section-label"><span>04 / GitHub</span>${ext(profile.github, 'github.com/filippovisentin ↗')}</div>
+    <div class="section-label"><span>05 / GitHub</span>${ext(profile.github, 'github.com/filippovisentin ↗')}</div>
     <ul class="repos">${repos.map(r => `<li><a class="repo" href="${r.url}" target="_blank" rel="noopener noreferrer" data-cursor="${C('Apri', 'Open')}"><span class="repo-name">${r.name}<span class="sr-only"> (${t('si apre in una nuova scheda', 'opens in a new tab')})</span></span><span class="repo-desc">${v(r.desc)}</span><span class="repo-lang"><i data-l="${r.lang}"></i>${r.lang}</span><span class="row-arrow" aria-hidden="true">↗</span></a>${r.live ? ext(r.live, `${t('Sito', 'Live site')} ↗`, 'repo-live') : ''}</li>`).join('')}</ul>
     <p class="note">${v(f.note)}</p>
   </section>
@@ -430,6 +443,17 @@ function code() {
     const o = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; o.unobserve(e.target); if (e.target === term) type(); else runCount(e.target) }), { threshold: .4 });
     [term, ...counters].forEach(x => o.observe(x)); onCleanup(() => o.disconnect());
   } else term.innerHTML = done();
+  // AI demo video: plays muted while visible, a button pauses it
+  const vid = $('.ai-video'), tog = $('.ai-toggle');
+  let userPaused = reduced.matches;
+  const sync = () => { const on = !vid.paused; tog.setAttribute('aria-pressed', String(on)); tog.setAttribute('aria-label', on ? t('Metti in pausa la demo', 'Pause the demo') : t('Riproduci la demo', 'Play the demo')); tog.closest('.phone').classList.toggle('playing', on) };
+  const play = () => { vid.preload = 'auto'; vid.play().then(sync, sync) };
+  vid.addEventListener('pause', sync); vid.addEventListener('play', sync);
+  tog.addEventListener('click', () => { if (vid.paused) { userPaused = false; play() } else { userPaused = true; vid.pause() } });
+  if ('IntersectionObserver' in window) {
+    const vo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !userPaused) play(); else if (!e.isIntersecting) vid.pause() }), { threshold: .35 });
+    vo.observe(vid); onCleanup(() => { vo.disconnect(); vid.pause() });
+  }
   magnetic(main);
 }
 
