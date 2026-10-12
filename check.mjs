@@ -17,6 +17,7 @@ for(const p of context.items){
 }
 use('about-ritratto','about');
 for(const f of [context.forma.ai.video,context.forma.ai.poster])if(!fs.existsSync('dist/'+f))throw Error('Missing dist/'+f);both(context.forma.ai.label,'ai label');
+vm.runInContext('globalThis.profile=profile;',context);for(const d of context.profile.docs){if(!fs.existsSync('dist/'+d.href))throw Error('Missing dist/'+d.href);both(d.label,d.href);both(d.meta,d.href)}
 context.forma.shots.forEach(s=>{use(s.name,'code');both(s.cap,s.name)});
 const files=fs.readdirSync('dist/assets').filter(f=>!/-(m|s)\.webp$/.test(f)).map(f=>f.replace('.webp',''));
 const unused=files.filter(f=>!used.has(f));if(unused.length)throw Error('Unused assets: '+unused.join(', '));

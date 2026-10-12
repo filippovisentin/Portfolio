@@ -539,3 +539,14 @@ body[data-route=code]{background:#0f0f0e}
 @media(max-width:700px){
   .card-label,.hint a,.now-type,.ring-nav,.count,.row-num,.row-type,.row-year,.section-label,.page-head,.p-hero-top,.p-hero-bottom,.site-footer,.sf figcaption,.hg-item figcaption,.tag,.atlas-tools,.a-status,.note,.step-num,.cv dt,.tool-g,.phone figcaption,.p-meta,.c-stats dd,.ai-examples li span:last-child,.avail,.ai-badge,.filters button,.repo-lang,.repo-live,.p-next-label,.compare-tag,.light-count,#lightbox figcaption,nav,#language{font-size:12px}
 }
+
+/* ---------- CV / portfolio downloads ---------- */
+.downloads{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 34px}
+.dl{display:inline-flex;align-items:center;gap:14px;min-height:60px;padding:10px 22px 10px 12px;border:1px solid var(--ink);border-radius:999px;transition:background .25s,color .25s,transform .4s var(--ease-out)}
+.dl-icon{width:38px;height:38px;border-radius:50%;background:var(--acid);color:#111;display:grid;place-items:center;font-size:18px;flex:none;transition:transform .4s var(--ease-out)}
+.dl-text{display:flex;flex-direction:column;line-height:1.25}
+.dl-text b{font:600 15px var(--sans)}
+.dl-text small{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+@media(hover:hover){.dl:hover{background:var(--ink);color:var(--paper)}.dl:hover .dl-text small{color:var(--paper);opacity:.75}.dl:hover .dl-icon{transform:translateY(3px)}}
+.dl:active{transform:scale(.97)}
+@media(max-width:700px){.dl{width:100%}.dl-text small{font-size:12px}}

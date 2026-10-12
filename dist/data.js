@@ -150,4 +150,5 @@ const repos=[
  {name:'Portfolio',lang:'JavaScript',url:'https://github.com/filippovisentin/Portfolio',live:'https://filippovisentin.pages.dev/',desc:P('Questo sito: HTML, CSS e JavaScript senza dipendenze, pubblicato con GitHub Pages.','This site: dependency-free HTML, CSS and JavaScript, published with GitHub Pages.')},
  {name:'filippovisentin',lang:'HTML',url:'https://github.com/filippovisentin/filippovisentin',desc:P('La prima versione del portfolio online.','The first version of the online portfolio.')}
 ];
-const profile={github:'https://github.com/filippovisentin',linkedin:'https://www.linkedin.com/in/filippo-antonio-visentin-b0317b2a5',email:'filippoantonio.visentin@mail.polimi.it'};
+const profile={github:'https://github.com/filippovisentin',linkedin:'https://www.linkedin.com/in/filippo-antonio-visentin-b0317b2a5',email:'filippoantonio.visentin@mail.polimi.it',
+ docs:[{href:'docs/Filippo-Antonio-Visentin-CV.pdf',label:P('Scarica il CV','Download CV'),meta:P('PDF · 1 pagina · EN · 110 KB','PDF · 1 page · EN · 110 KB')},{href:'docs/Filippo-Antonio-Visentin-Portfolio.pdf',label:P('Scarica il portfolio','Download portfolio'),meta:P('PDF · 19 pagine · 5 MB','PDF · 19 pages · 5 MB')}]};
