@@ -82,7 +82,7 @@ function home() {
   <p class="home-claim rv">${words(t('Osservo come viviamo.<br>Progetto ciò che ci<br>mette in relazione.', 'I observe how we live.<br>I design what brings<br>us together.'))}</p>
   <div class="home-meta"><span>${t('Archivio aperto', 'Open archive')} — ${num(N)} ${t('progetti', 'projects')}</span><span>${t('Product & interior design · Politecnico di Milano', 'Product & interior design · Politecnico di Milano')}</span></div>
   <div class="ring-stage" role="region" aria-roledescription="carousel" aria-label="${t('Galleria tridimensionale dei progetti', 'Three-dimensional project gallery')}" data-cursor="${C('Trascina', 'Drag')}">
-    <div class="ring-world"><div class="ring">${projects.map((p, i) => `<a class="card" href="#${p.id}" data-i="${i}" draggable="false"><span class="card-media">${pic(p.cover.name, '', { sizes: '(max-width:700px) 56vw, 340px', eager: true, high: i === sel, low: i !== sel })}</span><span class="card-label"><span>${num(i + 1)}</span><span>${p.name}</span></span></a>`).join('')}</div></div>
+    <div class="ring-world"><div class="ring">${projects.map((p, i) => `<a class="card" href="#${p.id}" data-i="${i}" draggable="false"><span class="card-media">${pic(p.cover.name, '', { sizes: '(max-width:700px) 64vw, min(31vw, 420px)', eager: true, high: i === sel, low: i !== sel })}</span><span class="card-label"><span>${num(i + 1)}</span><span>${p.name}</span></span></a>`).join('')}</div></div>
   </div>
   <div class="home-bottom">
     <div class="hint"><span class="hint-icon" aria-hidden="true"></span>${t('Trascina, scorri o usa le frecce', 'Drag, scroll or use the arrow keys')}<br><a href="#index">${t('Oppure vedi l’indice', 'Or view the index')} ↗</a></div>

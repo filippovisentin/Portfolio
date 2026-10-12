@@ -23,7 +23,7 @@ const projects=[
  technical:[sheet('mb-tav-30','Planimetria — parte I','Floor plan — part I','plan'),sheet('mb-tav-31','Planimetria — parte II','Floor plan — part II','plan'),...[32,33,34,35].map(n=>sheet('mb-tav-'+n,'Disposizione e collezione — '+(n-31),'Layout and collection — '+(n-31),'plan')),sheet('mb-tav-36','Griglia e sistema di sospensione','Grid and suspension system'),sheet('mb-tav-37','Connessioni meccaniche','Mechanical connections'),sheet('mb-tav-38','Tende e partizioni','Curtains and partitions'),sheet('mb-tav-39','Installazione delle stampanti 3D','3D printer installation'),sheet('mb-tav-40','Progetto della luce','Lighting design'),sheet('mb-tav-41','Apparecchi illuminanti','Lighting fixtures'),sheet('mb-tav-42','Materiali — abaco I','Materials — schedule I'),sheet('mb-tav-43','Materiali — abaco II','Materials — schedule II'),sheet('mb-tav-44','Identità e tipografia','Identity and typography','board'),sheet('mb-tav-45','Il colore nel tempo','Colour over time','board')]},
 
 {id:'bivacuum',name:'BIVACUUM',featured:true,discipline:'architecture',
- type:P('Architettura · Spazio minimo','Architecture · Minimum space'),year:'',
+ type:P('Architettura · Spazio minimo','Architecture · Minimum space'),year:'2026',
  cover:img('bv-cover','Il rifugio nel paesaggio alpino','The shelter in the alpine landscape'),
  subtitle:P('Abitare la quota. Liberare lo spazio.','Living at altitude. Freeing up space.'),
  question:P('Come può uno spazio minimo accogliere modi diversi di stare insieme?','How can a minimum space accommodate different ways of being together?'),
@@ -75,7 +75,7 @@ const projects=[
  technical:[sheet('pl-tav-15','Concept e sistema modulare','Concept and modular system','board'),sheet('pl-tav-16','Disegni tecnici e dettagli costruttivi','Technical drawings and construction details','board')]},
 
 {id:'compluvio',name:'COMPLUVIO',discipline:'architecture',
- type:P('Architettura · Paesaggio','Architecture · Landscape'),year:'',
+ type:P('Architettura · Paesaggio','Architecture · Landscape'),year:'2025',
  cover:img('cp-cover','La serra nel paesaggio','The greenhouse in the landscape'),
  subtitle:P('La forma segue l’acqua.','Form follows water.'),
  question:P('E se fosse l’acqua a disegnare lo spazio?','What if water could shape space?'),
@@ -107,7 +107,7 @@ const projects=[
  technical:[sheet('pr-prospetti','Pianta, sezioni e prospetti','Plan, sections and elevations','plan')]},
 
 {id:'soundplace',name:'SOUNDPLACE',discipline:'product',
- type:P('Service design · Spazio pubblico','Service design · Public space'),year:'',
+ type:P('Service design · Spazio pubblico','Service design · Public space'),year:'2026',
  cover:img('sp-cover','Walking Tree nel parco','Walking Tree in the park'),
  subtitle:P('Un albero, due sedute, una possibilità.','A tree, two seats, a possibility.'),
  question:P('Qual è il minimo necessario per creare un luogo di incontro?','What is the minimum needed to create a meeting place?'),
