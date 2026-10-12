@@ -87,7 +87,7 @@ body[data-route=project] .progress{opacity:1}
    ========================================================= */
 body[data-route=home]{overflow:hidden;overscroll-behavior:none}
 .home{position:relative;height:100svh;min-height:560px;overflow:hidden;background:radial-gradient(120% 80% at 50% 55%,#f7f6f2 0%,var(--paper) 55%,#e4e3dc 100%)}
-.bigname{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;white-space:nowrap;pointer-events:none;z-index:3;color:#fff;mix-blend-mode:difference}
+.bigname{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;white-space:nowrap;pointer-events:none;z-index:3;color:var(--ink);mix-blend-mode:normal}
 .bn{display:inline-block;overflow:hidden;font:800 min(36vw,calc(165vw / var(--n,8)))/.8 var(--sans);font-stretch:62%;letter-spacing:-.01em;padding:.04em 0}
 .bn .ch{animation:rise .8s var(--ease-out) calc(var(--i)*22ms) both}
 .home-claim{position:absolute;left:var(--pad);top:calc(var(--hh) + 16px);margin:0;font:italic 400 clamp(20px,2.1vw,34px)/1.04 var(--serif);z-index:4;max-width:22ch}
