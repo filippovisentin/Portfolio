@@ -28,7 +28,7 @@ Controlli di sintassi e integrità delle immagini inclusi. Verificato nel browse
 
 I contenuti e le immagini restano dei rispettivi autori. Il sito presenta progetti e proposte progettuali, non servizi di prenotazione attivi.
 
-Sito pubblico: https://filippovisentin.github.io/Portfolio/
+Sito pubblico: https://filippovisentin.pages.dev/ (Cloudflare Pages, principale) · copia su https://filippovisentin.github.io/Portfolio/ (GitHub Pages)
 
 ## Edizione 3 — archivio personale
 
@@ -39,3 +39,7 @@ Homepage monocromatica con accento fluorescente, risposta al puntatore e selezio
 Home con anello 3D trascinabile (inerzia, rotella, frecce), nome del progetto attivo in tipografia variabile e transizione condivisa dell'immagine verso la scheda (View Transitions, dove supportate). Indice con anteprima che segue il cursore e filtri per disciplina. Schede con hero a tutto schermo, capitoli in scrollytelling con immagine fissa, confronto giorno/notte trascinabile (BIVACUUM), galleria orizzontale ancorata allo scorrimento, atlante tecnico con zoom fino al 400% e trascinamento, lightbox con zoom e swipe. Cursore personalizzato solo con mouse; movimento ridotto rispettato ovunque.
 
 Immagini rigenerate dagli originali ad alta risoluzione (render 3840–5460 px, tavole dai PDF a 4400 px). Ogni immagine compare una sola volta nel sito: `npm run check` blocca duplicati, file mancanti e file non usati. Font self-hosted con licenza SIL OFL (Archivo, JetBrains Mono, Instrument Serif) in `dist/fonts`: nessuna richiesta a servizi esterni.
+
+## Pubblicazione su Cloudflare Pages
+
+Il progetto Cloudflare Pages `filippovisentin` è collegato a questo repository (solo `Portfolio`, tramite l'app GitHub di Cloudflare): ogni push su `main` viene pubblicato su https://filippovisentin.pages.dev/. Impostazioni: nessun framework, nessun comando di build, cartella di output `dist`. Cloudflare applica gli header di `dist/_headers` (CSP completa, protezione dal clickjacking, nosniff, HSTS, cache dei file statici). `robots.txt`, `sitemap.xml` e l'URL canonico indicano Cloudflare come indirizzo principale; GitHub Pages resta attivo come copia.

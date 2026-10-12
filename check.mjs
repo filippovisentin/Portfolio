@@ -28,7 +28,8 @@ const csp=/<meta http-equiv="Content-Security-Policy" content="([^"]+)"/.exec(ht
 if(!csp)throw Error('Missing Content-Security-Policy meta tag in dist/index.html');
 for(const rule of ["default-src 'none'","script-src 'self'","object-src 'none'","base-uri 'none'","form-action 'none'"])if(!csp[1].includes(rule))throw Error('CSP must contain '+rule);
 if(/<script(?![^>]*\ssrc=)[^>]*>/i.test(html))throw Error('Inline <script> blocks are not allowed (CSP script-src self)');
-const external=[...html.matchAll(/<(?:script|link)\b[^>]*(?:src|href)="(https?:)?\/\/[^"]*"/gi)].map(m=>m[0]);
+const loads=[...html.matchAll(/<script\b[^>]*>|<link\b[^>]*rel="(?:stylesheet|preload|modulepreload|prefetch|icon)"[^>]*>/gi)].map(m=>m[0]);
+const external=loads.filter(tag=>/(?:src|href)="(?:https?:)?\/\//i.test(tag));
 if(external.length)throw Error('Third-party scripts or stylesheets are not allowed: '+external.join(' '));
 for(const f of ['app.js','data.js','dims.js']){const s=fs.readFileSync('dist/'+f,'utf8');if(/\beval\s*\(|new\s+Function\s*\(|document\.write\s*\(/.test(s))throw Error('Unsafe dynamic code in dist/'+f)}
 const app=fs.readFileSync('dist/app.js','utf8');

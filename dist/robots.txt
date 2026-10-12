@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://filippovisentin.pages.dev/sitemap.xml
