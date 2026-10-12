@@ -109,7 +109,7 @@ function home() {
   function setActive(i) {
     active = i; const p = projects[i];
     sessionStorage.setItem('fav-active', p.id);
-    big.innerHTML = `<span class="bn" style="--n:${Math.max(7, p.name.length)}">${letters(p.name)}</span>`;
+    big.innerHTML = `<span class="bn">${letters(p.name)}</span>`;
     now.href = '#' + p.id; $('.now-type', now).textContent = `${num(i + 1)} — ${v(p.type)}${p.year ? ' · ' + p.year : ''}`; $('.now-name', now).textContent = p.name;
     $('.count').textContent = `${num(i + 1)} / ${num(N)}`;
     $$('.dots button').forEach((b, j) => b.setAttribute('aria-current', String(j === i)));
@@ -332,11 +332,11 @@ function about() {
       <div class="downloads rv">${profile.docs.map(d => `<a class="dl magnetic" href="${d.href}" target="_blank" rel="noopener noreferrer" type="application/pdf" data-cursor="${C('Apri PDF', 'Open PDF')}"><span class="dl-icon" aria-hidden="true">↓</span><span class="dl-text"><b>${v(d.label)}</b><small>${v(d.meta)}</small></span><span class="sr-only"> (${t('si apre in una nuova scheda', 'opens in a new tab')})</span></a>`).join('')}</div>
       <p class="lead rv">${t('Sono un designer di prodotto e d’interni. La mia ricerca muove dall’osservazione delle interazioni tra le persone e dei modi reali in cui spazi e oggetti vengono abitati e utilizzati, perché la forma derivi dall’uso e non lo preceda.', 'I am a product and interior designer. My research starts from observing how people interact and how spaces and objects are actually lived in and used, so that form follows use rather than preceding it.')}</p>
       <p class="rv">${t('Interpreto il design come un gesto che accompagna l’esperienza anziché imporsi, e cerco l’equilibrio tra rigore tecnico e qualità materica. Materiali e luce sono strumenti progettuali che uso per dare calore e carattere; il riferimento alla natura si traduce in un linguaggio contemporaneo.', 'I see design as a gesture that accompanies experience instead of imposing itself, and I look for a balance between technical rigour and material quality. Materials and light are design tools I use to give warmth and character, while references to nature are translated into a contemporary language.')}</p>
-      <p class="rv">${t('Nell’ultimo periodo mi dedico alla progettazione e prototipazione di pezzi stampati in 3D, a resina e a filamento, e allo sviluppo di strumenti digitali come <a class="inline" href="#code">Forma</a>, il mio modellatore 3D open source.', 'Recently I have been focusing on designing and prototyping parts made with resin and filament 3D printing, and on building digital tools such as <a class="inline" href="#code">Forma</a>, my open-source 3D modeller.')}</p>
+      <p class="rv">${t('Nell’ultimo periodo mi dedico alla progettazione e prototipazione di pezzi stampati in 3D, a resina e a filamento, e allo sviluppo di strumenti digitali come <a class="inline" href="#code">Forma</a>, il mio modellatore 3D open source: è il mio modo di <a class="inline" href="#code">progettare con l’AI</a>.', 'Recently I have been focusing on designing and prototyping parts made with resin and filament 3D printing, and on building digital tools such as <a class="inline" href="#code">Forma</a>, my open-source 3D modeller: it is how I <a class="inline" href="#code">design with AI</a>.')}</p>
       <dl class="cv rv">
-        <div><dt>${t('Formazione', 'Education')}</dt><dd><b>2026–2028</b> · ${t('Master universitario di primo livello', 'First-level university master')}<br><b>2023–2026</b> · ${t('Laurea triennale in Design degli Interni — Politecnico di Milano', 'B.Sc. in Interior Design — Politecnico di Milano')}<br><b>${t('Fino al 2023', 'Until 2023')}</b> · ${t('Diploma tecnico in Telecomunicazioni — ITIS A. Rossi, Vicenza', 'Technical diploma in Telecommunications — ITIS A. Rossi, Vicenza')}</dd></div>
+        <div><dt>${t('Formazione', 'Education')}</dt><dd><b>2026–2028</b> · ${t('Master universitario di primo livello in Design Engineering for Innovation — POLI.design, Politecnico di Milano', 'First-level university master in Design Engineering for Innovation — POLI.design, Politecnico di Milano')}<br><b>2023–2026</b> · ${t('Laurea triennale in Design degli Interni — Politecnico di Milano', 'B.Sc. in Interior Design — Politecnico di Milano')}<br><b>${t('Fino al 2023', 'Until 2023')}</b> · ${t('Diploma tecnico in Telecomunicazioni — ITIS A. Rossi, Vicenza', 'Technical diploma in Telecommunications — ITIS A. Rossi, Vicenza')}</dd></div>
         <div><dt>${t('Certificazioni', 'Certifications')}</dt><dd><b>2025</b> · ${t('Abilitazione alla stampa 3D — Politecnico di Milano', '3D printing qualification — Politecnico di Milano')}</dd></div>
-        <div><dt>${t('Esperienze', 'Experience')}</dt><dd><b>${t('Oggi', 'Now')}</b> · Freelance — ${t('progettazione, prototipazione e stampa 3D su commissione', 'design, prototyping and 3D printing on commission')}<br><b>${t('2 mesi', '2 months')}</b> · Zincol Italia — ${t('tirocinio nell’ufficio IT, a supporto dei sistemi interni e dell’infrastruttura', 'IT department intern, supporting internal systems and infrastructure')}<br><b>2025–2026</b> · ALDI Italia, Milano — ${t('addetto vendita: cassa, rifornimento, allestimento secondo gli standard espositivi, assistenza clienti', 'sales associate: checkout, restocking, store layout to display standards, customer assistance')}<br><b>2021–2023</b> · La Capannina, Barbarano Vicentino — ${t('da cameriere a responsabile di sala: coordinamento del team, turni e qualità del servizio', 'from waiter to floor manager: team coordination, shift planning and service quality')}</dd></div>
+        <div><dt>${t('Esperienze', 'Experience')}</dt><dd><b>${t('Oggi', 'Now')}</b> · Freelance — ${t('progettazione, prototipazione e stampa 3D su commissione', 'design, prototyping and 3D printing on commission')}<br><b>${t('Mag–ago 2022', 'May–Aug 2022')}</b> · Zincol Italia — ${t('tirocinio nell’ufficio IT durante il quarto anno delle superiori, a supporto dei sistemi interni e dell’infrastruttura', 'IT department internship during the fourth year of high school, supporting internal systems and infrastructure')}<br><b>2025–2026</b> · ALDI Italia, Milano — ${t('addetto vendita: cassa, rifornimento, allestimento secondo gli standard espositivi, assistenza clienti', 'sales associate: checkout, restocking, store layout to display standards, customer assistance')}<br><b>2021–2023</b> · La Capannina, Barbarano Vicentino — ${t('da cameriere a responsabile di sala: coordinamento del team, turni e qualità del servizio', 'from waiter to floor manager: team coordination, shift planning and service quality')}</dd></div>
         <div><dt>${t('Strumenti', 'Tools')}</dt><dd>${groups.map(([g, l]) => `<span class="tool-g">${g}</span> ${l.join(' · ')}`).join('<br>')}</dd></div>
         <div><dt>${t('Lingue', 'Languages')}</dt><dd>${t('Italiano C2 · Inglese B2 · Francese B1', 'Italian C2 · English B2 · French B1')}</dd></div>
         <div><dt>${t('Interessi', 'Interests')}</dt><dd>${t('Montagna e alpinismo, riferimento personale e progettuale ricorrente · stampa 3D e sperimentazione su materiali e processi · droni FPV: costruzione, configurazione, programmazione e riprese aeree.', 'Mountaineering, a recurring personal and design reference · 3D printing and experiments with materials and processes · FPV drones: building, configuring, programming and aerial footage.')}</dd></div>
@@ -377,8 +377,15 @@ function code() {
       <div class="p-text rv"><p class="lead">${v(f.intro)}</p><p>${v(f.text)}</p></div>
     </div>
   </section>
+  <section class="c-block c-method">
+    <div class="section-label"><span>01 / ${t('Progettare con l’AI', 'Designing with AI')}</span><span>${t('Il metodo dietro Forma', 'The method behind Forma')}</span></div>
+    <div class="method-grid">
+      <div><h2 class="h2 rv">${words(v(f.method.title))}</h2><p class="lead rv">${v(f.method.lead)}</p></div>
+      <ol class="method-steps">${f.method.steps.map(([h, d], k) => `<li class="rv" style="--k:${k}"><span class="mono">${num(k + 1)}</span><b>${v(h)}</b><p>${v(d)}</p></li>`).join('')}</ol>
+    </div>
+  </section>
   <section class="c-block c-ai">
-    <div class="section-label"><span>01 / Ask AI</span><span>${t('AI locale, nessun cloud', 'Local AI, no cloud')}</span></div>
+    <div class="section-label"><span>02 / Ask AI</span><span>${t('AI locale, nessun cloud', 'Local AI, no cloud')}</span></div>
     <div class="ai-grid">
       <figure class="phone rv"><div class="phone-screen"><video class="ai-video" muted loop playsinline preload="none" poster="${f.ai.poster}" aria-label="${esc(v(f.ai.label))}"><source src="${f.ai.video}" type="video/mp4"></video><button type="button" class="ai-toggle" aria-pressed="false" aria-label="${t('Riproduci la demo', 'Play the demo')}" data-cursor="${C('Play', 'Play')}"><i aria-hidden="true"></i></button></div><figcaption>${v(f.ai.label)}</figcaption></figure>
       <div class="ai-text">
@@ -391,21 +398,21 @@ function code() {
     </div>
   </section>
   <section class="c-block">
-    <div class="section-label"><span>02 / ${t('Riga di comando', 'Command line')}</span><span>${t('Scrivi e la stanza prende forma', 'Type and the room takes shape')}</span></div>
+    <div class="section-label"><span>03 / ${t('Riga di comando', 'Command line')}</span><span>${t('Scrivi e la stanza prende forma', 'Type and the room takes shape')}</span></div>
     <div class="terminal rv" role="img" aria-label="${esc(f.terminal.map(([c]) => c).join(', '))}"><div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>forma — command line</span></div><pre class="terminal-body" aria-hidden="true"></pre></div>
   </section>
   <section class="c-block">
-    <div class="section-label"><span>03 / ${t('Interfaccia', 'Interface')}</span><span>${rest.length} ${t('schermate', 'screenshots')}</span></div>
+    <div class="section-label"><span>04 / ${t('Interfaccia', 'Interface')}</span><span>${rest.length} ${t('schermate', 'screenshots')}</span></div>
     <div class="c-shots">${rest.map((s, k) => `<figure class="hg-item rv" style="--ar:${(dims[s.name][0] / dims[s.name][1]).toFixed(3)}"><button type="button" data-light="${k + 1}" data-cursor="${C('Ingrandisci', 'Enlarge')}" aria-label="${t('Ingrandisci', 'Enlarge')} ${esc(v(s.cap))}">${pic(s.name, v(s.cap), { sizes: '(max-width:900px) 100vw, 50vw' })}</button><figcaption><span>${num(k + 1)}</span><span>${v(s.cap)}</span></figcaption></figure>`).join('')}</div>
   </section>
   <section class="c-block">
-    <div class="section-label"><span>04 / ${t('Architettura', 'Architecture')}</span><span>${t('Ogni strato dipende solo da quelli sotto', 'Each layer depends only on those below')}</span></div>
+    <div class="section-label"><span>05 / ${t('Architettura', 'Architecture')}</span><span>${t('Ogni strato dipende solo da quelli sotto', 'Each layer depends only on those below')}</span></div>
     <h2 class="h2 rv">${words(t('Tutto è<br>un comando.', 'Everything is<br>a command.'))}</h2>
     <ol class="c-layers">${f.layers.map(([n, d], k) => `<li class="rv" style="--k:${k}"><span class="mono">${n}</span><span>${v(d)}</span></li>`).join('')}</ol>
     <ul class="c-stack" aria-label="${t('Tecnologie', 'Technologies')}">${f.stack.map(s => `<li>${s}</li>`).join('')}</ul>
   </section>
   <section class="c-block">
-    <div class="section-label"><span>05 / GitHub</span>${ext(profile.github, 'github.com/filippovisentin ↗')}</div>
+    <div class="section-label"><span>06 / GitHub</span>${ext(profile.github, 'github.com/filippovisentin ↗')}</div>
     <ul class="repos">${repos.map(r => `<li><a class="repo" href="${r.url}" target="_blank" rel="noopener noreferrer" data-cursor="${C('Apri', 'Open')}"><span class="repo-name">${r.name}<span class="sr-only"> (${t('si apre in una nuova scheda', 'opens in a new tab')})</span></span><span class="repo-desc">${v(r.desc)}</span><span class="repo-lang"><i data-l="${r.lang}"></i>${r.lang}</span><span class="row-arrow" aria-hidden="true">↗</span></a>${r.live ? ext(r.live, `${t('Sito', 'Live site')} ↗`, 'repo-live') : ''}</li>`).join('')}</ul>
     <p class="note">${v(f.note)}</p>
   </section>
@@ -537,10 +544,36 @@ render();
 if (seen || reduced.matches) loader.remove();
 else {
   try { sessionStorage.setItem('fav-intro', '1') } catch {}
-  const n = $('.loader-count'), imgs = $$('main img').slice(0, 10), t0 = performance.now();
+  // Grid: verticals every 10%, horizontals every 12.5%, two guide lines around the name
+  const plane = $('.ld-plane'), cells = [];
+  let html = '', k = 0;
+  for (let x = 10; x <= 90; x += 10) html += `<i class="v" style="--x:${x}%;--i:${k++}"></i>`;
+  for (let y = 12.5; y < 100; y += 12.5) html += `<i class="h" style="--y:${y}%;--i:${k++}"></i>`;
+  html += `<i class="h a top" style="--i:${k++}"></i><i class="h a bot" style="--i:${k++}"></i>`;
+  // Towers rise in a diagonal wave; heights follow a sine, colours are white, black and acid
+  const cw = plane.clientWidth / 10, ch = plane.clientHeight / 8, m = cw * .12;
+  for (let r = 0; r < 8; r++) for (let c = 0; c < 10; c++) {
+    const phone = innerWidth < 700;   // on phones: fewer towers and a wider clear band behind the name
+    if ((r >= (phone ? 2 : 3) && r <= (phone ? 5 : 4) && c >= 1 && c <= 8) || Math.random() < (phone ? .6 : .5)) continue;
+    const tone = Math.random() < .14 ? ' y' : Math.random() < .3 ? ' k' : '';
+    cells.push(`<div class="bld${tone}" style="left:${c * cw + m}px;top:${r * ch + m}px;width:${cw - 2 * m}px;height:${ch - 2 * m}px;--h:${40 + 220 * (.5 + .5 * Math.sin(c * .7 + r * .9))}px;--dl:${(c + r) * 70}ms"><b class="sh"></b><b class="rf"></b><b class="n"></b><b class="s"></b><b class="w"></b><b class="e"></b></div>`);
+  }
+  plane.innerHTML = html + cells.join('');
+  requestAnimationFrame(() => requestAnimationFrame(() => loader.classList.add('draw')));
+  // Progress follows the first images of the page, never shorter than the drawing itself
+  const n = $('.loader-count'), coords = $('.ld-coords'), imgs = $$('main img').slice(0, 10), t0 = performance.now();
   let loaded = 0; const total = Math.max(1, imgs.length);
   imgs.forEach(im => { if (im.complete) loaded++; else { const f = () => loaded++; im.addEventListener('load', f, { once: true }); im.addEventListener('error', f, { once: true }) } });
-  const tick = now => { const real = loaded / total, time = Math.min(1, (now - t0) / 1400), k = Math.min(real, time) * .6 + time * .4; n.textContent = String(Math.round(Math.min(1, k) * 100)).padStart(3, '0'); if (k < 1 && now - t0 < 3500) requestAnimationFrame(tick); else { n.textContent = '100'; loader.classList.add('out'); setTimeout(() => loader.remove(), 1100) } };
+  const tick = now => {
+    const time = Math.min(1, (now - t0) / 2900), p = Math.min(1, Math.min(loaded / total, time) * .6 + time * .4), e = 1 - Math.pow(1 - p, 3);
+    n.textContent = String(Math.round(e * 100)).padStart(3, '0');
+    coords.textContent = `X ${String(Math.round(e * 1440)).padStart(4, '0')} · Y ${String(Math.round(e * 900)).padStart(4, '0')} · 1:${Math.round(100 - e * 99)}`;
+    if (p < 1 && now - t0 < 5500) return requestAnimationFrame(tick);
+    n.textContent = '100';
+    loader.classList.add('set');
+    setTimeout(() => loader.classList.add('out'), 650);
+    setTimeout(() => loader.remove(), 1700);
+  };
   requestAnimationFrame(tick);
 }
 })();
