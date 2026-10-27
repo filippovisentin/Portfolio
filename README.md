@@ -1,6 +1,6 @@
 # Filippo Antonio Visentin — Portfolio
 
-Portfolio bilingue IT/EN di un designer di prodotto e d'interni (Politecnico di Milano): sette progetti, la pagina Codice dedicata a Forma, bio con CV scaricabile. HTML, CSS e JavaScript senza dipendenze, senza tracciamento e senza servizi esterni.
+Portfolio bilingue IT/EN di un designer di prodotto e d'interni (Politecnico di Milano): sette progetti su una tavola, la pagina Codice dedicata a Forma, bio con CV scaricabile. HTML, CSS e JavaScript senza dipendenze, senza tracciamento e senza servizi esterni.
 
 **Sito:** https://filippovisentin.pages.dev/ (Cloudflare Pages, principale) · copia su https://filippovisentin.github.io/Portfolio/ (GitHub Pages)
 
@@ -18,33 +18,41 @@ Poi aprire http://127.0.0.1:4173. Il server locale invia gli stessi header di si
 npm run check
 ```
 
-Verifica la sintassi e l'integrità del sito: immagini uniche, nessun file mancante o inutilizzato, traduzioni complete, CSP, nessuno script inline o di terze parti.
+Verifica la sintassi di tutti gli script e l'integrità del sito su ogni pagina: immagini uniche, nessun file mancante o inutilizzato, traduzioni complete, CSP, nessuno script inline o di terze parti, link esterni sicuri.
 
 ## Struttura
 
 | File | Contenuto |
 | --- | --- |
-| `dist/index.html` | Pagina unica, intro di caricamento, CSP |
-| `dist/data.js` | Testi, didascalie, corsi, docenti e immagini dei progetti; dati di Forma; profilo |
-| `dist/app.js` | Router, intro, anello 3D, schede progetto, atlante, lightbox, pagina Codice |
-| `dist/style.css` | Aspetto e layout |
-| `dist/dims.js` | Dimensioni delle immagini |
+| `dist/index.html` | La tavola dei sette progetti e l'indice con i filtri |
+| `dist/<progetto>.html` | Un caso studio per progetto: `monoblock`, `bivacuum`, `oltreetrusco`, `poliedro`, `compluvio`, `presence`, `soundplace` |
+| `dist/forma.html` | Codice: Forma, con la prova interattiva della riga di comando |
+| `dist/info.html` | Info / Contatti: bio, curriculum, CV e portfolio in PDF |
+| `dist/404.html` | Pagina non trovata, senza script |
+| `dist/lavagna.css` · `case.css` · `pages.css` | Tavola · casi studio · Codice e Info |
+| `dist/routes.js` | Porta i vecchi indirizzi (`#home`, `#index`, `#<progetto>`, `#code`, `#about`) alle pagine nuove |
+| `dist/lang.js` | Italiano / inglese con `data-it` / `data-en`; la scelta resta salvata (`portfolio-language`) |
+| `dist/board.js` · `views.js` | Filo che collega i progetti · vista Tavola / Indice, filtri e ritorno allo stesso punto |
+| `dist/case.js` · `forma.js` · `about.js` | Ritorno alla tavola e ingrandimento dell'atlante · vista 3D di Forma · copia dell'email |
+| `dist/img/` | Disegni dei progetti in bianco e nero e dettagli dell'atlante |
+| `dist/data.js` · `dims.js` | Testi, didascalie, crediti e immagini dei progetti; dati di Forma; profilo · dimensioni delle immagini |
 | `dist/_headers` | Header di sicurezza e cache per Cloudflare |
 | `dist/docs/` | CV (senza telefono e città) e portfolio in PDF |
 | `check.mjs` | Controlli di integrità e sicurezza, eseguiti anche prima di ogni deploy |
 
-Ogni immagine esiste in tre misure WebP (`nome-s` 720 px, `nome-m` 1600 px, `nome` fino a 3200 px per le foto e 4000 px per le tavole), servite con `srcset`. Ogni immagine compare una sola volta nel sito. Font self-hosted con licenza SIL OFL: Archivo, JetBrains Mono, Instrument Serif.
+Le pagine sono HTML statico: i testi vengono da `dist/data.js`. Dopo una modifica ai dati le pagine vanno rigenerate con il generatore della lavagna (`tools/build_site.py` nella cartella dello studio, Python con Pillow), che per ora vive fuori da questo repository.
+
+Ogni foto esiste in tre misure WebP (`nome-s` 720 px, `nome-m` 1600 px, `nome` fino a 3200 px per le foto e 4000 px per le tavole), servite con `srcset`. Font self-hosted con licenza SIL OFL: Hanken Grotesk per testi e titoli, Courier Prime per metadati e quote.
 
 ## Pagine e interazioni
 
-- **Intro:** un disegno tecnico su una griglia in prospettiva da cui salgono torri bianche, nere e verde acido; poi la vista diventa pianta. Solo alla prima visita della sessione.
-- **Home:** anello 3D dei progetti (trascinamento con inerzia, rotella, frecce, tastiera), nome del progetto attivo, transizione condivisa verso la scheda.
-- **Indice:** anteprima che segue il cursore, filtri per disciplina.
-- **Schede progetto:** corso, docenti, anno e gruppo; capitoli in scrollytelling, confronto giorno/notte (BIVACUUM), galleria orizzontale, atlante tecnico con zoom fino al 400%, lightbox con zoom e swipe.
-- **Codice:** "Progettare con l'AI", Forma (modellatore 3D in Rust in stile Rhino 8), demo di Ask AI, riga di comando animata, architettura, repository.
-- **Info/Contatti:** bio, formazione, esperienze, strumenti, CV e portfolio in PDF.
+- **Tavola:** sette disegni di progetto in bianco e nero su un unico foglio, a scale diverse. Al passaggio del cursore compare la fotografia; un filo tratteggiato collega i progetti nell'ordine 01 → 07. Sotto i 1000 px diventa una sequenza verticale.
+- **Indice:** gli stessi progetti in tabella, con gli stessi filtri (Tutti, Exhibition, Architettura, Product & service). Vista e filtro restano nell'indirizzo; tornando da un progetto si ritrovano vista, filtro, posizione e focus.
+- **Casi studio:** cartiglio con corso, docenti, anno e gruppo; disegno d'apertura; capitoli; confronto giorno/notte (BIVACUUM); processo; atlante tecnico con un dettaglio per elaborato, ingrandibile nella pagina; progetti affini per tema.
+- **Codice:** Forma, modellatore 3D in Rust in stile Rhino 8. Una vista 3D nella pagina accetta i comandi della demo (Rectangle, SelLast, Extrude, Box, Save…), si ruota trascinando o da tastiera; schermate dell'app, demo di Ask AI, metodo, architettura, repository.
+- **Info / Contatti:** email con copia, LinkedIn, GitHub, CV e portfolio in PDF, bio e curriculum.
 
-Movimento ridotto rispettato ovunque; cursore personalizzato solo con mouse.
+Il verde lime è solo un segnale (selezione, disponibilità, conferma, passaggio del cursore), mai colore del testo. Movimento ridotto rispettato ovunque.
 
 ## Pubblicazione
 

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>FORMA — Codice — Filippo Antonio Visentin</title>
+<link rel="icon" href="favicon.svg">
+<link rel="preload" href="fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="motion.css">
+<script src="motion.js" defer></script>
+<link rel="stylesheet" href="pages.css">
+<meta name="description" content="FORMA — Un modellatore 3D in stile Rhino 8, scritto in Rust insieme ad agenti AI.">
+<script src="lang.js" defer></script>
+<script src="forma.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main" data-it="Vai al contenuto" data-en="Skip to content">Vai al contenuto</a>
+<header>
+  <a class="brand" href="index.html" translate="no">Filippo Antonio<br>Visentin</a>
+  <nav aria-label="Principale" data-it-label="Principale" data-en-label="Main">
+    <a href="index.html" data-it="Progetti" data-en="Work">Progetti</a>
+    <a href="index.html?vista=indice" data-it="Indice" data-en="Index">Indice</a>
+    <a href="forma.html" aria-current="page" data-it="Codice" data-en="Code">Codice</a>
+    <a href="info.html" data-it="Info / Contatti" data-en="About / Contact">Info / Contatti</a>
+    <button id="language" type="button" aria-label="EN — Switch to English">EN</button>
+  </nav>
+</header>
+
+<div class="crumbs">
+  <span class="mono" data-it="Codice · Software open source" data-en="Code · Open-source software">Codice · Software open source</span>
+  <span class="mono">v1.0.0 · MIT / Apache-2.0</span>
+</div>
+
+<main id="main" tabindex="-1">
+<article>
+  <div class="wrap grid title">
+    <h1>FORMA</h1>
+    <p class="sub" data-it="Un modellatore 3D in stile Rhino 8, scritto in Rust insieme ad agenti AI." data-en="A Rhino 8-style 3D modeller, written in Rust together with AI agents.">Un modellatore 3D in stile Rhino 8, scritto in Rust insieme ad agenti AI.</p>
+    <dl class="cartiglio stats">
+      <div><dt>1.0.0</dt><dd data-it="prima release ufficiale · 11.10.2026" data-en="first official release · 11.10.2026">prima release ufficiale · 11.10.2026</dd></div>
+      <div><dt>~90</dt><dd data-it="comandi, con i nomi di Rhino" data-en="commands, named like Rhino’s">comandi, con i nomi di Rhino</dd></div>
+      <div><dt>44k</dt><dd data-it="righe di Rust" data-en="lines of Rust">righe di Rust</dd></div>
+      <div><dt>11</dt><dd data-it="object snap + SmartTrack" data-en="object snaps + SmartTrack">object snap + SmartTrack</dd></div>
+    </dl>
+    <p class="links"><a href="https://github.com/filippovisentin/forma" target="_blank" rel="noopener noreferrer">Repository ↗<span class="sr-only" data-it=" (si apre in una nuova scheda)" data-en=" (opens in a new tab)"> (si apre in una nuova scheda)</span></a> <a href="https://github.com/filippovisentin/forma/releases/latest" target="_blank" rel="noopener noreferrer"><span data-it="Ultima release ↗" data-en="Latest release ↗">Ultima release ↗</span><span class="sr-only" data-it=" (si apre in una nuova scheda)" data-en=" (opens in a new tab)"> (si apre in una nuova scheda)</span></a> <a href="https://github.com/filippovisentin/forma/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog ↗<span class="sr-only" data-it=" (si apre in una nuova scheda)" data-en=" (opens in a new tab)"> (si apre in una nuova scheda)</span></a></p>
+  </div>
+
+  <section class="wrap grid question" aria-labelledby="domanda">
+    <h2 id="domanda" data-it="Un designer può costruirsi il proprio strumento di lavoro?" data-en="Can a designer build their own working tool?">Un designer può costruirsi il proprio strumento di lavoro?</h2>
+    <p class="lens" data-it="Forma è un modellatore desktop che funziona come si aspetta chi usa Rhino 8: riga di comando, quattro viste, osnap, gumball, layer e file .3dm. L’ho costruito per il mio lavoro di interior design al Politecnico di Milano e per capire se gli agenti AI possono realizzare un vero strumento CAD quando una persona fa da architetto e revisore." data-en="Forma is a desktop modeller that works the way Rhino 8 users expect: a command line, four viewports, object snaps, a gumball, layers and .3dm files. I built it for my interior-design work at the Politecnico di Milano, and to find out whether AI agents can build a real CAD tool when a person acts as architect and reviewer.">Forma è un modellatore desktop che funziona come si aspetta chi usa Rhino 8: riga di comando, quattro viste, osnap, gumball, layer e file .3dm. L’ho costruito per il mio lavoro di interior design al Politecnico di Milano e per capire se gli agenti AI possono realizzare un vero strumento CAD quando una persona fa da architetto e revisore.</p>
+    <p class="intro" data-it="Quasi tutto il codice è scritto da agenti (Claude Code); io definisco l’architettura, rivedo ogni modifica e sono l’unico utente. Le regole sono rigide: ogni azione è un comando, gli strati del codice sono verificati automaticamente, ogni comando ha i suoi test e nulla è concluso finché l’integrazione continua non è verde su Linux e Windows." data-en="Almost all the code is written by agents (Claude Code); I define the architecture, review every change and am the only user. The rules are strict: every action is a command, the code layering is checked automatically, every command ships with tests, and nothing is done until continuous integration is green on Linux and Windows.">Quasi tutto il codice è scritto da agenti (Claude Code); io definisco l’architettura, rivedo ogni modifica e sono l’unico utente. Le regole sono rigide: ogni azione è un comando, gli strati del codice sono verificati automaticamente, ogni comando ha i suoi test e nulla è concluso finché l’integrazione continua non è verde su Linux e Windows.</p>
+  </section>
+
+  <section class="wrap try-wrap" aria-labelledby="prova">
+    <div class="section-head">
+      <h2 id="prova"><i data-it="Prova Forma" data-en="Try Forma">Prova Forma</i> — <span data-it="la riga di comando" data-en="the command line">la riga di comando</span></h2>
+      <span class="mono" data-it="Una demo nel browser · nulla viene salvato" data-en="A demo in the browser · nothing is saved">Una demo nel browser · nulla viene salvato</span>
+    </div>
+    <div class="try" hidden>
+      <div class="viewport">
+        <canvas tabindex="0" role="img" aria-label="Vista 3D di Forma"></canvas>
+        <div class="orbit" role="group" aria-label="Vista" data-it-label="Vista" data-en-label="View">
+          <button type="button" data-orbit="-0.4" aria-label="Ruota a sinistra" data-it-label="Ruota a sinistra" data-en-label="Rotate left">↺</button>
+          <button type="button" data-orbit="0.4" aria-label="Ruota a destra" data-it-label="Ruota a destra" data-en-label="Rotate right">↻</button>
+          <button type="button" data-orbit="top" data-it="Pianta" data-en="Top">Pianta</button>
+          <button type="button" data-orbit="iso" data-it="Assonometria" data-en="Axonometric">Assonometria</button>
+        </div>
+        <p class="status-bar mono" aria-hidden="true"></p>
+      </div>
+      <div class="console">
+        <p class="mono hint" data-it="Sequenza della demo: clicca un comando o scrivilo." data-en="Demo sequence: click a command or type it.">Sequenza della demo: clicca un comando o scrivilo.</p>
+        <ol class="chips">
+        <li><button type="button" data-cmd="Rectangle 0,0 600,400" data-it-desc="pianta di una stanza 6 × 4 m" data-en-desc="a 6 × 4 m room outline"><code>Rectangle 0,0 600,400</code><span class="mono" data-it="pianta di una stanza 6 × 4 m" data-en="a 6 × 4 m room outline">pianta di una stanza 6 × 4 m</span></button></li>
+        <li><button type="button" data-cmd="SelLast" data-it-desc="seleziona l’ultimo oggetto" data-en-desc="select the last object"><code>SelLast</code><span class="mono" data-it="seleziona l’ultimo oggetto" data-en="select the last object">seleziona l’ultimo oggetto</span></button></li>
+        <li><button type="button" data-cmd="Extrude 280" data-it-desc="muri alti 280 cm" data-en-desc="280 cm high walls"><code>Extrude 280</code><span class="mono" data-it="muri alti 280 cm" data-en="280 cm high walls">muri alti 280 cm</span></button></li>
+        <li><button type="button" data-cmd="Box 100,100 280,190 75" data-it-desc="un tavolo 180 × 90, alto 75" data-en-desc="a 180 × 90 table, 75 high"><code>Box 100,100 280,190 75</code><span class="mono" data-it="un tavolo 180 × 90, alto 75" data-en="a 180 × 90 table, 75 high">un tavolo 180 × 90, alto 75</span></button></li>
+        <li><button type="button" data-cmd="Save soggiorno.3dm" data-it-desc="salvato in formato Rhino" data-en-desc="saved in Rhino format"><code>Save soggiorno.3dm</code><span class="mono" data-it="salvato in formato Rhino" data-en="saved in Rhino format">salvato in formato Rhino</span></button></li>
+        </ol>
+        <form autocomplete="off">
+          <label for="cmd" class="mono" data-it="Comando" data-en="Command">Comando</label>
+          <span class="prompt" aria-hidden="true">›</span><input id="cmd" name="cmd" spellcheck="false" placeholder="Help">
+          <button type="submit" data-it="Esegui" data-en="Run">Esegui</button>
+        </form>
+        <ol class="log mono" aria-live="polite"></ol>
+        <p class="actions"><button type="button" class="play" data-it="▶ Riproduci la sequenza" data-en="▶ Play the sequence">▶ Riproduci la sequenza</button>
+          <button type="button" class="reset" data-it="Azzera" data-en="Reset">Azzera</button></p>
+      </div>
+    </div>
+    <ol class="try-fallback">
+      <li><code>Rectangle 0,0 600,400</code> — <span data-it="pianta di una stanza 6 × 4 m" data-en="a 6 × 4 m room outline">pianta di una stanza 6 × 4 m</span></li>
+      <li><code>SelLast</code> — <span data-it="seleziona l’ultimo oggetto" data-en="select the last object">seleziona l’ultimo oggetto</span></li>
+      <li><code>Extrude 280</code> — <span data-it="muri alti 280 cm" data-en="280 cm high walls">muri alti 280 cm</span></li>
+      <li><code>Box 100,100 280,190 75</code> — <span data-it="un tavolo 180 × 90, alto 75" data-en="a 180 × 90 table, 75 high">un tavolo 180 × 90, alto 75</span></li>
+      <li><code>Save soggiorno.3dm</code> — <span data-it="salvato in formato Rhino" data-en="saved in Rhino format">salvato in formato Rhino</span></li>
+    </ol>
+  </section>
+
+  <section class="wrap shots" aria-labelledby="schermate">
+    <div class="section-head">
+      <h2 id="schermate"><i data-it="L&#x27;app" data-en="The app">L&#x27;app</i> — <span data-it="cinque schermate" data-en="five screens">cinque schermate</span></h2>
+      <span class="mono" data-it="Forma 1.0 · Windows e Linux" data-en="Forma 1.0 · Windows and Linux">Forma 1.0 · Windows e Linux</span>
+    </div>
+    <div class="shot-tabs" role="group" aria-label="Schermate" data-it-label="Schermate" data-en-label="Screens"><button type="button" data-shot="0" aria-pressed="true"><span class="mono">01</span> <span data-it="Quattro viste" data-en="Four viewports">Quattro viste</span></button><button type="button" data-shot="1" aria-pressed="false"><span class="mono">02</span> <span data-it="Gumball" data-en="Gumball">Gumball</span></button><button type="button" data-shot="2" aria-pressed="false"><span class="mono">03</span> <span data-it="Push / pull" data-en="Push / pull">Push / pull</span></button><button type="button" data-shot="3" aria-pressed="false"><span class="mono">04</span> <span data-it="Curve" data-en="Curves">Curve</span></button><button type="button" data-shot="4" aria-pressed="false"><span class="mono">05</span> <span data-it="Layer" data-en="Layers">Layer</span></button></div>
+    <figure><img src="assets/fm-overview-m.webp" srcset="assets/fm-overview-s.webp 720w, assets/fm-overview-m.webp 1600w, assets/fm-overview.webp 3200w" sizes="(max-width:900px) 100vw, 70vw" width="1400" height="875" alt="Quattro viste, layer e una stanza modellata in centimetri" data-it-alt="Quattro viste, layer e una stanza modellata in centimetri" data-en-alt="Four viewports, layers and a room modelled in centimetres" loading="lazy"><div class="quota" aria-hidden="true"></div><figcaption class="mono"><b>S.01</b><span data-it="Quattro viste, layer e una stanza modellata in centimetri" data-en="Four viewports, layers and a room modelled in centimetres">Quattro viste, layer e una stanza modellata in centimetri</span></figcaption></figure><figure><img src="assets/fm-gumball-m.webp" srcset="assets/fm-gumball-s.webp 720w, assets/fm-gumball-m.webp 1600w, assets/fm-gumball.webp 3200w" sizes="(max-width:900px) 100vw, 70vw" width="1400" height="875" alt="Gumball sull’oggetto selezionato e pannello Proprietà" data-it-alt="Gumball sull’oggetto selezionato e pannello Proprietà" data-en-alt="Gumball on the selected object and Properties panel" loading="lazy"><div class="quota" aria-hidden="true"></div><figcaption class="mono"><b>S.02</b><span data-it="Gumball sull’oggetto selezionato e pannello Proprietà" data-en="Gumball on the selected object and Properties panel">Gumball sull’oggetto selezionato e pannello Proprietà</span></figcaption></figure><figure><img src="assets/fm-pushpull-m.webp" srcset="assets/fm-pushpull-s.webp 720w, assets/fm-pushpull-m.webp 1600w, assets/fm-pushpull.webp 3200w" sizes="(max-width:900px) 100vw, 70vw" width="1400" height="875" alt="Push / pull di una parete con la misura in tempo reale" data-it-alt="Push / pull di una parete con la misura in tempo reale" data-en-alt="Push / pull of a wall face with the live measurement" loading="lazy"><div class="quota" aria-hidden="true"></div><figcaption class="mono"><b>S.03</b><span data-it="Push / pull di una parete con la misura in tempo reale" data-en="Push / pull of a wall face with the live measurement">Push / pull di una parete con la misura in tempo reale</span></figcaption></figure><figure><img src="assets/fm-curves-m.webp" srcset="assets/fm-curves-s.webp 720w, assets/fm-curves-m.webp 1600w, assets/fm-curves.webp 3200w" sizes="(max-width:900px) 100vw, 70vw" width="1400" height="875" alt="Offset di un rettangolo raccordato con opzione cliccabile" data-it-alt="Offset di un rettangolo raccordato con opzione cliccabile" data-en-alt="Offset of a rounded rectangle with a clickable option" loading="lazy"><div class="quota" aria-hidden="true"></div><figcaption class="mono"><b>S.04</b><span data-it="Offset di un rettangolo raccordato con opzione cliccabile" data-en="Offset of a rounded rectangle with a clickable option">Offset di un rettangolo raccordato con opzione cliccabile</span></figcaption></figure><figure><img src="assets/fm-layers-m.webp" srcset="assets/fm-layers-s.webp 720w, assets/fm-layers-m.webp 1600w, assets/fm-layers.webp 3200w" sizes="(max-width:900px) 100vw, 70vw" width="902" height="372" alt="Layer con colori, visibilità e blocco" data-it-alt="Layer con colori, visibilità e blocco" data-en-alt="Layers with colours, visibility and lock" loading="lazy"><div class="quota" aria-hidden="true"></div><figcaption class="mono"><b>S.05</b><span data-it="Layer con colori, visibilità e blocco" data-en="Layers with colours, visibility and lock">Layer con colori, visibilità e blocco</span></figcaption></figure>
+  </section>
+
+  <section class="wrap grid ai" aria-labelledby="askai">
+    <div class="ai-text">
+      <span class="k mono" data-it="Ask AI · AI locale" data-en="Ask AI · Local AI">Ask AI · AI locale</span>
+      <h2 id="askai" data-it="Chiedi, e Forma modella." data-en="Ask, and Forma models.">Chiedi, e Forma modella.</h2>
+      <p data-it="Il pannello Ask AI trasforma una richiesta in linguaggio naturale in uno script Python che usa i comandi di Forma. Lo scrive un modello che gira sul tuo computer: nulla viene eseguito finché non premi Run, e un solo Annulla cancella l’intero script." data-en="The Ask AI panel turns a plain-language request into a Python script that drives Forma’s commands. A model running on your own computer writes it: nothing runs until you press Run, and a single Undo reverts the whole script.">Il pannello Ask AI trasforma una richiesta in linguaggio naturale in uno script Python che usa i comandi di Forma. Lo scrive un modello che gira sul tuo computer: nulla viene eseguito finché non premi Run, e un solo Annulla cancella l’intero script.</p>
+      <ul class="examples">
+        <li><b data-it="Parete parametrica" data-en="Parametric wall">Parete parametrica</b><span class="mono" data-it="«a parametric wave wall of 30 fins»" data-en="“a parametric wave wall of 30 fins”">«a parametric wave wall of 30 fins»</span></li>
+        <li><b data-it="Spirale di sfere" data-en="Sphere spiral">Spirale di sfere</b><span class="mono" data-it="seno e coseno, scritti dall’AI" data-en="sine and cosine, written by the AI">seno e coseno, scritti dall’AI</span></li>
+        <li><b data-it="Scala di 14 gradini" data-en="14-step staircase">Scala di 14 gradini</b><span class="mono" data-it="alzata 17 cm, in un secondo" data-en="17 cm risers, in one second">alzata 17 cm, in un secondo</span></li>
+      </ul>
+      <p class="badge mono" data-it="Privato · offline · gratis: i modelli non lasciano il PC." data-en="Private · offline · free: models never leave your PC.">Privato · offline · gratis: i modelli non lasciano il PC.</p>
+    </div>
+    <figure class="ai-video">
+      <video controls muted playsinline preload="none" poster="media/forma-ai-poster.webp" width="1600" height="900" aria-label="Demo: tre richieste in linguaggio naturale, tre modelli generati da un’AI locale" data-it-label="Demo: tre richieste in linguaggio naturale, tre modelli generati da un’AI locale" data-en-label="Demo: three plain-language requests, three models generated by a local AI">
+        <source src="media/forma-ai.mp4" type="video/mp4">
+      </video>
+      <div class="quota" aria-hidden="true"></div>
+      <figcaption class="mono"><b>V.01</b><span data-it="Demo: tre richieste in linguaggio naturale, tre modelli generati da un’AI locale" data-en="Demo: three plain-language requests, three models generated by a local AI">Demo: tre richieste in linguaggio naturale, tre modelli generati da un’AI locale</span></figcaption>
+      <ol class="steps">
+        <li><span class="mono">01</span><span data-it="Installa Ollama (ollama.com)" data-en="Install Ollama (ollama.com)">Installa Ollama (ollama.com)</span></li>
+        <li><span class="mono">02</span><span data-it="Scarica un modello: ollama pull qwen2.5-coder:7b" data-en="Download a model: ollama pull qwen2.5-coder:7b">Scarica un modello: ollama pull qwen2.5-coder:7b</span></li>
+        <li><span class="mono">03</span><span data-it="In Forma premi Ask, la stella viola" data-en="In Forma press Ask, the purple star">In Forma premi Ask, la stella viola</span></li>
+      </ol>
+    </figure>
+  </section>
+
+  <section class="wrap method" aria-labelledby="metodo">
+    <div class="section-head">
+      <h2 id="metodo"><i data-it="Progettare con l&#x27;AI" data-en="Designing with AI">Progettare con l&#x27;AI</i> — <span data-it="il metodo" data-en="the method">il metodo</span></h2>
+      <span class="mono" data-it="Il designer come regista" data-en="The designer as director">Il designer come regista</span>
+    </div>
+    <p class="lead" data-it="Uso l’intelligenza artificiale come uno strumento di progetto, non come un autore. Io definisco il problema, scelgo, verifico e decido; gli agenti AI accelerano le parti ripetitive e mi permettono di costruire strumenti che da solo non avrei potuto scrivere." data-en="I use artificial intelligence as a design tool, not as an author. I define the problem, choose, check and decide; AI agents speed up the repetitive parts and let me build tools I could not have written alone.">Uso l’intelligenza artificiale come uno strumento di progetto, non come un autore. Io definisco il problema, scelgo, verifico e decido; gli agenti AI accelerano le parti ripetitive e mi permettono di costruire strumenti che da solo non avrei potuto scrivere.</p>
+    <ol>
+      <li><span class="mono">01</span><h3 data-it="Il designer come regista" data-en="The designer as director">Il designer come regista</h3><p data-it="Scrivo il brief, divido il lavoro in passi piccoli e rivedo ogni risultato: l’AI propone, la decisione resta mia." data-en="I write the brief, split the work into small steps and review every result: AI proposes, the decision stays mine.">Scrivo il brief, divido il lavoro in passi piccoli e rivedo ogni risultato: l’AI propone, la decisione resta mia.</p></li>
+      <li><span class="mono">02</span><h3 data-it="Costruire i propri strumenti" data-en="Building my own tools">Costruire i propri strumenti</h3><p data-it="Forma, il mio modellatore 3D in Rust, è nato così: io ho fatto da architetto e revisore, gli agenti AI hanno scritto il codice." data-en="Forma, my 3D modeller written in Rust, was made this way: I acted as architect and reviewer, AI agents wrote the code.">Forma, il mio modellatore 3D in Rust, è nato così: io ho fatto da architetto e revisore, gli agenti AI hanno scritto il codice.</p></li>
+      <li><span class="mono">03</span><h3 data-it="L’AI dentro lo strumento" data-en="AI inside the tool">L’AI dentro lo strumento</h3><p data-it="Con Ask AI una richiesta in linguaggio naturale diventa uno script che modella in Forma. Gira sul mio computer e nulla parte senza il mio Run." data-en="With Ask AI a plain-language request becomes a script that models in Forma. It runs on my own computer and nothing starts until I press Run.">Con Ask AI una richiesta in linguaggio naturale diventa uno script che modella in Forma. Gira sul mio computer e nulla parte senza il mio Run.</p></li>
+      <li><span class="mono">04</span><h3 data-it="Anche questo sito" data-en="This website too">Anche questo sito</h3><p data-it="Il portfolio è stato progettato e sviluppato insieme a un agente AI, con controlli automatici su immagini, traduzioni e sicurezza." data-en="This portfolio was designed and built together with an AI agent, with automatic checks on images, translations and security.">Il portfolio è stato progettato e sviluppato insieme a un agente AI, con controlli automatici su immagini, traduzioni e sicurezza.</p></li>
+    </ol>
+  </section>
+
+  <section class="wrap grid arch" aria-labelledby="architettura">
+    <div class="arch-head">
+    <div class="section-head">
+      <h2 id="architettura"><i data-it="Architettura" data-en="Architecture">Architettura</i> — <span data-it="dagli strati al comando" data-en="from layers to commands">dagli strati al comando</span></h2>
+      <span class="mono" data-it="Rust · un solo ingresso per ogni azione" data-en="Rust · one entry point for every action">Rust · un solo ingresso per ogni azione</span>
+    </div>
+    </div>
+    <ol class="layers">
+      <li><code>apps/forma · forma-cli</code><span data-it="App desktop e riga di comando" data-en="Desktop app and command line">App desktop e riga di comando</span></li>
+      <li><code>forma-ui</code><span data-it="Interfaccia egui: viste, riga di comando, pannelli" data-en="egui interface: viewports, command line, panels">Interfaccia egui: viste, riga di comando, pannelli</span></li>
+      <li><code>forma-engine</code><span data-it="Registro dei comandi, parser, snap: un solo ingresso per ogni azione" data-en="Command registry, parser, snaps: one entry point for every action">Registro dei comandi, parser, snap: un solo ingresso per ogni azione</span></li>
+      <li><code>forma-render · io-3dm · io-mesh</code><span data-it="Rendering wgpu e file .3dm tramite openNURBS" data-en="wgpu rendering and .3dm files through openNURBS">Rendering wgpu e file .3dm tramite openNURBS</span></li>
+      <li><code>forma-doc</code><span data-it="Documento, layer, annulla / ripeti" data-en="Document, layers, undo / redo">Documento, layer, annulla / ripeti</span></li>
+      <li><code>forma-geom</code><span data-it="Geometria: NURBS, solidi esatti, tolleranze esplicite" data-en="Geometry: NURBS, exact solids, explicit tolerances">Geometria: NURBS, solidi esatti, tolleranze esplicite</span></li>
+    </ol>
+    <ul class="stack mono" aria-label="Tecnologie"><li>Rust</li> <li>wgpu</li> <li>egui</li> <li>openNURBS</li> <li>OpenCascade</li> <li>Claude Code</li> <li>GitHub Actions</li></ul>
+  </section>
+
+  <section class="wrap repos" aria-labelledby="repository">
+    <div class="section-head">
+      <h2 id="repository"><i data-it="Repository" data-en="Repositories">Repository</i> — <span data-it="codice aperto su GitHub" data-en="open source on GitHub">codice aperto su GitHub</span></h2>
+      <span class="mono" data-it="3 progetti" data-en="3 projects">3 progetti</span>
+    </div>
+    <ul>
+      <li><a href="https://github.com/filippovisentin/forma" target="_blank" rel="noopener noreferrer"><strong>forma</strong><span class="sr-only" data-it=" (si apre in una nuova scheda)" data-en=" (opens in a new tab)"> (si apre in una nuova scheda)</span></a><span class="mono">Rust</span><span data-it="Modellatore 3D personale in stile Rhino, costruito con agenti AI." data-en="Personal Rhino-style NURBS modeller, built with AI agents.">Modellatore 3D personale in stile Rhino, costruito con agenti AI.</span></li>
+      <li><a href="https://github.com/filippovisentin/Portfolio" target="_blank" rel="noopener noreferrer"><strong>Portfolio</strong><span class="sr-only" data-it=" (si apre in una nuova scheda)" data-en=" (opens in a new tab)"> (si apre in una nuova scheda)</span></a><span class="mono">JavaScript</span><span data-it="Questo sito: HTML, CSS e JavaScript senza dipendenze, pubblicato con GitHub Pages." data-en="This site: dependency-free HTML, CSS and JavaScript, published with GitHub Pages.">Questo sito: HTML, CSS e JavaScript senza dipendenze, pubblicato con GitHub Pages.</span></li>
+      <li><a href="https://github.com/filippovisentin/filippovisentin" target="_blank" rel="noopener noreferrer"><strong>filippovisentin</strong><span class="sr-only" data-it=" (si apre in una nuova scheda)" data-en=" (opens in a new tab)"> (si apre in una nuova scheda)</span></a><span class="mono">HTML</span><span data-it="La prima versione del portfolio online." data-en="The first version of the online portfolio.">La prima versione del portfolio online.</span></li>
+    </ul>
+  </section>
+
+  <p class="wrap legal mono" data-it="Progetto indipendente e clean-room: Rhino è usato solo come riferimento di comportamento (come rispondono i comandi), senza copiare codice, documentazione, icone o interfaccia di McNeel. Non è affiliato né approvato da Robert McNeel &amp; Associates; Rhino e Rhinoceros sono marchi registrati di Robert McNeel &amp; Associates. openNURBS è usato come libreria con la sua licenza. Codice sotto licenza MIT o Apache-2.0." data-en="An independent, clean-room project: Rhino is used only as a behavioural reference (how commands respond), with no McNeel code, documentation, icons or interface copied. It is not affiliated with or endorsed by Robert McNeel &amp; Associates; Rhino and Rhinoceros are registered trademarks of Robert McNeel &amp; Associates. openNURBS is used as a library under its own licence. Code licensed under MIT or Apache-2.0.">Progetto indipendente e clean-room: Rhino è usato solo come riferimento di comportamento (come rispondono i comandi), senza copiare codice, documentazione, icone o interfaccia di McNeel. Non è affiliato né approvato da Robert McNeel &amp; Associates; Rhino e Rhinoceros sono marchi registrati di Robert McNeel &amp; Associates. openNURBS è usato come libreria con la sua licenza. Codice sotto licenza MIT o Apache-2.0.</p>
+
+  <nav class="wrap next" aria-label="Altre pagine" data-it-label="Altre pagine" data-en-label="More pages">
+    <a href="index.html"><span class="mono" data-it="← Torna alla" data-en="← Back to">← Torna alla</span><strong data-it="Tavola 01" data-en="Board 01">Tavola 01</strong></a>
+    <a class="to" href="info.html"><span class="mono" data-it="Chi sono e contatti →" data-en="About and contact →">Chi sono e contatti →</span><strong data-it="Info / Contatti" data-en="About / Contact">Info / Contatti</strong></a>
+  </nav>
+</article>
+</main>
+
+<footer class="mono">
+  <p>Filippo Antonio Visentin — FORMA</p>
+  <p><a href="index.html" data-it="Tavola dei progetti" data-en="Project board">Tavola dei progetti</a></p>
+  <p><a href="mailto:filippoantonio.visentin@mail.polimi.it">filippoantonio.visentin@mail.polimi.it</a></p>
+</footer>
+</body>
+</html>

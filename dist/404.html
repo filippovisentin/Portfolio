@@ -5,16 +5,39 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
 <title>Pagina non trovata — Filippo Antonio Visentin</title>
 <link rel="icon" href="favicon.svg">
-<link rel="stylesheet" href="style.css?v=5.3">
+<link rel="stylesheet" href="case.css">
+<style>
+/* 404 senza script: italiano e inglese insieme, come un cartiglio */
+.lost{margin-top:56px;align-items:start}
+.lost h1{grid-column:1/-1;margin:0;font-weight:800;font-size:clamp(34px,9vw,160px);line-height:.88;letter-spacing:-.035em;text-transform:uppercase}
+.lost .en{grid-column:1/8;margin:28px 0 0;font-size:clamp(20px,2.2vw,30px);line-height:1.2;color:var(--soft)}
+.lost .cartiglio{grid-column:8/13;margin-top:28px}
+.lost .cartiglio a{text-decoration:none;font-weight:700}
+.lost .cartiglio a:hover,.lost .cartiglio a:focus-visible{background:linear-gradient(transparent 62%,var(--lime) 62%)}
+@media (max-width:900px){.lost .en,.lost .cartiglio{grid-column:1/-1}}
+</style>
 </head>
 <body>
-<main class="page" style="min-height:100svh;display:flex;flex-direction:column;justify-content:center">
-  <div class="page-head"><span>404</span><span>Filippo Antonio Visentin</span></div>
-  <h1 class="display" style="margin:6vh 0 4vh">Questa pagina<br>non esiste.</h1>
-  <p class="lead" style="max-width:40ch;font-size:20px;line-height:1.4">This page does not exist. Torna al portfolio per vedere i progetti.</p>
-  <p><a class="btn btn-acid" href="./">← Portfolio</a></p>
+<header>
+  <a class="brand" href="./" translate="no">Filippo Antonio<br>Visentin</a>
+</header>
+<div class="crumbs">
+  <span class="mono">404</span>
+  <span class="mono">Pagina non trovata · Page not found</span>
+</div>
+<main id="main">
+  <div class="wrap grid lost">
+    <h1>Questa pagina non esiste.</h1>
+    <p class="en" lang="en">This page does not exist. The work is on the project board.</p>
+    <dl class="cartiglio">
+      <div><dt>Progetti</dt><dd><a href="./">Tavola dei progetti →</a> <span lang="en">· Project board</span></dd></div>
+      <div><dt>Codice</dt><dd><a href="forma.html">FORMA →</a> <span lang="en">· Code</span></dd></div>
+      <div><dt>Contatti</dt><dd><a href="info.html">Info / Contatti →</a> <span lang="en">· About / Contact</span></dd></div>
+    </dl>
+  </div>
 </main>
 </body>
 </html>

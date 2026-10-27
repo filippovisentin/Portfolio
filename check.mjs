@@ -24,18 +24,37 @@ const unused=files.filter(f=>!used.has(f));if(unused.length)throw Error('Unused 
 console.log(`Validated ${ids.size} projects, bilingual content and ${used.size} unique images (no duplicates, no orphans).`);
 
 // Security rules
-const html=fs.readFileSync('dist/index.html','utf8');
-const csp=/<meta http-equiv="Content-Security-Policy" content="([^"]+)"/.exec(html);
-if(!csp)throw Error('Missing Content-Security-Policy meta tag in dist/index.html');
-for(const rule of ["default-src 'none'","script-src 'self'","object-src 'none'","base-uri 'none'","form-action 'none'"])if(!csp[1].includes(rule))throw Error('CSP must contain '+rule);
-if(/<script(?![^>]*\ssrc=)[^>]*>/i.test(html))throw Error('Inline <script> blocks are not allowed (CSP script-src self)');
-const loads=[...html.matchAll(/<script\b[^>]*>|<link\b[^>]*rel="(?:stylesheet|preload|modulepreload|prefetch|icon)"[^>]*>/gi)].map(m=>m[0]);
-const external=loads.filter(tag=>/(?:src|href)="(?:https?:)?\/\//i.test(tag));
-if(external.length)throw Error('Third-party scripts or stylesheets are not allowed: '+external.join(' '));
-for(const f of ['app.js','data.js','dims.js']){const s=fs.readFileSync('dist/'+f,'utf8');if(/\beval\s*\(|new\s+Function\s*\(|document\.write\s*\(/.test(s))throw Error('Unsafe dynamic code in dist/'+f)}
-const app=fs.readFileSync('dist/app.js','utf8');
-for(const m of app.matchAll(/target="_blank"[^>]*/g))if(!/rel="noopener noreferrer"/.test(m[0]))throw Error('target=_blank link without rel="noopener noreferrer"');
-const pre=/<link rel="preload" as="image" href="assets\/([\w-]+)-m\.webp"/.exec(html);
-if(!pre||pre[1]!==context.items[0].cover.name)throw Error('The LCP image preload must match the first project cover ('+context.items[0].cover.name+')');
-const vers=new Set([...html.matchAll(/\?v=([\d.]+)/g)].map(m=>m[1]));if(vers.size!==1)throw Error('All ?v= versions in index.html must match (long-term caching relies on them)');
-console.log('Security rules passed: CSP present, no inline or third-party scripts, no eval, safe external links.');
+// Every page: the lavagna (index.html + one page per project), Code (forma.html) and About (info.html)
+const read=f=>fs.readFileSync('dist/'+f,'utf8');
+const pages=['index.html','forma.html','info.html',...context.items.map(p=>p.id+'.html')];
+for(const page of pages){
+  if(!fs.existsSync('dist/'+page))throw Error('Missing dist/'+page);
+  const html=read(page);
+  const csp=/<meta http-equiv="Content-Security-Policy" content="([^"]+)"/.exec(html);
+  if(!csp)throw Error('Missing Content-Security-Policy meta tag in dist/'+page);
+  for(const rule of ["default-src 'none'","script-src 'self'","object-src 'none'","base-uri 'none'","form-action 'none'"])if(!csp[1].includes(rule))throw Error(page+': CSP must contain '+rule);
+  if(/<script(?![^>]*\ssrc=)[^>]*>/i.test(html))throw Error(page+': inline <script> blocks are not allowed (CSP script-src self)');
+  const loads=[...html.matchAll(/<script\b[^>]*>|<link\b[^>]*rel="(?:stylesheet|preload|modulepreload|prefetch|icon)"[^>]*>/gi)].map(m=>m[0]);
+  const external=loads.filter(tag=>/(?:src|href)="(?:https?:)?\/\//i.test(tag));
+  if(external.length)throw Error(page+': third-party scripts or stylesheets are not allowed: '+external.join(' '));
+  // every local file the page loads or shows must exist
+  for(const m of html.matchAll(/(?:src|href|data-large)="([^"#?:]+\.(?:webp|js|css|woff2|svg|pdf|mp4))"/g))if(!fs.existsSync('dist/'+m[1]))throw Error(page+': missing dist/'+m[1]);
+  for(const m of html.matchAll(/target="_blank"[^>]*/g))if(!/rel="noopener noreferrer"/.test(m[0]))throw Error(page+': target=_blank link without rel="noopener noreferrer"');
+  for(const m of html.matchAll(/srcset="([^"]+)"/g))for(const part of m[1].split(','))if(!fs.existsSync('dist/'+part.trim().split(' ')[0]))throw Error(page+': missing dist/'+part.trim().split(' ')[0]);
+}
+for(const f of ['data.js','dims.js','routes.js','lang.js','board.js','views.js','case.js','forma.js','about.js','motion.js']){const s=read(f);if(/\beval\s*\(|new\s+Function\s*\(|document\.write\s*\(/.test(s))throw Error('Unsafe dynamic code in dist/'+f)}
+// 404: no scripts at all, CSP present, local files and links exist
+{const nf=read('404.html');
+ if(!/<meta http-equiv="Content-Security-Policy"/.test(nf))throw Error('Missing Content-Security-Policy meta tag in dist/404.html');
+ if(/<script\b/i.test(nf))throw Error('dist/404.html must not load scripts');
+ for(const m of nf.matchAll(/(?:src|href)="([^"#?:]+\.(?:css|svg|html))"/g))if(!fs.existsSync('dist/'+m[1]))throw Error('404.html: missing dist/'+m[1]);}
+// the board's largest image is the first drawing: preload it
+const home=read('index.html');
+const pre=/<link rel="preload" as="image" href="img\/([\w-]+)\.webp"/.exec(home);
+const firstDrawing=/<li data-d="[^"]+" class="work[^"]*"[^>]*><a[^>]*>\s*<span class="draw"><img class="line" src="img\/([\w-]+)\.webp"/.exec(home);
+if(!pre||!firstDrawing||pre[1]!==firstDrawing[1])throw Error('The LCP preload in index.html must match the first drawing on the board');
+// lavagna images (black-and-white drawings and atlas details): no orphans
+const lav=pages.map(read).join('\n');
+const orphans=fs.readdirSync('dist/img').filter(f=>!lav.includes('img/'+f));
+if(orphans.length)throw Error('Unused files in dist/img: '+orphans.join(', '));
+console.log(`Security rules passed on ${pages.length} pages: CSP present, no inline or third-party scripts, no eval, safe external links, no missing or unused lavagna images.`);

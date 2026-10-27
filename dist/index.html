@@ -5,54 +5,104 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f1f0eb">
-<meta name="description" content="Filippo Antonio Visentin — design di prodotto e d'interni. Progetti, spazi e ricerche in una galleria tridimensionale.">
-<meta property="og:title" content="Filippo Antonio Visentin — Selected works">
-<meta property="og:description" content="Product & interior design · Politecnico di Milano">
-<meta property="og:image" content="assets/mb-fauteuil-m.webp">
-<title>Filippo Antonio Visentin — Selected works</title>
-<link rel="canonical" href="https://filippovisentin.pages.dev/">
-<meta property="og:url" content="https://filippovisentin.pages.dev/">
+<meta name="theme-color" content="#ffffff">
+<title>Filippo Antonio Visentin — Progetti</title>
 <link rel="icon" href="favicon.svg">
-<link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/mb-fauteuil-m.webp" imagesrcset="assets/mb-fauteuil-s.webp 720w, assets/mb-fauteuil-m.webp 1600w, assets/mb-fauteuil.webp 3200w" imagesizes="(max-width:700px) 64vw, min(31vw, 420px)" fetchpriority="high">
-<link rel="stylesheet" href="style.css?v=5.3">
-<script src="dims.js?v=5.3" defer></script>
-<script src="data.js?v=5.3" defer></script>
-<script src="app.js?v=5.3" defer></script>
+<link rel="preload" href="fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="lavagna.css">
+<link rel="stylesheet" href="motion.css">
+<script src="motion.js" defer></script>
+<link rel="preload" as="image" href="img/mb-pianta-bw.webp" fetchpriority="high">
+<meta name="description" content="Filippo Antonio Visentin — Product &amp; Interior Design, Politecnico di Milano. Sette progetti su una tavola.">
+<link rel="canonical" href="https://filippovisentin.pages.dev/">
+<script src="routes.js"></script>
+<script src="lang.js" defer></script>
+<script src="board.js" defer></script>
+<script src="views.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main" data-it="Vai al contenuto" data-en="Skip to content">Vai al contenuto</a>
-<div class="loader" aria-hidden="true">
-  <div class="ld-stage"><div class="ld-plane"></div></div>
-  <div class="ld-dimline"></div>
-  <svg class="ld-marks" viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet"><circle cx="176" cy="22" r="9" pathLength="1" style="--d:600"/><path d="M170 22h12M176 16v12" pathLength="1" style="--d:750"/><path d="M16 86h8M20 82v8" pathLength="1" style="--d:700"/></svg>
-  <p class="ld-name"><span><i>Filippo Antonio</i></span><span><i><b>Visentin</b></i></span></p>
-  <span class="ld-dim">← Product &amp; interior design · Computational design · Prototyping →</span>
-  <span class="ld-coords">X 0000 · Y 0000 · 1:100</span>
-  <div class="ld-foot"><span>Politecnico di Milano<br>Portfolio 2026</span><span class="loader-count">000</span></div>
-</div>
-<div class="progress" aria-hidden="true"></div>
-<header class="site-header">
-  <a class="brand" href="#home" translate="no"><span class="brand-mark" aria-hidden="true">↗</span><span>Filippo Antonio<br>Visentin</span></a>
-  <span class="clock" aria-hidden="true"></span>
-  <nav aria-label="Principale">
-    <a href="#index" data-it="Progetti" data-en="Work">Progetti</a>
-    <a href="#code" data-it="Codice" data-en="Code">Codice</a>
-    <a href="#about" data-it="Info / Contatti" data-en="About / Contact">Info / Contatti</a>
+<header>
+  <a class="brand" href="index.html" translate="no">Filippo Antonio<br>Visentin</a>
+  <nav aria-label="Principale" data-it-label="Principale" data-en-label="Main">
+    <a href="index.html" aria-current="page" data-it="Progetti" data-en="Work">Progetti</a>
+    <a href="index.html?vista=indice" data-it="Indice" data-en="Index">Indice</a>
+    <a href="forma.html" data-it="Codice" data-en="Code">Codice</a>
+    <a href="info.html" data-it="Info / Contatti" data-en="About / Contact">Info / Contatti</a>
     <button id="language" type="button" aria-label="EN — Switch to English">EN</button>
   </nav>
 </header>
-<main id="main" tabindex="-1"></main>
-<dialog id="lightbox" aria-label="Galleria immagini">
-  <button class="close" type="button" aria-label="Chiudi">×</button>
-  <button class="light-prev" type="button" aria-label="Immagine precedente">←</button>
-  <figure><img alt=""><figcaption></figcaption></figure>
-  <button class="light-next" type="button" aria-label="Immagine successiva">→</button>
-  <span class="light-count"></span>
-</dialog>
-<div class="cursor" aria-hidden="true"><span></span></div>
-<div class="grain" aria-hidden="true"></div>
-<noscript><p style="padding:24px">JavaScript è necessario per la galleria. Contatti: <a href="mailto:filippoantonio.visentin@mail.polimi.it">filippoantonio.visentin@mail.polimi.it</a>.</p></noscript>
+
+<div class="sheet-head">
+  <h1><i data-it="Tavola 01" data-en="Board 01">Tavola 01</i> — <span data-it="Progetti selezionati, 2025–2026" data-en="Selected work, 2025–2026">Progetti selezionati, 2025–2026</span></h1>
+  <span class="mono" data-it="Product &amp; Interior Design · Politecnico di Milano · 7 lavori · scale diverse" data-en="Product &amp; Interior Design · Politecnico di Milano · 7 works · varied scales">Product &amp; Interior Design · Politecnico di Milano · 7 lavori · scale diverse</span>
+</div>
+
+<div class="controls" hidden>
+  <div class="group" role="group" aria-label="Vista dei progetti" data-it-label="Vista dei progetti" data-en-label="Project view">
+    <span class="mono" data-it="Vista" data-en="View">Vista</span>
+    <button type="button" data-view="tavola" aria-pressed="true"><span data-it="Tavola" data-en="Board">Tavola</span></button>
+    <button type="button" data-view="indice" aria-pressed="false"><span data-it="Indice" data-en="Index">Indice</span></button>
+  </div>
+  <div class="group" role="group" aria-label="Filtra per disciplina" data-it-label="Filtra per disciplina" data-en-label="Filter by discipline">
+    <span class="mono" data-it="Legenda" data-en="Legend">Legenda</span>
+    <button type="button" data-filter="all" aria-pressed="true"><span data-it="Tutti" data-en="All">Tutti</span> <sup>7</sup></button>
+    <button type="button" data-filter="exhibition" aria-pressed="false"><span data-it="Exhibition" data-en="Exhibition">Exhibition</span> <sup>3</sup></button>
+    <button type="button" data-filter="architecture" aria-pressed="false"><span data-it="Architettura" data-en="Architecture">Architettura</span> <sup>2</sup></button>
+    <button type="button" data-filter="product" aria-pressed="false"><span data-it="Product &amp; service" data-en="Product &amp; service">Product &amp; service</span> <sup>2</sup></button>
+    <span class="mono status" role="status" aria-live="polite">7 progetti</span>
+  </div>
+</div>
+
+<main id="main" tabindex="-1" class="views">
+<ol class="board" id="tavola" tabindex="-1">
+  <li data-d="exhibition" class="work mb big" style="--i:0"><a href="monoblock.html">
+    <span class="draw"><img class="line" src="img/mb-pianta-bw.webp" alt="" width="2800" height="870" style="view-transition-name:vt-monoblock"><img class="photo" src="assets/mb-fauteuil-m.webp" srcset="assets/mb-fauteuil-s.webp 720w, assets/mb-fauteuil-m.webp 1600w, assets/mb-fauteuil.webp 3200w" sizes="58vw" width="1600" height="1235" alt="" loading="lazy"></span>
+    <span class="cap"><span class="quota"></span><span class="n">01</span><span class="name">MONOBLOCK</span><span class="mono meta" data-it="Tesi · Exhibition design · 2026 · pianta" data-en="Thesis · Exhibition design · 2026 · plan">Tesi · Exhibition design · 2026 · pianta</span></span>
+  </a></li>
+  <li data-d="architecture" class="work bv big" style="--i:1"><a href="bivacuum.html">
+    <span class="draw"><img class="line" src="img/bv-schizzo-bw.webp" alt="" width="1600" height="1850" style="view-transition-name:vt-bivacuum"><img class="photo" src="assets/bv-cover-m.webp" srcset="assets/bv-cover-s.webp 720w, assets/bv-cover-m.webp 1600w, assets/bv-cover.webp 3200w" sizes="17vw" width="1600" height="900" alt="" loading="lazy"></span>
+    <span class="cap"><span class="quota"></span><span class="n">02</span><span class="name">BIVACUUM</span><span class="mono meta" data-it="Architettura · Spazio minimo · 2026 · schizzo" data-en="Architecture · Minimum space · 2026 · sketch">Architettura · Spazio minimo · 2026 · schizzo</span></span>
+  </a></li>
+  <li data-d="exhibition" class="work ot big" style="--i:2"><a href="oltreetrusco.html">
+    <span class="draw"><img class="line" src="img/ot-schizzo-bw.webp" alt="" width="1600" height="1014" loading="lazy" style="view-transition-name:vt-oltreetrusco"><img class="photo" src="assets/ot-cover-m.webp" srcset="assets/ot-cover-s.webp 720w, assets/ot-cover-m.webp 1600w, assets/ot-cover.webp 3200w" sizes="28vw" width="1600" height="1083" alt="" loading="lazy"></span>
+    <span class="cap"><span class="quota"></span><span class="n">03</span><span class="name">OLTRE ETRUSCO</span><span class="mono meta" data-it="Exhibition design · Cultura · 2025 · schizzo" data-en="Exhibition design · Culture · 2025 · sketch">Exhibition design · Cultura · 2025 · schizzo</span></span>
+  </a></li>
+  <li data-d="product" class="work pl" style="--i:3"><a href="poliedro.html">
+    <span class="draw"><img class="line" src="img/pl-schizzo-bw.webp" alt="" width="1600" height="1132" loading="lazy" style="view-transition-name:vt-poliedro"><img class="photo" src="assets/pl-cover-m.webp" srcset="assets/pl-cover-s.webp 720w, assets/pl-cover-m.webp 1600w, assets/pl-cover.webp 3200w" sizes="26vw" width="1600" height="900" alt="" loading="lazy"></span>
+    <span class="cap"><span class="quota"></span><span class="n">04</span><span class="name">POLIEDRO</span><span class="mono meta" data-it="Product design · Arredo urbano · 2026 · schizzi" data-en="Product design · Urban furniture · 2026 · sketches">Product design · Arredo urbano · 2026 · schizzi</span></span>
+  </a></li>
+  <li data-d="architecture" class="work cp" style="--i:4"><a href="compluvio.html">
+    <span class="draw"><img class="line" src="img/cp-sezione-bw.webp" alt="" width="1400" height="1998" loading="lazy" style="view-transition-name:vt-compluvio"><img class="photo" src="assets/cp-cover-m.webp" srcset="assets/cp-cover-s.webp 720w, assets/cp-cover-m.webp 1600w, assets/cp-cover.webp 3200w" sizes="11vw" width="1600" height="1232" alt="" loading="lazy"></span>
+    <span class="cap"><span class="quota"></span><span class="n">05</span><span class="name">COMPLUVIO</span><span class="mono meta" data-it="Architettura · Paesaggio · 2025 · copertura, pianta e sezione" data-en="Architecture · Landscape · 2025 · roof, plan and section">Architettura · Paesaggio · 2025 · copertura, pianta e sezione</span></span>
+  </a></li>
+  <li data-d="exhibition" class="work pr" style="--i:5"><a href="presence.html">
+    <span class="draw"><img class="line" src="img/pr-prospetti-bw.webp" alt="" width="2000" height="1185" loading="lazy" style="view-transition-name:vt-presence"><img class="photo" src="assets/pr-cover-m.webp" srcset="assets/pr-cover-s.webp 720w, assets/pr-cover-m.webp 1600w, assets/pr-cover.webp 3200w" sizes="28vw" width="1600" height="1235" alt="" loading="lazy"></span>
+    <span class="cap"><span class="quota"></span><span class="n">06</span><span class="name">A MATTER OF PRESENCE</span><span class="mono meta" data-it="Exhibition design · POLIEDRO · 2026 · pianta, sezioni e prospetti" data-en="Exhibition design · POLIEDRO · 2026 · plan, sections and elevations">Exhibition design · POLIEDRO · 2026 · pianta, sezioni e prospetti</span></span>
+  </a></li>
+  <li data-d="product" class="work sp" style="--i:6"><a href="soundplace.html">
+    <span class="draw"><img class="line" src="img/sp-storyboard-bw.webp" alt="" width="2400" height="496" loading="lazy" style="view-transition-name:vt-soundplace"><img class="photo" src="assets/sp-cover-m.webp" srcset="assets/sp-cover-s.webp 720w, assets/sp-cover-m.webp 1600w, assets/sp-cover.webp 3200w" sizes="40vw" width="1132" height="1600" alt="" loading="lazy"></span>
+    <span class="cap"><span class="quota"></span><span class="n">07</span><span class="name">SOUNDPLACE</span><span class="mono meta" data-it="Service design · Spazio pubblico · 2026 · storyboard" data-en="Service design · Public space · 2026 · storyboard">Service design · Spazio pubblico · 2026 · storyboard</span></span>
+  </a></li>
+  <li class="marks" aria-hidden="true"><svg viewBox="0 0 150 70">
+    <g fill="none" stroke="currentColor" stroke-width="1"><circle cx="128" cy="16" r="12"/><path d="M128 2v28M122 22l6-18 6 18"/></g>
+    <text x="124.5" y="44">N</text>
+    <g stroke="currentColor" stroke-width="1"><path d="M0 58h100M0 54v8M25 56v4M50 54v8M100 54v8"/><path d="M50 58h50" stroke-width="3"/></g>
+    <text x="0" y="70">0</text><text x="47" y="70">1</text><text x="70" y="70" data-it="SCALA VARIABILE" data-en="VARIABLE SCALE">SCALA VARIABILE</text>
+  </svg></li>
+</ol>
+<table class="index" id="indice" hidden>
+  <caption class="mono" style="text-align:left;caption-side:top;padding-bottom:12px" data-it="Indice dei progetti — stessi lavori, stessi filtri della tavola" data-en="Project index — same works, same filters as the board">Indice dei progetti — stessi lavori, stessi filtri della tavola</caption>
+  <thead><tr><th class="n" scope="col">N°</th><th class="thumb" scope="col" data-it="Disegno" data-en="Drawing">Disegno</th><th scope="col" data-it="Progetto" data-en="Project">Progetto</th><th class="disc" scope="col" data-it="Ambito" data-en="Field">Ambito</th><th class="year" scope="col" data-it="Anno" data-en="Year">Anno</th><th class="kind" scope="col" data-it="Tipo di disegno" data-en="Drawing type">Tipo di disegno</th><th class="arrow" scope="col"><span class="mono" style="font-size:0">↗</span></th></tr></thead>
+  <tbody></tbody>
+</table>
+</main>
+
+<footer class="mono">
+  <p>Filippo Antonio Visentin</p>
+  <p data-it="Disegni: elaborati originali, resi in bianco e nero" data-en="Drawings: original project drawings, rendered in black and white">Disegni: elaborati originali, resi in bianco e nero</p>
+  <p data-it="Al passaggio del cursore: la fotografia del progetto" data-en="On hover: the project photograph">Al passaggio del cursore: la fotografia del progetto</p>
+  <p><a href="info.html" data-it="Info / Contatti" data-en="About / Contact">Info / Contatti</a></p>
+</footer>
 </body>
 </html>

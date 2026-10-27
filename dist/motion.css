@@ -1,0 +1,83 @@
+/* Movimento del sito — regole condivise da tutte le pagine.
+   Curve e durate da Material Design 3: ingressi con "emphasized decelerate", cambi di stato con "standard".
+   Si animano solo transform, opacity, clip-path e background-size (nessun ricalcolo del layout).
+   Nessun movimento continuo o automatico. Con prefers-reduced-motion tutto si ferma (WCAG 2.3.3, tecnica C39).
+   Il contenuto è visibile anche senza JavaScript: gli stati iniziali valgono solo con html.motion. */
+:root{
+  --ease-in-view:cubic-bezier(.05,.7,.1,1);   /* emphasized decelerate: entrate */
+  --ease-std:cubic-bezier(.2,0,0,1);          /* standard: cambi di stato */
+  --t-micro:150ms; --t-short:250ms; --t-medium:450ms; --t-long:700ms;
+}
+
+/* ---------------------------------------------------------------- comparsa allo scorrimento */
+html.motion [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity var(--t-medium) var(--ease-in-view),transform var(--t-long) var(--ease-in-view);transition-delay:var(--d,0ms)}
+html.motion [data-reveal].in{opacity:1;transform:none}
+
+/* immagini: si scoprono dal basso, come un foglio che esce dalla cartella */
+html.motion [data-wipe]{clip-path:inset(100% 0 0 0);transition:clip-path var(--t-long) var(--ease-in-view);transition-delay:var(--d,0ms)}
+html.motion [data-wipe] img{transform:scale(1.06);transition:transform 1100ms var(--ease-in-view)}
+html.motion [data-wipe].in{clip-path:inset(0 0 0 0)}
+html.motion [data-wipe].in img{transform:scale(1)}
+
+/* profondità leggera: le immagini scorrono un poco più lente della pagina */
+[data-depth]{overflow:hidden}
+[data-depth] > img:first-child{will-change:transform}
+
+/* ---------------------------------------------------------------- micro-interazioni */
+/* l'evidenziatore lime cresce da sinistra invece di comparire di colpo */
+.work .name,.index .name a,.affini strong,.next strong,.links a,.socials a,.doc strong,.mail a,.closing a,.inline,
+.chips code,.atlas .t span:last-child,.repos strong,.lost .cartiglio a,.shot-tabs button span:last-child{
+  background:linear-gradient(transparent 62%,var(--lime) 62%) no-repeat 0 0/0% 100%;
+  transition:background-size var(--t-short) var(--ease-std)}
+.work a:hover .name,.work a:focus-visible .name,.index tr:hover .name a,.index tr:focus-within .name a,
+.affini a:hover strong,.affini a:focus-visible strong,.next a:hover strong,.next a:focus-visible strong,
+.links a:hover,.links a:focus-visible,.socials a:hover,.socials a:focus-visible,.doc:hover strong,.doc:focus-visible strong,
+.mail a:hover,.mail a:focus-visible,.closing a:hover,.closing a:focus-visible,.inline:hover,.inline:focus-visible,
+.chips button:hover code,.atlas .zoom:hover .t span:last-child,.atlas .zoom:focus-visible .t span:last-child,
+.repos a:hover strong,.repos a:focus-visible strong,.lost .cartiglio a:hover,.lost .cartiglio a:focus-visible,
+.shot-tabs button:hover span:last-child{background-size:100% 100%}
+
+/* pulsanti: risposta al tocco */
+button,.doc,.copy{transition:transform var(--t-micro) var(--ease-std),background-color var(--t-micro) var(--ease-std),color var(--t-micro) var(--ease-std)}
+button:active,.copy:active{transform:scale(.96)}
+.doc .arrow{display:inline-block;transition:transform var(--t-short) var(--ease-std)}
+.doc:hover .arrow,.doc:focus-visible .arrow{transform:translateY(4px)}
+.next .to strong,.affini strong{transition:background-size var(--t-short) var(--ease-std),transform var(--t-short) var(--ease-std)}
+.next a.to:hover strong{transform:translateX(6px)}
+
+/* ---------------------------------------------------------------- cursore (solo mouse o trackpad) */
+.cursor{display:none}
+@media (hover:hover) and (pointer:fine){
+  html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor canvas{cursor:none}
+  html.has-cursor input,html.has-cursor textarea,html.has-cursor [contenteditable]{cursor:text}   /* il cursore di testo resta quello di sistema */
+  html.has-cursor .cursor{display:block;position:fixed;inset:0 auto auto 0;z-index:100;pointer-events:none}
+  .cursor .dot{position:fixed;left:0;top:0;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--ink)}
+  .cursor .ring{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid var(--ink);border-radius:50%;
+    display:grid;place-items:center;transition:width var(--t-short) var(--ease-std),height var(--t-short) var(--ease-std),margin var(--t-short) var(--ease-std),background-color var(--t-short) var(--ease-std),border-color var(--t-short) var(--ease-std)}
+  .cursor .ring span{font:700 10px/1 "Courier Prime",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);opacity:0;transition:opacity var(--t-micro) var(--ease-std)}
+  .cursor.link .ring{width:54px;height:54px;margin:-27px 0 0 -27px;background:var(--lime);border-color:var(--lime)}
+  .cursor.label .ring{width:84px;height:84px;margin:-42px 0 0 -42px;background:var(--lime);border-color:var(--ink)}
+  .cursor.label .ring span{opacity:1}
+  .cursor.text .ring{opacity:0}
+  .cursor.down .ring{width:26px;height:26px;margin:-13px 0 0 -13px}
+  .cursor.hidden{opacity:0}
+}
+
+/* ---------------------------------------------------------------- passaggio tra pagine (dove il browser lo supporta) */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vt-out var(--t-short) var(--ease-std) both}
+::view-transition-new(root){animation:vt-in var(--t-medium) var(--ease-in-view) both}
+@keyframes vt-out{to{opacity:0}}
+@keyframes vt-in{from{opacity:0;transform:translateY(16px)}}
+::view-transition-group(*){animation-duration:var(--t-medium);animation-timing-function:var(--ease-in-view)}
+
+/* ---------------------------------------------------------------- movimento ridotto: tutto fermo e subito leggibile */
+@media (prefers-reduced-motion:reduce){
+  html.motion [data-reveal],html.motion [data-wipe],html.motion [data-wipe] img{opacity:1;transform:none;clip-path:none;transition:none}
+  [data-depth] > img:first-child{transform:none!important}
+  .work .name,.index .name a,.affini strong,.next strong,.links a,.socials a,.doc strong,.mail a,.closing a,.inline,
+  .chips code,.atlas .t span:last-child,.repos strong,.lost .cartiglio a,.shot-tabs button span:last-child,button,.doc,.copy,.doc .arrow{transition:none}
+  button:active,.copy:active{transform:none}
+  @view-transition{navigation:none}
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none}
+}

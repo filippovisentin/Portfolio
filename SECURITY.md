@@ -12,7 +12,7 @@ If you find a vulnerability in this site, email filippoantonio.visentin@mail.pol
 
 - Sito statico: nessun server applicativo, nessun database, nessun modulo, nessun cookie, nessun tracciamento.
 - Nessuna dipendenza di terze parti: script, font, immagini e video sono serviti dallo stesso dominio.
-- Content Security Policy restrittiva (`<meta>` in `dist/index.html`; header completi in `dist/_headers` per Cloudflare Pages o Netlify): solo script dello stesso dominio, niente plugin, niente form, niente `<base>` esterno.
+- Content Security Policy restrittiva (`<meta>` in ogni pagina di `dist/`; header completi in `dist/_headers` per Cloudflare Pages o Netlify): solo script dello stesso dominio, niente plugin, niente form, niente `<base>` esterno.
 - HTTPS obbligatorio con HSTS (GitHub Pages).
 - Link esterni aperti con `rel="noopener noreferrer"`.
 - Il testo inserito nelle pagine passa per una funzione di escape; i contenuti vengono solo da `dist/data.js`, nel repository.
