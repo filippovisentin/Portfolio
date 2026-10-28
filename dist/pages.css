@@ -182,6 +182,14 @@ button{font:inherit;color:inherit}
 .apps a[aria-current]{text-decoration:underline;text-underline-offset:6px}
 .apps a:not([aria-current]):hover{background:linear-gradient(transparent 62%,var(--lime) 62%);color:#111}
 
+/* MISURA: due video verticali affiancati (1080 × 1920), interi e alti quanto lo schermo permette;
+   didascalia e quota larghe quanto il video */
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:32px}
+.demo figure{margin:0}
+.demo figure > *{box-sizing:border-box;max-width:calc(min(78vh,760px) * 9 / 16);margin-left:auto;margin-right:auto}
+.demo video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;border:1px solid var(--ink);background:#000}
+@media (max-width:620px){.demo-grid{grid-template-columns:1fr;gap:40px}}
+
 /* MISURA: le cinque schermate due per riga, in ognuna telefono a sinistra e come funziona a destra;
    il motore su fascia nera */
 .phones ol{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(28px,4vw,64px)}
