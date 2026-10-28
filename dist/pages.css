@@ -66,8 +66,10 @@ button{font:inherit;color:inherit}
 .examples li{display:grid;gap:2px;padding:10px 0;border-bottom:1px solid var(--ink)}
 .badge{display:inline-block;margin:0;padding:6px 10px;border:1px solid var(--ink);color:var(--ink)}
 .ai-video{grid-column:7/13;margin:0}
-/* il video è verticale (1080 × 1920): mai più alto dello schermo */
-.ai-video video{display:block;width:auto;max-width:100%;max-height:min(80vh,760px);height:auto;border:1px solid var(--ink);background:#000}
+/* il video arriva fino al bordo destro dello schermo; è verticale (1080 × 1920), quindi si ritaglia al centro */
+.ai-video{margin-right:calc(-1 * var(--gut))}
+.ai-video :is(.quota,figcaption,.steps){margin-right:var(--gut)}
+.ai-video video{display:block;width:100%;height:min(86vh,820px);object-fit:cover;object-position:50% 45%;border:1px solid var(--ink);background:#000}
 .steps{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:8px}
 .steps li{display:grid;grid-template-columns:2.6em 1fr;font-size:14px}
 
@@ -141,6 +143,8 @@ button{font:inherit;color:inherit}
   .viewport canvas{aspect-ratio:4/3}
   .ai-text,.ai-video,.layers,.stack,.portrait,.reach,.bio h2,.bio-text{grid-column:1/-1}
   .ai-video,.stack,.bio-text{margin-top:36px}
+  .ai-video{margin-left:calc(-1 * var(--gut))}.ai-video :is(.quota,figcaption,.steps){margin-left:var(--gut)}   /* sul telefono da bordo a bordo */
+  .ai-video video{height:auto;aspect-ratio:4/5}
   .contact .reach{order:-1}.portrait{margin-top:36px}   /* sul telefono i contatti vengono prima della foto */
   .method ol,.repos ul{grid-template-columns:1fr 1fr}
   .layers li{grid-template-columns:1fr}
@@ -167,4 +171,4 @@ button{font:inherit;color:inherit}
 .band .actions .play{background:var(--lime);color:#111;border-color:var(--lime)}
 .band .actions .play:hover{background:var(--paper);color:var(--ink);border-color:var(--ink)}
 .band .badge{border-color:var(--lime);color:var(--lime)}
-.band .ai-video video{border-color:#3a3a3a}
+.band .ai-video video{border:0}
