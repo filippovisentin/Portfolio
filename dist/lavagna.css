@@ -57,7 +57,7 @@ nav a{text-decoration:none}nav a[aria-current]{text-decoration:underline;text-un
 /* composizione: x, y, larghezza in % del foglio; r = rotazione del foglio */
 /* in alto la coppia principale; al centro un gruppo serrato (02·04·05);
    a destra un unico grande vuoto, attraversato soltanto dal filo */
-.mb{--x:4%;--y:3%;--w:47%}
+.mb{--x:6%;--y:4%;--w:34%}
 .ot{--x:67%;--y:11%;--w:23%;--r:2.5deg}
 .bv{--x:9%;--y:32%;--w:14%;--r:-3deg}
 .pl{--x:31%;--y:44%;--w:21%;--r:1.5deg}
