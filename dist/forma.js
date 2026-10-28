@@ -115,6 +115,11 @@
     return [...side.map(pts => ({ pts })), { pts: p.map(([a, b]) => [a, b, z1]) }];
   };
 
+  // colori dalla fascia in cui sta la vista (in negativo: carta nera, tratto chiaro)
+  const css = getComputedStyle(canvas);
+  const ink = css.getPropertyValue('--ink').trim() || '#111', paper = css.getPropertyValue('--paper').trim() || '#fff';
+  const lime = css.getPropertyValue('--lime').trim() || '#d4ff3a', gridC = css.getPropertyValue('--grid').trim() || '#e4e4e4', axisC = css.getPropertyValue('--axis').trim() || '#9a9a9a';
+
   const draw = () => {
     const dpr = Math.min(devicePixelRatio || 1, 2);
     const W = canvas.clientWidth, H = canvas.clientHeight;
@@ -138,28 +143,28 @@
 
     // griglia ogni metro, assi più scuri
     ctx.lineWidth = 1;
-    for (let i = 0; i <= 800; i += 100) { ctx.strokeStyle = i ? '#e4e4e4' : '#9a9a9a'; line([i, 0, 0], [i, 600, 0]) }
-    for (let j = 0; j <= 600; j += 100) { ctx.strokeStyle = j ? '#e4e4e4' : '#9a9a9a'; line([0, j, 0], [800, j, 0]) }
+    for (let i = 0; i <= 800; i += 100) { ctx.strokeStyle = i ? gridC : axisC; line([i, 0, 0], [i, 600, 0]) }
+    for (let j = 0; j <= 600; j += 100) { ctx.strokeStyle = j ? gridC : axisC; line([0, j, 0], [800, j, 0]) }
 
-    // facce ordinate per profondità: bianche con bordo nero (linee nascoste), la selezione in lime
+    // facce ordinate per profondità: color carta con il bordo a tratto (linee nascoste), la selezione in lime
     const all = [];
     objects.forEach(o => faces(o).forEach(f => all.push({ ...f, sel: o.sel, depth: f.pts.reduce((m, q) => m + view(q)[2], 0) / f.pts.length })));
     all.sort((a, b) => b.depth - a.depth);
     for (const f of all) {
       const q = f.pts.map(P);
       ctx.beginPath(); q.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
-      if (!f.open) { ctx.closePath(); ctx.fillStyle = f.sel ? '#d4ff3a' : '#ffffff'; ctx.fill() }
+      if (!f.open) { ctx.closePath(); ctx.fillStyle = f.sel ? lime : paper; ctx.fill() }
       else ctx.closePath();
-      ctx.strokeStyle = '#111'; ctx.lineWidth = f.sel ? 2 : 1.25; ctx.stroke();
+      ctx.strokeStyle = f.sel ? '#111' : ink; ctx.lineWidth = f.sel ? 2 : 1.25; ctx.stroke();
     }
 
     // gumball sull'ultimo oggetto selezionato
     const g = selected().at(-1);
     if (g) {
       const c = [g.x + g.w / 2, g.y + g.d / 2, (g.z || 0) + g.h / 2], L = 90;
-      ctx.lineWidth = 2; ctx.font = '11px "Courier Prime", monospace'; ctx.fillStyle = '#111';
+      ctx.lineWidth = 2; ctx.font = '11px "Courier Prime", monospace'; ctx.fillStyle = ink;
       [[[L, 0, 0], 'X'], [[0, L, 0], 'Y'], [[0, 0, L], 'Z']].forEach(([d, t]) => {
-        const e = [c[0] + d[0], c[1] + d[1], c[2] + d[2]]; ctx.strokeStyle = '#111'; line(c, e);
+        const e = [c[0] + d[0], c[1] + d[1], c[2] + d[2]]; ctx.strokeStyle = ink; line(c, e);
         const E = P(e); ctx.beginPath(); ctx.arc(E[0], E[1], 3, 0, 7); ctx.fill(); ctx.fillText(t, E[0] + 6, E[1] - 4);
       });
     }

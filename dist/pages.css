@@ -66,7 +66,8 @@ button{font:inherit;color:inherit}
 .examples li{display:grid;gap:2px;padding:10px 0;border-bottom:1px solid var(--ink)}
 .badge{display:inline-block;margin:0;padding:6px 10px;border:1px solid var(--ink);color:var(--ink)}
 .ai-video{grid-column:7/13;margin:0}
-.ai-video video{display:block;width:100%;height:auto;border:1px solid var(--ink);background:#000}
+/* il video è verticale (1080 × 1920): mai più alto dello schermo */
+.ai-video video{display:block;width:auto;max-width:100%;max-height:min(80vh,760px);height:auto;border:1px solid var(--ink);background:#000}
 .steps{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:8px}
 .steps li{display:grid;grid-template-columns:2.6em 1fr;font-size:14px}
 
@@ -152,3 +153,18 @@ button{font:inherit;color:inherit}
   .doc{grid-template-columns:2em 1fr}.doc .mono{grid-column:2}
 }
 @media (prefers-reduced-motion:reduce){.layers li{transition:none}}
+
+/* fasce in negativo: la demo e Ask AI su inchiostro pieno, da bordo a bordo, per dare peso alla pagina.
+   Si invertono i colori di base, così bordi, quote e pulsanti seguono da soli; il lime resta lime,
+   con il testo scuro sopra. */
+.band{--paper:#111;--ink:#f2f2f2;--soft:#a3a3a3;--grid:#303030;--axis:#6b6b6b;
+  margin:150px 0 0;padding:clamp(56px,7vw,110px) var(--gut);background:var(--paper);color:var(--ink)}
+.band .section-head{margin-top:0}
+.band + .band{margin-top:0;border-top:1px solid #2b2b2b}
+.band ::selection{background:var(--lime);color:#111}
+.band .chips button.done::before{border-color:var(--lime)}
+.band :is(.chips button:hover code,.links a:hover){color:#111}
+.band .actions .play{background:var(--lime);color:#111;border-color:var(--lime)}
+.band .actions .play:hover{background:var(--paper);color:var(--ink);border-color:var(--ink)}
+.band .badge{border-color:var(--lime);color:var(--lime)}
+.band .ai-video video{border-color:#3a3a3a}
