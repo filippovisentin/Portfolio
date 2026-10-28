@@ -67,14 +67,14 @@ nav a{text-decoration:none}nav a[aria-current]{text-decoration:underline;text-un
 
 /* fogli della pila: posizione (ux, uy) e larghezza (uw) in % del primo disegno,
    rotazione (ur) e direzione del ventaglio (fx, fy) */
-.mb .u1{--ux:93%;--uy:-6%;--uw:22%;--ur:4deg;--fx:16px;--fy:-10px}
-.mb .u2{--ux:97%;--uy:46%;--uw:24%;--ur:-3deg;--fx:18px;--fy:10px}
+.mb .u1{--ux:60%;--uy:-46%;--uw:28%;--ur:3deg;--fx:12px;--fy:-12px}   /* struttura sospesa, sopra la pianta */
+.mb .u2{--ux:72%;--uy:38%;--uw:26%;--ur:-3deg;--fx:14px;--fy:10px}   /* dettaglio dei bulloni, dentro la pianta, mai oltre il bordo */
 .bv .u1{--ux:58%;--uy:6%;--uw:56%;--ur:5deg;--fx:18px;--fy:-6px}
 .bv .u2{--ux:-12%;--uy:58%;--uw:72%;--ur:-4deg;--fx:-16px;--fy:8px}
 .ot .u1{--ux:-20%;--uy:14%;--uw:50%;--ur:-7deg;--fx:-18px;--fy:-6px}
 .ot .u2{--ux:8%;--uy:74%;--uw:84%;--ur:1deg;--fx:0px;--fy:14px}
 .pl .u1{--ux:58%;--uy:-22%;--uw:52%;--ur:3.5deg;--fx:16px;--fy:-12px}
-.mb .ph{--ux:52%;--uy:6%;--uw:34%;--ur:-2deg;--fx:-10px;--fy:-12px}
+.mb .ph{--ux:40%;--uy:6%;--uw:34%;--ur:-2deg;--fx:-10px;--fy:-12px}
 .bv .ph{--ux:-22%;--uy:26%;--uw:70%;--ur:2deg;--fx:-18px;--fy:4px}
 .ot .ph{--ux:56%;--uy:-6%;--uw:52%;--ur:2.5deg;--fx:16px;--fy:-8px}
 .pl .ph{--ux:36%;--uy:-34%;--uw:56%;--ur:-3deg;--fx:10px;--fy:-14px}
