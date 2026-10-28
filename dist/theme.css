@@ -32,20 +32,25 @@ html[data-theme="dark"] .coords{color:var(--lime);text-shadow:0 0 3px #000,0 0 3
 .brand:active .brand-name,.brand:focus-visible .brand-name{background-color:var(--lime);color:#111}
 .brand:focus-visible{outline:none}
 
+/* parole chiave in grassetto nei testi (lang.js le ricostruisce a ogni cambio di lingua) */
+strong.hl{font-weight:700;color:var(--ink)}
+
 /* pulsante del tema, accanto alla lingua: un quadrato mezzo pieno */
 #theme{appearance:none;display:inline-flex;align-items:center;justify-content:center;width:26px;height:24px;padding:0;border:1px solid var(--ink);background:none;color:var(--ink)}
 #theme i{width:11px;height:11px;border:1px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
 #theme:hover{background:var(--lime);color:#111}
 #theme:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 
-/* scelta del tema, una volta, dopo l'apertura: due quadrati, nero e bianco, con il nome sotto.
-   Passando sopra (o con il tasto Tab) la pagina intera si mostra in anteprima nel tema. */
+/* scelta del tema dopo ogni apertura della home: due quadrati, nero e bianco, con il nome sotto.
+   Il fondo è semitrasparente: sotto si intravede la home, e passando sopra (o con Tab) la pagina vera si mostra in anteprima nel tema. */
 .theme-ask{position:fixed;inset:0;z-index:10001;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:var(--gut);
-  background:var(--paper);color:var(--ink);font:12px/1.5 "Courier Prime",ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;
+  background:color-mix(in srgb,var(--paper) 72%,transparent);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);color:var(--ink);
+  font:12px/1.5 "Courier Prime",ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;
   transition:background-color .3s ease,color .3s ease,opacity .35s ease;animation:ta-in .5s cubic-bezier(.23,1,.32,1) both}
 .theme-ask.out{opacity:0;pointer-events:none}
 @keyframes ta-in{from{opacity:0;transform:translateY(8px)}}
-.ta-q{margin:0;color:var(--soft);text-align:center}
+.ta-q{margin:0;font:800 clamp(22px,2.6vw,36px)/1.05 "Hanken Grotesk",Arial,sans-serif;letter-spacing:-.015em;text-transform:none;text-align:center}
+.ta-hint{margin:-14px 0 0;max-width:30em;color:var(--soft);text-align:center;text-transform:none}
 .ta-opts{display:flex;gap:28px}
 .theme-ask button{appearance:none;border:0;background:none;padding:0;font:inherit;color:inherit;display:flex;flex-direction:column;align-items:center;gap:12px}
 .theme-ask i{display:block;width:clamp(72px,8vw,112px);aspect-ratio:1;border:1px solid var(--ink);transition:transform .3s cubic-bezier(.2,.7,.2,1)}

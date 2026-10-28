@@ -1,7 +1,12 @@
 // Tavola / Indice, filtri e ripristino dello stato al ritorno.
 // Una sola fonte: l'indice è costruito dalle voci della tavola.
 // Senza JavaScript resta la tavola completa, senza comandi.
+// L'ultima vista scelta (tavola o indice) resta sul dispositivo e si riapre alla visita successiva.
 (() => {
+  const PREF = 'fav-view';
+  let pref = null;
+  try { pref = localStorage.getItem(PREF) } catch {}
+  if (!['tavola', 'indice'].includes(pref)) pref = null;
   const controls = document.querySelector('.controls');
   const board = document.querySelector('#tavola');
   const table = document.querySelector('#indice');
@@ -37,7 +42,7 @@
     let saved = {};
     try { saved = JSON.parse(sessionStorage.getItem(KEY)) || {} } catch {}
     return {
-      view: q.get('vista') || saved.view || 'tavola',
+      view: q.get('vista') || saved.view || pref || 'tavola',
       filter: q.get('filtro') || saved.filter || 'all',
       scroll: saved.scroll || 0,
       last: saved.last || null
@@ -75,7 +80,7 @@
   controls.addEventListener('click', e => {
     const b = e.target.closest('button');
     if (!b) return;
-    if (b.dataset.view) save({ view: b.dataset.view });
+    if (b.dataset.view) { save({ view: b.dataset.view }); remember(b.dataset.view) }
     if (b.dataset.filter) save({ filter: b.dataset.filter });
     render();
   });
@@ -85,6 +90,8 @@
     const a = e.target.closest('a');
     if (a) save({ last: a.getAttribute('href'), scroll: scrollY });
   });
+
+  function remember(v) { pref = v; try { localStorage.setItem(PREF, v) } catch {} }
 
   controls.hidden = false;
   render();

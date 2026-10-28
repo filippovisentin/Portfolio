@@ -5,11 +5,11 @@
 button{font:inherit;color:inherit}
 :where(.try,.shots,.about-title,.contact,.closing) button:focus-visible,:where(.try) input:focus-visible,canvas:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 
-/* testata FORMA: le statistiche nel cartiglio */
-.stats div{grid-template-columns:5.5em 1fr;align-items:baseline}
-.stats dt{font:800 22px/1 "Hanken Grotesk",Arial,sans-serif;color:var(--ink);letter-spacing:-.01em;text-transform:none}
-.stats dd{font-size:14px}
-.title .links{grid-column:8/13;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px}
+/* testata FORMA e MISURA: a sinistra cosa fa l'app in una frase, a destra come funziona e i collegamenti.
+   Niente tabelle: la riga sopra il testo riprende il filo del cartiglio dei casi studio. */
+.title .blurb{grid-column:7/13;margin-top:34px;padding-top:18px;border-top:1px solid var(--ink)}
+.title .desc{max-width:36em;margin:0 0 16px;font-size:17px;line-height:1.6}
+.title .links{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px}
 .links a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
 .links a:hover,.links a:focus-visible{background:linear-gradient(transparent 62%,var(--lime) 62%)}
 
@@ -66,10 +66,9 @@ button{font:inherit;color:inherit}
 .examples li{display:grid;gap:2px;padding:10px 0;border-bottom:1px solid var(--ink)}
 .badge{display:inline-block;margin:0;padding:6px 10px;border:1px solid var(--ink);color:var(--ink)}
 .ai-video{grid-column:7/13;margin:0}
-/* il video arriva fino al bordo destro dello schermo; è verticale (1080 × 1920), quindi si ritaglia al centro */
-.ai-video{margin-right:calc(-1 * var(--gut))}
-.ai-video :is(.quota,figcaption,.steps){margin-right:var(--gut)}
-.ai-video video{display:block;width:100%;height:min(86vh,820px);object-fit:cover;object-position:50% 45%;border:1px solid var(--ink);background:#000}
+/* il video è verticale (1080 × 1920): si vede intero, senza tagli, centrato nella colonna e alto quanto lo schermo permette */
+.ai-video > *{box-sizing:border-box;max-width:calc(min(82vh,860px) * 9 / 16);margin-left:auto;margin-right:auto}   /* didascalia e passi larghi quanto il video */
+.ai-video video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;border:1px solid var(--ink);background:#000}
 .steps{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:8px}
 .steps li{display:grid;grid-template-columns:2.6em 1fr;font-size:14px}
 
@@ -138,14 +137,11 @@ button{font:inherit;color:inherit}
 .closing a{text-decoration:none}
 
 @media (max-width:900px){
-  .title .links{grid-column:1/-1}
+  .title .blurb{grid-column:1/-1;margin-top:28px}
   .try{grid-template-columns:1fr}
   .viewport canvas{aspect-ratio:4/3}
   .ai-text,.ai-video,.layers,.stack,.portrait,.reach,.bio h2,.bio-text{grid-column:1/-1}
-  .ai-video,.stack,.bio-text{margin-top:36px}
-  .ai-video{margin-left:calc(-1 * var(--gut))}.ai-video :is(.quota,figcaption,.steps){margin-left:var(--gut)}   /* sul telefono da bordo a bordo */
-  .ai-video video{height:auto;aspect-ratio:4/5}
-  .contact .reach{order:-1}.portrait{margin-top:36px}   /* sul telefono i contatti vengono prima della foto */
+  .ai-video,.stack,.bio-text{margin-top:36px}  .contact .reach{order:-1}.portrait{margin-top:36px}   /* sul telefono i contatti vengono prima della foto */
   .method ol,.repos ul{grid-template-columns:1fr 1fr}
   .layers li{grid-template-columns:1fr}
   .cv div{grid-template-columns:1fr}
@@ -186,18 +182,18 @@ button{font:inherit;color:inherit}
 .apps a[aria-current]{text-decoration:underline;text-underline-offset:6px}
 .apps a:not([aria-current]):hover{background:linear-gradient(transparent 62%,var(--lime) 62%);color:#111}
 
-/* MISURA: le cinque schermate una sotto l'altra, telefono a sinistra e come funziona a destra;
+/* MISURA: le cinque schermate due per riga, in ognuna telefono a sinistra e come funziona a destra;
    il motore su fascia nera */
-.phones ol{list-style:none;padding:0;margin:24px 0 0}
+.phones ol{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(28px,4vw,64px)}
 .phones li{border-bottom:1px solid var(--ink)}
-.phones figure{margin:0;display:grid;grid-template-columns:minmax(200px,300px) minmax(0,1fr);gap:clamp(28px,6vw,96px);align-items:center;padding:clamp(32px,4vw,56px) 0}
-.phones img{display:block;width:100%;height:auto;border:1px solid var(--ink);border-radius:18px}
-.phones figcaption{display:block;max-width:34em;margin:0}
-.phones h3{margin:10px 0 14px;font-weight:800;font-size:clamp(26px,3vw,44px);line-height:1;text-transform:uppercase;letter-spacing:-.015em}
-.phones figcaption p{margin:0;font-size:clamp(16px,1.25vw,19px);line-height:1.5}
+.phones figure{margin:0;display:grid;grid-template-columns:minmax(140px,220px) minmax(0,1fr);gap:clamp(20px,2.5vw,36px);align-items:start;padding:clamp(28px,3vw,44px) 0}
+.phones img{display:block;width:100%;height:auto;border:1px solid var(--ink);border-radius:16px}
+.phones figcaption{display:block;max-width:30em;margin:0}
+.phones h3{margin:10px 0 12px;font-weight:800;font-size:clamp(22px,2.2vw,34px);line-height:1;text-transform:uppercase;letter-spacing:-.015em}
+.phones figcaption p{margin:0;font-size:clamp(15px,1.1vw,17px);line-height:1.55}
 .engine ol{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px 28px}
 .engine li{border-top:1px solid var(--ink);padding-top:12px}
 .engine h3{margin:8px 0;font-size:18px;font-weight:800;line-height:1.15}
 .engine p{margin:0;font-size:15px}
-@media (max-width:900px){.engine ol{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.engine ol{grid-template-columns:1fr 1fr}.phones ol{grid-template-columns:1fr}}
 @media (max-width:620px){.phones figure{grid-template-columns:1fr;gap:24px}.phones img{width:72%;margin:0 auto}.engine ol{grid-template-columns:1fr}}
