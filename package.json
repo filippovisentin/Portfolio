@@ -1,9 +1,9 @@
 {
   "name": "filippo-visentin-portfolio",
   "private": true,
-  "version": "5.0.0",
+  "version": "5.1.0",
   "scripts": {
     "dev": "node server.mjs",
-    "check": "node --check dist/data.js && node --check dist/routes.js && node --check dist/lang.js && node --check dist/board.js && node --check dist/views.js && node --check dist/case.js && node --check dist/forma.js && node --check dist/about.js && node --check dist/motion.js && node --check server.mjs && node check.mjs"
+    "check": "node --check dist/data.js && node --check dist/routes.js && node --check dist/lang.js && node --check dist/intro.js && node --check dist/views.js && node --check dist/case.js && node --check dist/forma.js && node --check dist/about.js && node --check dist/motion.js && node --check server.mjs && node check.mjs"
   }
 }

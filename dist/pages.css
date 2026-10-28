@@ -128,7 +128,8 @@ button{font:inherit;color:inherit}
 .cv{margin-top:36px}
 .cv div{grid-template-columns:12em 1fr}
 .cv ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}
-.cv li b{display:inline-block;min-width:8.5em;font-weight:700}
+.cv li{padding-left:12em}
+.cv li b{display:inline-block;width:12em;margin-left:-12em;padding-right:12px;font-weight:700}
 .closing{margin-top:150px;border-top:1px solid var(--ink);padding-top:16px}
 .closing h2{margin:10px 0 0;font-weight:800;font-size:clamp(36px,8vw,140px);line-height:.9;letter-spacing:-.03em;text-transform:uppercase}
 .closing a{text-decoration:none}
@@ -147,6 +148,7 @@ button{font:inherit;color:inherit}
 @media (max-width:620px){
   .method ol,.repos ul{grid-template-columns:1fr}
   .orbit{position:static;justify-content:flex-start;padding:8px;border-top:1px solid var(--ink)}
-  .cv li b{display:block}
+  .cv li{padding-left:0}.cv li b{display:block;width:auto;margin-left:0}
+  .doc{grid-template-columns:2em 1fr}.doc .mono{grid-column:2}
 }
 @media (prefers-reduced-motion:reduce){.layers li{transition:none}}

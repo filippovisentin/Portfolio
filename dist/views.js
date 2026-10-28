@@ -69,7 +69,7 @@
     const count = works.filter(w => on(w.dataset.d)).length;
     const words = en() ? ['project', 'projects'] : ['progetto', 'progetti'];
     status.textContent = `${count} ${count === 1 ? words[0] : words[1]}${state.filter === 'all' ? '' : ' · ' + labels[state.filter][en() ? 1 : 0]}`;
-    if (state.view === 'tavola') dispatchEvent(new Event('resize'));   // ridisegna il filo
+    if (state.view === 'tavola') dispatchEvent(new Event('resize'));   // motion.js rimisura la profondità delle pile
   };
 
   controls.addEventListener('click', e => {
@@ -95,7 +95,7 @@
     const container = state.view === 'indice' ? table : board;
     const link = [...container.querySelectorAll('a')].find(a => a.getAttribute('href') === state.last);
     setTimeout(() => {
-      scrollTo(0, state.scroll);
+      scrollTo({ top: state.scroll, behavior: 'instant' });
       if (link && !link.closest('.off')) link.focus({ preventScroll: true });
     });
   }

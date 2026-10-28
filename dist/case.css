@@ -16,7 +16,10 @@ img{display:block;max-width:100%;height:auto}
 header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:22px var(--gut) 0}
 .brand{text-decoration:none;font-weight:700;font-size:14px;line-height:1.1;text-transform:uppercase}
 nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
-nav a{text-decoration:none}
+nav a{text-decoration:none}nav a[aria-current]{text-decoration:underline;text-underline-offset:5px}
+#language{appearance:none;border:1px solid var(--ink);background:none;color:var(--ink);font:12px/1 "Courier Prime",ui-monospace,monospace;letter-spacing:.04em;padding:5px 7px;cursor:pointer}
+#language:hover{background:var(--lime)}#language:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media (max-width:620px){header{flex-direction:column;gap:14px}nav{gap:8px 14px;align-items:center}}
 
 /* griglia della pagina: 12 colonne, stessi margini della tavola */
 .wrap{margin:0 var(--gut)}

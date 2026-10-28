@@ -32,7 +32,7 @@ Verifica la sintassi di tutti gli script e l'integrità del sito su ogni pagina:
 | `dist/lavagna.css` · `case.css` · `pages.css` | Tavola · casi studio · Codice e Info |
 | `dist/routes.js` | Porta i vecchi indirizzi (`#home`, `#index`, `#<progetto>`, `#code`, `#about`) alle pagine nuove |
 | `dist/lang.js` | Italiano / inglese con `data-it` / `data-en`; la scelta resta salvata (`portfolio-language`) |
-| `dist/board.js` · `views.js` | Filo che collega i progetti · vista Tavola / Indice, filtri e ritorno allo stesso punto |
+| `dist/views.js` · `intro.js` | Vista Tavola / Indice, filtri e ritorno allo stesso punto · apertura con le torri (una volta per sessione) |
 | `dist/case.js` · `forma.js` · `about.js` | Ritorno alla tavola e ingrandimento dell'atlante · vista 3D di Forma · copia dell'email |
 | `dist/img/` | Disegni dei progetti in bianco e nero e dettagli dell'atlante |
 | `dist/data.js` · `dims.js` | Testi, didascalie, crediti e immagini dei progetti; dati di Forma; profilo · dimensioni delle immagini |
@@ -46,7 +46,7 @@ Ogni foto esiste in tre misure WebP (`nome-s` 720 px, `nome-m` 1600 px, `nome` f
 
 ## Pagine e interazioni
 
-- **Tavola:** sette disegni di progetto in bianco e nero su un unico foglio, a scale diverse. Al passaggio del cursore compare la fotografia; un filo tratteggiato collega i progetti nell'ordine 01 → 07. Sotto i 1000 px diventa una sequenza verticale.
+- **Tavola:** sette progetti su un unico foglio, ognuno come una pila di disegni e fotografie in bianco e nero, a scale e quote diverse. I blocchi entrano mentre si scorre e i fogli si spostano a profondità diverse; al passaggio del cursore la pila si apre e compare la fotografia a colori. All'apertura, una volta per sessione, le torri salgono su una griglia in prospettiva. Sotto i 1000 px diventa una sequenza verticale.
 - **Indice:** gli stessi progetti in tabella, con gli stessi filtri (Tutti, Exhibition, Architettura, Product & service). Vista e filtro restano nell'indirizzo; tornando da un progetto si ritrovano vista, filtro, posizione e focus.
 - **Casi studio:** cartiglio con corso, docenti, anno e gruppo; disegno d'apertura; capitoli; confronto giorno/notte (BIVACUUM); processo; atlante tecnico con un dettaglio per elaborato, ingrandibile nella pagina; progetti affini per tema.
 - **Codice:** Forma, modellatore 3D in Rust in stile Rhino 8. Una vista 3D nella pagina accetta i comandi della demo (Rectangle, SelLast, Extrude, Box, Save…), si ruota trascinando o da tastiera; schermate dell'app, demo di Ask AI, metodo, architettura, repository.

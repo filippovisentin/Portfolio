@@ -23,6 +23,9 @@ html.motion [data-wipe].in img{transform:scale(1)}
 [data-depth]{overflow:hidden}
 [data-depth] > img:first-child{will-change:transform}
 
+/* scorrimento morbido per i link interni (salta al contenuto, ancore dei casi studio) */
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
 /* ---------------------------------------------------------------- micro-interazioni */
 /* l'evidenziatore lime cresce da sinistra invece di comparire di colpo */
 .work .name,.index .name a,.affini strong,.next strong,.links a,.socials a,.doc strong,.mail a,.closing a,.inline,
@@ -44,24 +47,6 @@ button:active,.copy:active{transform:scale(.96)}
 .doc:hover .arrow,.doc:focus-visible .arrow{transform:translateY(4px)}
 .next .to strong,.affini strong{transition:background-size var(--t-short) var(--ease-std),transform var(--t-short) var(--ease-std)}
 .next a.to:hover strong{transform:translateX(6px)}
-
-/* ---------------------------------------------------------------- cursore (solo mouse o trackpad) */
-.cursor{display:none}
-@media (hover:hover) and (pointer:fine){
-  html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor canvas{cursor:none}
-  html.has-cursor input,html.has-cursor textarea,html.has-cursor [contenteditable]{cursor:text}   /* il cursore di testo resta quello di sistema */
-  html.has-cursor .cursor{display:block;position:fixed;inset:0 auto auto 0;z-index:100;pointer-events:none}
-  .cursor .dot{position:fixed;left:0;top:0;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--ink)}
-  .cursor .ring{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid var(--ink);border-radius:50%;
-    display:grid;place-items:center;transition:width var(--t-short) var(--ease-std),height var(--t-short) var(--ease-std),margin var(--t-short) var(--ease-std),background-color var(--t-short) var(--ease-std),border-color var(--t-short) var(--ease-std)}
-  .cursor .ring span{font:700 10px/1 "Courier Prime",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);opacity:0;transition:opacity var(--t-micro) var(--ease-std)}
-  .cursor.link .ring{width:54px;height:54px;margin:-27px 0 0 -27px;background:var(--lime);border-color:var(--lime)}
-  .cursor.label .ring{width:84px;height:84px;margin:-42px 0 0 -42px;background:var(--lime);border-color:var(--ink)}
-  .cursor.label .ring span{opacity:1}
-  .cursor.text .ring{opacity:0}
-  .cursor.down .ring{width:26px;height:26px;margin:-13px 0 0 -13px}
-  .cursor.hidden{opacity:0}
-}
 
 /* ---------------------------------------------------------------- passaggio tra pagine (dove il browser lo supporta) */
 @view-transition{navigation:auto}

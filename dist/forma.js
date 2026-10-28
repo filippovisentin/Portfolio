@@ -118,7 +118,7 @@
   const draw = () => {
     const dpr = Math.min(devicePixelRatio || 1, 2);
     const W = canvas.clientWidth, H = canvas.clientHeight;
-    if (canvas.width !== Math.round(W * dpr)) { canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr) }
+    if (canvas.width !== Math.round(W * dpr) || canvas.height !== Math.round(H * dpr)) { canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr) }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, W, H);
 
@@ -165,11 +165,16 @@
     }
 
     const list = objects.map(describe).join('; ');
-    canvas.setAttribute('aria-label', objects.length
+    const label = objects.length
       ? T(`Vista 3D di Forma: ${list}.`, `Forma 3D view: ${list}.`)
-      : T('Vista 3D di Forma: griglia vuota di 8 × 6 metri.', 'Forma 3D view: empty 8 × 6 metre grid.'));
-    status.textContent = T(`Oggetti ${objects.length} · selezionati ${selected().length} · unità cm`, `Objects ${objects.length} · selected ${selected().length} · units cm`);
+      : T('Vista 3D di Forma: griglia vuota di 8 × 6 metri.', 'Forma 3D view: empty 8 × 6 metre grid.');
+    if (canvas.getAttribute('aria-label') !== label) canvas.setAttribute('aria-label', label);
+    const text = T(`Oggetti ${objects.length} · selezionati ${selected().length} · unità cm`, `Objects ${objects.length} · selected ${selected().length} · units cm`);
+    if (status.textContent !== text) status.textContent = text;
   };
+  // trascinando arrivano più eventi che fotogrammi: si disegna una volta per fotogramma
+  let frame = 0;
+  const redraw = () => { if (!frame) frame = requestAnimationFrame(() => { frame = 0; draw() }) };
 
   // ---------------------------------------------------------------- interazione
   form.addEventListener('submit', e => { e.preventDefault(); run(input.value); input.value = '' });
@@ -197,7 +202,7 @@
     if (!drag) return;
     yaw = drag[2] + (e.clientX - drag[0]) * 0.01;
     pitch = Math.max(0.12, Math.min(1.45, drag[3] + (e.clientY - drag[1]) * 0.006));
-    draw();
+    redraw();
   });
   canvas.addEventListener('pointerup', () => drag = null);
   canvas.addEventListener('keydown', e => {
@@ -209,7 +214,7 @@
     if (v === 'top') { yaw = 0; pitch = 1.45 } else if (v === 'iso') { yaw = -0.62; pitch = 0.6 } else yaw += Number(v);
     draw();
   }));
-  new ResizeObserver(draw).observe(canvas);
+  new ResizeObserver(redraw).observe(canvas);
   addEventListener('langchange', draw);
   draw();
 

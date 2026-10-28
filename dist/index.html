@@ -6,18 +6,20 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<title>Filippo Antonio Visentin — Progetti</title>
+<title data-it="Filippo Antonio Visentin — Progetti" data-en="Filippo Antonio Visentin — Work">Filippo Antonio Visentin — Progetti</title>
 <link rel="icon" href="favicon.svg">
 <link rel="preload" href="fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/courier-prime.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="lavagna.css">
 <link rel="stylesheet" href="motion.css">
+<link rel="stylesheet" href="intro.css">
+<script src="intro.js"></script>
 <script src="motion.js" defer></script>
 <link rel="preload" as="image" href="img/mb-pianta-bw.webp" fetchpriority="high">
 <meta name="description" content="Filippo Antonio Visentin — Product &amp; Interior Design, Politecnico di Milano. Sette progetti su una tavola.">
 <link rel="canonical" href="https://filippovisentin.pages.dev/">
 <script src="routes.js"></script>
 <script src="lang.js" defer></script>
-<script src="board.js" defer></script>
 <script src="views.js" defer></script>
 </head>
 <body>
@@ -34,7 +36,7 @@
 </header>
 
 <div class="sheet-head">
-  <h1><i data-it="Tavola 01" data-en="Board 01">Tavola 01</i> — <span data-it="Progetti selezionati, 2025–2026" data-en="Selected work, 2025–2026">Progetti selezionati, 2025–2026</span></h1>
+  <h1 class="sr-only" data-it="Progetti" data-en="Work">Progetti</h1>
   <span class="mono" data-it="Product &amp; Interior Design · Politecnico di Milano · 7 lavori · scale diverse" data-en="Product &amp; Interior Design · Politecnico di Milano · 7 works · varied scales">Product &amp; Interior Design · Politecnico di Milano · 7 lavori · scale diverse</span>
 </div>
 
@@ -57,31 +59,31 @@
 <main id="main" tabindex="-1" class="views">
 <ol class="board" id="tavola" tabindex="-1">
   <li data-d="exhibition" class="work mb big" style="--i:0"><a href="monoblock.html">
-    <span class="draw"><img class="line" src="img/mb-pianta-bw.webp" alt="" width="2800" height="870" style="view-transition-name:vt-monoblock"><img class="photo" src="assets/mb-fauteuil-m.webp" srcset="assets/mb-fauteuil-s.webp 720w, assets/mb-fauteuil-m.webp 1600w, assets/mb-fauteuil.webp 3200w" sizes="58vw" width="1600" height="1235" alt="" loading="lazy"></span>
+    <span class="draw"><img class="under ph p2" src="img/ph-mb-selene.webp" alt="" width="560" height="418" decoding="async"><img class="under ph p3" src="img/ph-mb-percorso.webp" alt="" width="560" height="418" decoding="async"><img class="under ph" src="img/ph-mb-sedia4999.webp" alt="" width="560" height="418" decoding="async"><img class="under u1" src="img/mb-det-30.webp" alt="" width="1400" height="1370" decoding="async"><img class="under u2" src="img/mb-det-37.webp" alt="" width="1400" height="924" decoding="async"><img class="line" src="img/mb-pianta-bw.webp" alt="" width="2800" height="870" style="view-transition-name:vt-monoblock"><img class="photo" src="assets/mb-fauteuil-m.webp" srcset="assets/mb-fauteuil-s.webp 720w, assets/mb-fauteuil-m.webp 1600w, assets/mb-fauteuil.webp 3200w" sizes="47vw" width="1600" height="1235" alt="" loading="lazy"></span>
     <span class="cap"><span class="quota"></span><span class="n">01</span><span class="name">MONOBLOCK</span><span class="mono meta" data-it="Tesi · Exhibition design · 2026 · pianta" data-en="Thesis · Exhibition design · 2026 · plan">Tesi · Exhibition design · 2026 · pianta</span></span>
   </a></li>
   <li data-d="architecture" class="work bv big" style="--i:1"><a href="bivacuum.html">
-    <span class="draw"><img class="line" src="img/bv-schizzo-bw.webp" alt="" width="1600" height="1850" style="view-transition-name:vt-bivacuum"><img class="photo" src="assets/bv-cover-m.webp" srcset="assets/bv-cover-s.webp 720w, assets/bv-cover-m.webp 1600w, assets/bv-cover.webp 3200w" sizes="17vw" width="1600" height="900" alt="" loading="lazy"></span>
+    <span class="draw"><img class="under ph p2" src="img/ph-bv-interno-notte.webp" alt="" width="560" height="315" loading="lazy" decoding="async"><img class="under ph p3" src="img/ph-bv-lucernario.webp" alt="" width="560" height="315" loading="lazy" decoding="async"><img class="under ph" src="img/ph-bv-finestra.webp" alt="" width="560" height="314" loading="lazy" decoding="async"><img class="under u1" src="img/bv-schizzo-griglia-bw.webp" alt="" width="1132" height="1600" loading="lazy" decoding="async"><img class="under u2" src="img/bv-fotovoltaico-det.webp" alt="" width="830" height="382" loading="lazy" decoding="async"><img class="line" src="img/bv-schizzo-bw.webp" alt="" width="1600" height="1850" style="view-transition-name:vt-bivacuum"><img class="photo" src="assets/bv-cover-m.webp" srcset="assets/bv-cover-s.webp 720w, assets/bv-cover-m.webp 1600w, assets/bv-cover.webp 3200w" sizes="14vw" width="1600" height="900" alt="" loading="lazy"></span>
     <span class="cap"><span class="quota"></span><span class="n">02</span><span class="name">BIVACUUM</span><span class="mono meta" data-it="Architettura · Spazio minimo · 2026 · schizzo" data-en="Architecture · Minimum space · 2026 · sketch">Architettura · Spazio minimo · 2026 · schizzo</span></span>
   </a></li>
   <li data-d="exhibition" class="work ot big" style="--i:2"><a href="oltreetrusco.html">
-    <span class="draw"><img class="line" src="img/ot-schizzo-bw.webp" alt="" width="1600" height="1014" loading="lazy" style="view-transition-name:vt-oltreetrusco"><img class="photo" src="assets/ot-cover-m.webp" srcset="assets/ot-cover-s.webp 720w, assets/ot-cover-m.webp 1600w, assets/ot-cover.webp 3200w" sizes="28vw" width="1600" height="1083" alt="" loading="lazy"></span>
+    <span class="draw"><img class="under ph p2" src="img/ph-ot-sala3.webp" alt="" width="397" height="560" decoding="async"><img class="under ph p3" src="img/ph-ot-sala4-a.webp" alt="" width="520" height="560" decoding="async"><img class="under ph" src="img/ph-ot-sala2.webp" alt="" width="560" height="379" decoding="async"><img class="under u1" src="img/ot-schizzo-2-bw.webp" alt="" width="1600" height="977" decoding="async"><img class="under u2" src="img/ot-sequenza-bw.webp" alt="" width="1600" height="501" decoding="async"><img class="line" src="img/ot-schizzo-bw.webp" alt="" width="1600" height="1014" loading="lazy" style="view-transition-name:vt-oltreetrusco"><img class="photo" src="assets/ot-cover-m.webp" srcset="assets/ot-cover-s.webp 720w, assets/ot-cover-m.webp 1600w, assets/ot-cover.webp 3200w" sizes="23vw" width="1600" height="1083" alt="" loading="lazy"></span>
     <span class="cap"><span class="quota"></span><span class="n">03</span><span class="name">OLTRE ETRUSCO</span><span class="mono meta" data-it="Exhibition design · Cultura · 2025 · schizzo" data-en="Exhibition design · Culture · 2025 · sketch">Exhibition design · Cultura · 2025 · schizzo</span></span>
   </a></li>
   <li data-d="product" class="work pl" style="--i:3"><a href="poliedro.html">
-    <span class="draw"><img class="line" src="img/pl-schizzo-bw.webp" alt="" width="1600" height="1132" loading="lazy" style="view-transition-name:vt-poliedro"><img class="photo" src="assets/pl-cover-m.webp" srcset="assets/pl-cover-s.webp 720w, assets/pl-cover-m.webp 1600w, assets/pl-cover.webp 3200w" sizes="26vw" width="1600" height="900" alt="" loading="lazy"></span>
+    <span class="draw"><img class="under ph p2" src="img/ph-pl-seduta-1.webp" alt="" width="434" height="560" loading="lazy" decoding="async"><img class="under ph p3" src="img/ph-pl-notte.webp" alt="" width="560" height="395" loading="lazy" decoding="async"><img class="under ph" src="img/ph-pl-tramonto.webp" alt="" width="560" height="315" loading="lazy" decoding="async"><img class="under u1" src="img/pl-tav-16-det.webp" alt="" width="1400" height="936" loading="lazy" decoding="async"><img class="line" src="img/pl-schizzo-bw.webp" alt="" width="1600" height="1132" loading="lazy" style="view-transition-name:vt-poliedro"><img class="photo" src="assets/pl-cover-m.webp" srcset="assets/pl-cover-s.webp 720w, assets/pl-cover-m.webp 1600w, assets/pl-cover.webp 3200w" sizes="21vw" width="1600" height="900" alt="" loading="lazy"></span>
     <span class="cap"><span class="quota"></span><span class="n">04</span><span class="name">POLIEDRO</span><span class="mono meta" data-it="Product design · Arredo urbano · 2026 · schizzi" data-en="Product design · Urban furniture · 2026 · sketches">Product design · Arredo urbano · 2026 · schizzi</span></span>
   </a></li>
   <li data-d="architecture" class="work cp" style="--i:4"><a href="compluvio.html">
-    <span class="draw"><img class="line" src="img/cp-sezione-bw.webp" alt="" width="1400" height="1998" loading="lazy" style="view-transition-name:vt-compluvio"><img class="photo" src="assets/cp-cover-m.webp" srcset="assets/cp-cover-s.webp 720w, assets/cp-cover-m.webp 1600w, assets/cp-cover.webp 3200w" sizes="11vw" width="1600" height="1232" alt="" loading="lazy"></span>
+    <span class="draw"><img class="under ph p2" src="img/ph-cp-interno-1.webp" alt="" width="560" height="432" loading="lazy" decoding="async"><img class="under ph" src="img/ph-cp-volta.webp" alt="" width="560" height="432" loading="lazy" decoding="async"><img class="line" src="img/cp-sezione-bw.webp" alt="" width="1400" height="1998" loading="lazy" style="view-transition-name:vt-compluvio"><img class="photo" src="assets/cp-cover-m.webp" srcset="assets/cp-cover-s.webp 720w, assets/cp-cover-m.webp 1600w, assets/cp-cover.webp 3200w" sizes="13vw" width="1600" height="1232" alt="" loading="lazy"></span>
     <span class="cap"><span class="quota"></span><span class="n">05</span><span class="name">COMPLUVIO</span><span class="mono meta" data-it="Architettura · Paesaggio · 2025 · copertura, pianta e sezione" data-en="Architecture · Landscape · 2025 · roof, plan and section">Architettura · Paesaggio · 2025 · copertura, pianta e sezione</span></span>
   </a></li>
   <li data-d="exhibition" class="work pr" style="--i:5"><a href="presence.html">
-    <span class="draw"><img class="line" src="img/pr-prospetti-bw.webp" alt="" width="2000" height="1185" loading="lazy" style="view-transition-name:vt-presence"><img class="photo" src="assets/pr-cover-m.webp" srcset="assets/pr-cover-s.webp 720w, assets/pr-cover-m.webp 1600w, assets/pr-cover.webp 3200w" sizes="28vw" width="1600" height="1235" alt="" loading="lazy"></span>
+    <span class="draw"><img class="under ph p2" src="img/ph-pr-sedute.webp" alt="" width="560" height="432" loading="lazy" decoding="async"><img class="under ph p3" src="img/ph-pr-penombra.webp" alt="" width="560" height="315" loading="lazy" decoding="async"><img class="under ph" src="img/ph-pr-luce.webp" alt="" width="560" height="315" loading="lazy" decoding="async"><img class="line" src="img/pr-prospetti-bw.webp" alt="" width="2000" height="1185" loading="lazy" style="view-transition-name:vt-presence"><img class="photo" src="assets/pr-cover-m.webp" srcset="assets/pr-cover-s.webp 720w, assets/pr-cover-m.webp 1600w, assets/pr-cover.webp 3200w" sizes="27vw" width="1600" height="1235" alt="" loading="lazy"></span>
     <span class="cap"><span class="quota"></span><span class="n">06</span><span class="name">A MATTER OF PRESENCE</span><span class="mono meta" data-it="Exhibition design · POLIEDRO · 2026 · pianta, sezioni e prospetti" data-en="Exhibition design · POLIEDRO · 2026 · plan, sections and elevations">Exhibition design · POLIEDRO · 2026 · pianta, sezioni e prospetti</span></span>
   </a></li>
   <li data-d="product" class="work sp" style="--i:6"><a href="soundplace.html">
-    <span class="draw"><img class="line" src="img/sp-storyboard-bw.webp" alt="" width="2400" height="496" loading="lazy" style="view-transition-name:vt-soundplace"><img class="photo" src="assets/sp-cover-m.webp" srcset="assets/sp-cover-s.webp 720w, assets/sp-cover-m.webp 1600w, assets/sp-cover.webp 3200w" sizes="40vw" width="1132" height="1600" alt="" loading="lazy"></span>
+    <span class="draw"><img class="under ph" src="img/ph-sp-luogo.webp" alt="" width="560" height="298" loading="lazy" decoding="async"><img class="under u1" src="img/sp-percorso-det.webp" alt="" width="1400" height="174" loading="lazy" decoding="async"><img class="line" src="img/sp-storyboard-bw.webp" alt="" width="2400" height="496" loading="lazy" style="view-transition-name:vt-soundplace"><img class="photo" src="assets/sp-cover-m.webp" srcset="assets/sp-cover-s.webp 720w, assets/sp-cover-m.webp 1600w, assets/sp-cover.webp 3200w" sizes="33vw" width="1132" height="1600" alt="" loading="lazy"></span>
     <span class="cap"><span class="quota"></span><span class="n">07</span><span class="name">SOUNDPLACE</span><span class="mono meta" data-it="Service design · Spazio pubblico · 2026 · storyboard" data-en="Service design · Public space · 2026 · storyboard">Service design · Spazio pubblico · 2026 · storyboard</span></span>
   </a></li>
   <li class="marks" aria-hidden="true"><svg viewBox="0 0 150 70">
@@ -101,7 +103,7 @@
 <footer class="mono">
   <p>Filippo Antonio Visentin</p>
   <p data-it="Disegni: elaborati originali, resi in bianco e nero" data-en="Drawings: original project drawings, rendered in black and white">Disegni: elaborati originali, resi in bianco e nero</p>
-  <p data-it="Al passaggio del cursore: la fotografia del progetto" data-en="On hover: the project photograph">Al passaggio del cursore: la fotografia del progetto</p>
+  <p class="hover-note" data-it="Al passaggio del cursore: la fotografia del progetto" data-en="On hover: the project photograph">Al passaggio del cursore: la fotografia del progetto</p>
   <p><a href="info.html" data-it="Info / Contatti" data-en="About / Contact">Info / Contatti</a></p>
 </footer>
 </body>

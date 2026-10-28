@@ -1,10 +1,8 @@
-// Movimento del sito: comparsa allo scorrimento, immagini che si scoprono, profondità leggera,
-// cursore per mouse e trackpad. Regole e durate in motion.css.
-// Con prefers-reduced-motion niente comparse né profondità; il cursore resta ma senza inerzia.
+// Movimento del sito: comparsa allo scorrimento, immagini che si scoprono, profondità leggera.
+// Sulla tavola i fogli delle pile stanno a profondità diverse. Regole e durate in motion.css.
+// Con prefers-reduced-motion niente comparse né profondità.
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const en = () => document.documentElement.lang === 'en';
 
   // ---------------------------------------------------------------- comparsa allo scorrimento
   if (!reduced && 'IntersectionObserver' in window) {
@@ -24,80 +22,78 @@
     document.documentElement.classList.add('motion');
     items.forEach(el => io.observe(el));
     // riserva: se l'osservatore non scatta (scheda in secondo piano, salto con un'ancora, browser lento)
-    // ciò che è già sopra il bordo inferiore dello schermo viene mostrato comunque. Il contenuto non resta mai nascosto.
+    // ciò che è già sopra il bordo inferiore dello schermo viene mostrato comunque, per qualche secondo; poi basta l'osservatore.
+    let tries = 0;
     const check = () => {
       const pending = items.filter(el => !el.classList.contains('in'));
       pending.forEach(el => { if (el.getBoundingClientRect().top < innerHeight) { el.classList.add('in'); io.unobserve(el) } });
-      if (pending.length) setTimeout(check, 400);
+      if (pending.length && ++tries < 6) setTimeout(check, 500);
     };
     setTimeout(check, 600);
   }
 
-  // ---------------------------------------------------------------- profondità: le immagini scorrono un poco più lente
+  // ---------------------------------------------------------------- tavola: i blocchi entrano quando arrivano sullo schermo
+  const works = [...document.querySelectorAll('.board .work')];
+  if (!reduced && works.length && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }),
+      { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+    document.documentElement.classList.add('board-reveal');
+    works.forEach(w => io.observe(w));
+    // riserva, come sopra: ciò che è già sullo schermo non resta mai nascosto
+    setTimeout(() => works.forEach(w => { if (w.getBoundingClientRect().top < innerHeight) w.classList.add('in') }), 900);
+  } else works.forEach(w => w.classList.add('in'));
+
+  // ---------------------------------------------------------------- profondità
+  // Le immagini scorrono un poco più lente della pagina; sulla tavola i fogli delle pile si spostano
+  // a profondità diverse (--k in lavagna.css) seguendo scorrimento e mouse.
+  // Un solo ciclo per fotogramma che scrive e non legge: le posizioni si misurano al caricamento
+  // e al ridimensionamento, durante lo scorrimento basta scrollY.
   if (!reduced) {
     const layers = [
       ...[...document.querySelectorAll('.board .work .draw')].map(el => [el, el.closest('.big') ? 0.035 : 0.07]),
       ...[...document.querySelectorAll('.key, .chapter figure, .compare figure, .process figure, .portrait')].map(el => [el, 0.05])
     ];
-    if (layers.length) {
-      let ticking = false;
-      const update = () => {
-        ticking = false;
-        const mid = innerHeight / 2;
-        for (const [el, k] of layers) {
-          const r = el.getBoundingClientRect();
-          if (r.bottom < -200 || r.top > innerHeight + 200) continue;
-          const y = Math.max(-24, Math.min(24, (r.top + r.height / 2 - mid) * -k));
-          el.style.translate = `0 ${y.toFixed(1)}px`;   // translate è separato da transform: non tocca rotazioni e ingrandimenti
-        }
+    const deep = works.length > 0 && matchMedia('(min-width: 1001px)').matches;
+    if (layers.length || deep) {
+      let at = [], piles = [], mx = 0, my = 0, tx = 0, ty = 0, raf = 0;
+      const clamp = (v, m) => Math.max(-m, Math.min(m, v));
+      const frame = () => {
+        raf = 0;
+        const y = scrollY, vh = innerHeight, mid = vh / 2;
+        tx += (mx - tx) * 0.08; ty += (my - ty) * 0.08;
+        layers.forEach(([el, k], i) => {
+          const d = at[i] - y - mid;
+          if (Math.abs(d) < vh + 200) el.style.translate = `0 ${clamp(-d * k, 24).toFixed(1)}px`;
+        });
+        if (deep) works.forEach((w, i) => {
+          const [top, bottom] = piles[i];
+          if (bottom - y < -100 || top - y > vh + 100) return;
+          const s = clamp(((top + bottom) / 2 - y - mid) / vh, 1);
+          w.style.setProperty('--px', (tx * 10).toFixed(2) + 'px');
+          w.style.setProperty('--py', (ty * 10 - s * 28).toFixed(2) + 'px');
+        });
+        if (Math.abs(mx - tx) + Math.abs(my - ty) > 0.002) raf = requestAnimationFrame(frame);
       };
-      addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update) } }, { passive: true });
-      addEventListener('resize', update);
-      update();
+      const kick = () => { if (!raf) raf = requestAnimationFrame(frame) };
+      const measure = () => {
+        const y = scrollY;
+        layers.forEach(([el]) => el.style.translate = '');
+        at = layers.map(([el]) => { const r = el.getBoundingClientRect(); return r.top + y + r.height / 2 });
+        piles = works.map(w => { const r = w.getBoundingClientRect(); return [r.top + y, r.bottom + y] });
+        kick();
+      };
+      let pending = 0;
+      const remeasure = () => { cancelAnimationFrame(pending); pending = requestAnimationFrame(measure) };
+      addEventListener('scroll', kick, { passive: true });
+      addEventListener('resize', remeasure);   // anche views.js lo invia quando cambiano vista o filtro
+      addEventListener('load', remeasure);
+      document.fonts?.ready.then(remeasure);
+      if (deep) addEventListener('pointermove', e => {
+        if (e.pointerType !== 'mouse') return;
+        mx = e.clientX / innerWidth * 2 - 1; my = e.clientY / innerHeight * 2 - 1;
+        kick();
+      }, { passive: true });
+      measure();
     }
-  }
-
-  // ---------------------------------------------------------------- cursore: punto preciso + anello che lo segue
-  if (fine) {
-    const c = document.createElement('div');
-    c.className = 'cursor hidden';
-    c.setAttribute('aria-hidden', 'true');
-    c.innerHTML = '<span class="dot"></span><span class="ring"><span></span></span>';
-    document.body.append(c);
-    document.documentElement.classList.add('has-cursor');
-    const dot = c.querySelector('.dot'), ring = c.querySelector('.ring'), label = ring.querySelector('span');
-    let x = -100, y = -100, rx = -100, ry = -100, raf = 0;
-    const labels = [
-      ['.board .work a', ['Apri', 'Open']], ['.atlas .zoom', ['Zoom', 'Zoom']], ['.try canvas', ['Ruota', 'Rotate']],
-      ['video', ['Play', 'Play']], ['.viewer img', ['Chiudi', 'Close']]
-    ];
-    const loop = () => {
-      rx += (x - rx) * 0.22; ry += (y - ry) * 0.22;
-      ring.style.transform = `translate(${rx}px, ${ry}px)`;
-      raf = Math.abs(x - rx) + Math.abs(y - ry) > 0.3 ? requestAnimationFrame(loop) : 0;
-    };
-    addEventListener('pointermove', e => {
-      if (e.pointerType !== 'mouse') return;
-      x = e.clientX; y = e.clientY;
-      dot.style.transform = `translate(${x}px, ${y}px)`;
-      if (reduced) { rx = x; ry = y; ring.style.transform = `translate(${x}px, ${y}px)` }
-      else if (!raf) raf = requestAnimationFrame(loop);
-      c.classList.remove('hidden');
-      const t = e.target.closest ? e.target : null;
-      const hit = t && labels.find(([s]) => t.closest(s));
-      const text = t && t.closest('input, textarea, [contenteditable]');
-      c.classList.toggle('label', !!hit && !text);
-      c.classList.toggle('link', !hit && !text && !!(t && t.closest('a[href], button, [data-shot], summary, label')));
-      c.classList.toggle('text', !!text);
-      label.textContent = hit ? hit[1][en() ? 1 : 0] : '';
-    }, { passive: true });
-    addEventListener('pointerdown', e => { if (e.pointerType === 'mouse') c.classList.add('down') });
-    addEventListener('pointerup', () => c.classList.remove('down'));
-    document.addEventListener('pointerleave', () => c.classList.add('hidden'));
-    // il visore dell'atlante è uno strato superiore: il cursore deve stargli sopra
-    document.querySelectorAll('dialog').forEach(d => {
-      d.addEventListener('toggle', () => d.open ? d.append(c) : document.body.append(c));
-      new MutationObserver(() => (d.open ? d.append(c) : document.body.append(c))).observe(d, { attributes: true, attributeFilter: ['open'] });
-    });
   }
 })();

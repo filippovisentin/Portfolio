@@ -1,0 +1,54 @@
+/* Apertura: una griglia in prospettiva su cui salgono le torri; poi la vista si appiattisce in pianta,
+   le torri rientrano e il foglio si alza sulla tavola. Una volta per sessione; mai con prefers-reduced-motion.
+   Bianco e nero come la tavola: facce bianche filettate a inchiostro, qualche torre piena. */
+html.intro body{visibility:hidden}
+html.intro .loader{visibility:visible}
+html.intro .board .work{animation-play-state:paused}   /* le pile entrano quando il foglio si alza */
+
+.loader{--ease-io:cubic-bezier(.77,0,.175,1);--ease-out:cubic-bezier(.23,1,.32,1);--fs:clamp(46px,10.4vw,200px);--pad:var(--gut);
+  position:fixed;inset:0;z-index:10000;background:var(--paper);color:var(--ink);overflow:hidden;cursor:pointer;
+  clip-path:inset(0 0 0 0);transition:clip-path .9s var(--ease-io)}
+.loader.out{clip-path:inset(0 0 100% 0)}
+.ld-stage{position:absolute;inset:0;perspective:1400px;perspective-origin:50% 45%;overflow:hidden}
+.ld-plane{position:absolute;inset:-25% -15%;transform-style:preserve-3d;transform-origin:50% 50%;transform:rotateX(60deg) rotateZ(-40deg) scale(.9);transition:transform 1.2s var(--ease-io)}
+.loader.set .ld-plane{transform:none}
+.ld-plane i{position:absolute;display:block;background:#d6d6d6;opacity:0;transform:scale(.6);transition:opacity .6s var(--ease-out) calc(var(--i) * 45ms),transform 1.4s var(--ease-io) calc(var(--i) * 45ms)}
+.loader.draw .ld-plane i{opacity:1;transform:none}
+.ld-plane .v{top:0;bottom:0;width:1px;left:var(--x)}
+.ld-plane .h{left:0;right:0;height:1px;top:var(--y)}
+.ld-plane .a{background:var(--ink)}
+.ld-plane .top{top:calc(50% - var(--fs) * .84 - 8px)}
+.ld-plane .bot{top:calc(50% + var(--fs) * .84 + 8px)}
+
+.bld{position:absolute;transform-style:preserve-3d;transform:scaleZ(.001);will-change:transform;transition:transform 1.5s cubic-bezier(.16,1,.3,1) calc(200ms + var(--dl));
+  --c1:#fff;--c2:#fff;--c3:#f2f2f2;--edge:var(--ink)}
+.bld.k{--c1:#2a2a2a;--c2:var(--ink);--c3:#000;--edge:#fff}
+.bld b{position:absolute;display:block;background:var(--c2);box-shadow:inset 0 0 0 1px var(--edge)}
+.bld .sh{inset:0;background:rgba(17,17,17,.08);box-shadow:none;transform:translate(10%,14%)}
+.bld .rf{inset:0;transform:translateZ(var(--h));background:var(--c1)}
+.bld .n,.bld .s{left:0;width:100%;height:var(--h);transform-origin:0 0;transform:rotateX(90deg)}
+.bld .n{top:0}.bld .s{top:100%;background:var(--c3)}
+.bld .w,.bld .e{top:0;height:100%;width:var(--h);transform-origin:0 0;transform:rotateY(-90deg)}
+.bld .w{left:0}.bld .e{left:100%;background:var(--c3)}
+.loader.draw .bld{transform:scaleZ(1)}
+.loader.set .bld{transform:scaleZ(.001);transition:transform .7s var(--ease-io) calc(var(--dl) * .4)}
+
+.ld-dimline{position:absolute;left:10%;right:10%;top:calc(50% + var(--fs) * .84 + 44px);height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease-io) 1.1s}
+.ld-dimline::before,.ld-dimline::after{content:'';position:absolute;top:-6px;width:1px;height:13px;background:var(--ink)}
+.ld-dimline::before{left:0}.ld-dimline::after{right:0}
+.loader.draw .ld-dimline{transform:none}
+.ld-name{position:absolute;left:10%;right:10%;top:50%;transform:translateY(-50%);margin:0;font:800 var(--fs)/.84 "Hanken Grotesk",Arial,sans-serif;text-transform:uppercase;letter-spacing:-.03em;text-shadow:0 0 18px var(--paper),0 0 6px var(--paper)}
+.ld-name span{display:block;overflow:hidden}
+.ld-name i{display:block;font-style:normal;transform:translateY(105%);transition:transform .9s var(--ease-out)}
+.loader.draw .ld-name i{transform:none;transition-delay:1s}
+.loader.draw .ld-name span:nth-child(2) i{transition-delay:1.08s}
+/* al posto del verde acido: il cognome si inverte, inchiostro pieno e lettere bianche */
+.ld-name b{font-weight:inherit;padding:0 .04em;background:linear-gradient(var(--ink),var(--ink)) no-repeat 0 0/0% 100%;transition:background-size .6s var(--ease-out),color .6s var(--ease-out),text-shadow .3s}
+.loader.set .ld-name b{background-size:100% 100%;color:var(--paper);text-shadow:none}
+.ld-dim,.ld-coords,.ld-foot>span:first-child{font:12px/1.5 "Courier Prime",ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase}
+.ld-dim{position:absolute;left:10%;right:10%;top:calc(50% + var(--fs) * .84 + 54px);text-align:center;opacity:0;transition:opacity .4s;text-shadow:0 0 10px var(--paper),0 0 4px var(--paper)}
+.loader.set .ld-dim{opacity:1}
+.ld-coords{position:absolute;right:var(--pad);top:22px;text-align:right}
+.ld-foot{position:absolute;left:var(--pad);right:var(--pad);bottom:var(--pad);display:flex;justify-content:space-between;align-items:end}
+.ld-count{font:clamp(48px,9vw,140px)/1 "Courier Prime",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.ld-skip{position:absolute;left:var(--pad);top:22px;font:12px/1.5 "Courier Prime",ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;color:var(--soft)}

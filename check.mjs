@@ -42,7 +42,7 @@ for(const page of pages){
   for(const m of html.matchAll(/target="_blank"[^>]*/g))if(!/rel="noopener noreferrer"/.test(m[0]))throw Error(page+': target=_blank link without rel="noopener noreferrer"');
   for(const m of html.matchAll(/srcset="([^"]+)"/g))for(const part of m[1].split(','))if(!fs.existsSync('dist/'+part.trim().split(' ')[0]))throw Error(page+': missing dist/'+part.trim().split(' ')[0]);
 }
-for(const f of ['data.js','dims.js','routes.js','lang.js','board.js','views.js','case.js','forma.js','about.js','motion.js']){const s=read(f);if(/\beval\s*\(|new\s+Function\s*\(|document\.write\s*\(/.test(s))throw Error('Unsafe dynamic code in dist/'+f)}
+for(const f of ['data.js','dims.js','routes.js','lang.js','intro.js','views.js','case.js','forma.js','about.js','motion.js']){const s=read(f);if(/\beval\s*\(|new\s+Function\s*\(|document\.write\s*\(/.test(s))throw Error('Unsafe dynamic code in dist/'+f)}
 // 404: no scripts at all, CSP present, local files and links exist
 {const nf=read('404.html');
  if(!/<meta http-equiv="Content-Security-Policy"/.test(nf))throw Error('Missing Content-Security-Policy meta tag in dist/404.html');
@@ -51,7 +51,7 @@ for(const f of ['data.js','dims.js','routes.js','lang.js','board.js','views.js',
 // the board's largest image is the first drawing: preload it
 const home=read('index.html');
 const pre=/<link rel="preload" as="image" href="img\/([\w-]+)\.webp"/.exec(home);
-const firstDrawing=/<li data-d="[^"]+" class="work[^"]*"[^>]*><a[^>]*>\s*<span class="draw"><img class="line" src="img\/([\w-]+)\.webp"/.exec(home);
+const firstDrawing=/<li data-d="[^"]+" class="work[^"]*"[^>]*><a[^>]*>\s*<span class="draw">(?:<img class="under[^>]*>)*<img class="line" src="img\/([\w-]+)\.webp"/.exec(home);   // i fogli della pila stanno prima del disegno principale
 if(!pre||!firstDrawing||pre[1]!==firstDrawing[1])throw Error('The LCP preload in index.html must match the first drawing on the board');
 // lavagna images (black-and-white drawings and atlas details): no orphans
 const lav=pages.map(read).join('\n');
