@@ -13,10 +13,13 @@
 html.motion [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity var(--t-medium) var(--ease-in-view),transform var(--t-long) var(--ease-in-view);transition-delay:var(--d,0ms)}
 html.motion [data-reveal].in{opacity:1;transform:none}
 
-/* immagini: si scoprono dal basso, come un foglio che esce dalla cartella */
-html.motion [data-wipe]{clip-path:inset(100% 0 0 0);transition:clip-path var(--t-long) var(--ease-in-view);transition-delay:var(--d,0ms)}
+/* immagini: si scoprono dal basso, come un foglio che esce dalla cartella.
+   Le copre un velo color carta che si ritira verso l'alto: la figura non viene mai ritagliata a zero,
+   altrimenti l'IntersectionObserver la considera invisibile e non la mostra più (il video di Forma restava nascosto). */
+html.motion [data-wipe]{position:relative;clip-path:inset(0)}
+html.motion [data-wipe]::after{content:"";position:absolute;inset:-1px;background:var(--paper);pointer-events:none;transform-origin:50% 0;transition:transform var(--t-long) var(--ease-in-view);transition-delay:var(--d,0ms)}
 html.motion [data-wipe] img{transform:scale(1.06);transition:transform 1100ms var(--ease-in-view)}
-html.motion [data-wipe].in{clip-path:inset(0 0 0 0)}
+html.motion [data-wipe].in::after{transform:scaleY(0)}
 html.motion [data-wipe].in img{transform:scale(1)}
 
 /* profondità leggera: le immagini scorrono un poco più lente della pagina */
@@ -59,6 +62,7 @@ button:active,.copy:active{transform:scale(.96)}
 /* ---------------------------------------------------------------- movimento ridotto: tutto fermo e subito leggibile */
 @media (prefers-reduced-motion:reduce){
   html.motion [data-reveal],html.motion [data-wipe],html.motion [data-wipe] img{opacity:1;transform:none;clip-path:none;transition:none}
+  html.motion [data-wipe]::after{display:none}
   [data-depth] > img:first-child{transform:none!important}
   .work .name,.index .name a,.affini strong,.next strong,.links a,.socials a,.doc strong,.mail a,.closing a,.inline,
   .chips code,.atlas .t span:last-child,.repos strong,.lost .cartiglio a,.shot-tabs button span:last-child,button,.doc,.copy,.doc .arrow{transition:none}

@@ -20,7 +20,7 @@ npm run check
 
 Verifica la sintassi di tutti gli script e l'integrità del sito su ogni pagina: immagini uniche, nessun file mancante o inutilizzato, traduzioni complete, CSP, nessuno script inline o di terze parti, link esterni sicuri.
 
-Ogni pagina carica fogli di stile e script con `?v=<versione>` (per esempio `pages.css?v=5.1.1`). GitHub Pages li fa tenere in cache per 10 minuti: a ogni nuova versione aggiornare il numero in tutti i file HTML, così chi torna sul sito riceve subito gli stili nuovi.
+Ogni pagina carica fogli di stile e script con `?v=<versione>` (per esempio `pages.css?v=5.1.2`). GitHub Pages li fa tenere in cache per 10 minuti: a ogni nuova versione aggiornare il numero in tutti i file HTML, così chi torna sul sito riceve subito gli stili nuovi.
 
 ## Struttura
 
