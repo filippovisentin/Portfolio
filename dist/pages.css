@@ -177,3 +177,27 @@ button{font:inherit;color:inherit}
 .privacy ul{list-style:none;padding:0;margin:28px 0 0;max-width:52em;display:grid;gap:14px}
 .privacy li{padding-left:1.4em;position:relative;line-height:1.55}
 .privacy li::before{content:"—";position:absolute;left:0;color:var(--soft)}
+
+/* Codice: barra FORMA | MISURA, come i comandi della legenda */
+.apps{display:flex;flex-wrap:wrap;gap:4px 32px;margin-top:10px}
+.apps a{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font-weight:800;font-size:clamp(16px,1.4vw,20px);letter-spacing:.02em}
+.apps a::before{content:"";width:11px;height:11px;border:1px solid var(--ink);flex:none}
+.apps a[aria-current]::before{background:var(--ink)}
+.apps a[aria-current]{text-decoration:underline;text-underline-offset:6px}
+.apps a:not([aria-current]):hover{background:linear-gradient(transparent 62%,var(--lime) 62%);color:#111}
+
+/* MISURA: le cinque schermate una sotto l'altra, telefono a sinistra e come funziona a destra;
+   il motore su fascia nera */
+.phones ol{list-style:none;padding:0;margin:24px 0 0}
+.phones li{border-bottom:1px solid var(--ink)}
+.phones figure{margin:0;display:grid;grid-template-columns:minmax(200px,300px) minmax(0,1fr);gap:clamp(28px,6vw,96px);align-items:center;padding:clamp(32px,4vw,56px) 0}
+.phones img{display:block;width:100%;height:auto;border:1px solid var(--ink);border-radius:18px}
+.phones figcaption{display:block;max-width:34em;margin:0}
+.phones h3{margin:10px 0 14px;font-weight:800;font-size:clamp(26px,3vw,44px);line-height:1;text-transform:uppercase;letter-spacing:-.015em}
+.phones figcaption p{margin:0;font-size:clamp(16px,1.25vw,19px);line-height:1.5}
+.engine ol{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px 28px}
+.engine li{border-top:1px solid var(--ink);padding-top:12px}
+.engine h3{margin:8px 0;font-size:18px;font-weight:800;line-height:1.15}
+.engine p{margin:0;font-size:15px}
+@media (max-width:900px){.engine ol{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.phones figure{grid-template-columns:1fr;gap:24px}.phones img{width:72%;margin:0 auto}.engine ol{grid-template-columns:1fr}}

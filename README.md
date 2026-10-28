@@ -20,7 +20,7 @@ npm run check
 
 Verifica la sintassi di tutti gli script e l'integrità del sito su ogni pagina: immagini uniche, nessun file mancante o inutilizzato, traduzioni complete, CSP, nessuno script inline o di terze parti, link esterni sicuri.
 
-Ogni pagina carica fogli di stile e script con `?v=<versione>` (per esempio `pages.css?v=5.2.0`). GitHub Pages li fa tenere in cache per 10 minuti: a ogni nuova versione aggiornare il numero in tutti i file HTML, così chi torna sul sito riceve subito gli stili nuovi.
+Ogni pagina carica fogli di stile e script con `?v=<versione>` (per esempio `pages.css?v=5.3.0`). GitHub Pages li fa tenere in cache per 10 minuti: a ogni nuova versione aggiornare il numero in tutti i file HTML, così chi torna sul sito riceve subito gli stili nuovi.
 
 ## Struttura
 
@@ -29,6 +29,7 @@ Ogni pagina carica fogli di stile e script con `?v=<versione>` (per esempio `pag
 | `dist/index.html` | La tavola dei sette progetti e l'indice con i filtri |
 | `dist/<progetto>.html` | Un caso studio per progetto: `monoblock`, `bivacuum`, `oltreetrusco`, `poliedro`, `compluvio`, `presence`, `soundplace` |
 | `dist/forma.html` | Codice: Forma, con la prova interattiva della riga di comando |
+| `dist/misura.html` | Codice: Misura, web app da telefono che misura i capi da una foto (repository privato); barra FORMA / MISURA in cima alle due pagine |
 | `dist/info.html` | Info / Contatti: bio, curriculum, CV e portfolio in PDF |
 | `dist/404.html` | Pagina non trovata, senza script |
 | `dist/lavagna.css` · `case.css` · `pages.css` | Tavola · casi studio · Codice e Info |

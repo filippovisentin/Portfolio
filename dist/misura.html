@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title data-it="MISURA — Codice — Filippo Antonio Visentin" data-en="MISURA — Code — Filippo Antonio Visentin">MISURA — Codice — Filippo Antonio Visentin</title>
+<link rel="icon" href="favicon.svg">
+<link rel="preload" href="fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="case.css?v=5.3.0">
+<link rel="stylesheet" href="motion.css?v=5.3.0">
+<link rel="stylesheet" href="theme.css?v=5.3.0">
+<script src="theme.js?v=5.3.0"></script>
+<script src="motion.js?v=5.3.0" defer></script>
+<link rel="stylesheet" href="pages.css?v=5.3.0">
+<meta name="description" content="MISURA — Le misure di un capo da una foto, per chi vende abbigliamento vintage.">
+<script src="lang.js?v=5.3.0" defer></script>
+</head>
+<body>
+<a class="skip" href="#main" data-it="Vai al contenuto" data-en="Skip to content">Vai al contenuto</a>
+<header>
+  <a class="brand" href="index.html" translate="no"><span class="brand-name">Filippo Antonio Visentin</span><span class="brand-sub">Design &amp; Engineering · POLI.design</span></a>
+  <nav aria-label="Principale" data-it-label="Principale" data-en-label="Main">
+    <a href="index.html" data-it="Progetti" data-en="Work">Progetti</a>
+    <a href="index.html?vista=indice" data-it="Indice" data-en="Index">Indice</a>
+    <a href="forma.html" aria-current="page" data-it="Codice" data-en="Code">Codice</a>
+    <a href="info.html" data-it="Info / Contatti" data-en="About / Contact">Info / Contatti</a>
+    <button id="language" type="button" aria-label="EN — Switch to English">EN</button>
+  </nav>
+</header>
+
+<div class="crumbs">
+  <span class="mono" data-it="Codice · Applicazione web per telefono" data-en="Code · Mobile web app">Codice · Applicazione web per telefono</span>
+  <span class="mono" data-it="v1 · in sviluppo · repository privato" data-en="v1 · in development · private repository">v1 · in sviluppo · repository privato</span>
+</div>
+<nav class="apps wrap" aria-label="Applicazioni" data-it-label="Applicazioni" data-en-label="Applications"><a href="forma.html">FORMA</a><a href="misura.html" aria-current="page">MISURA</a></nav>
+
+<main id="main" tabindex="-1">
+<article>
+  <div class="wrap grid title">
+    <h1>MISURA</h1>
+    <p class="sub" data-it="Le misure di un capo da una foto, per chi vende abbigliamento vintage." data-en="A garment’s measurements from one photo, for people who sell vintage clothing.">Le misure di un capo da una foto, per chi vende abbigliamento vintage.</p>
+    <dl class="cartiglio stats">
+      <div><dt>1</dt><dd data-it="foto del capo steso, accanto a una stecca da 50 cm" data-en="photo of the garment laid flat, next to a 50 cm stick">foto del capo steso, accanto a una stecca da 50 cm</dd></div>
+      <div><dt>5</dt><dd data-it="categorie: top, giacca, pantalone, gonna, vestito" data-en="categories: top, jacket, trousers, skirt, dress">categorie: top, giacca, pantalone, gonna, vestito</dd></div>
+      <div><dt>±</dt><dd data-it="ogni misura con il suo margine, calcolato dalla foto" data-en="every measurement with its margin, worked out from the photo">ogni misura con il suo margine, calcolato dalla foto</dd></div>
+      <div><dt>64</dt><dd data-it="test automatici, su foto sintetiche" data-en="automated tests, on synthetic photos">test automatici, su foto sintetiche</dd></div>
+    </dl>
+    <p class="links mono"><span data-it="Repository privato · primo test con LQ Milano" data-en="Private repository · first trial with LQ Milano">Repository privato · primo test con LQ Milano</span></p>
+  </div>
+
+  <section class="wrap grid question" aria-labelledby="domanda">
+    <h2 id="domanda" data-it="Si può misurare un capo con una foto?" data-en="Can a garment be measured from a photo?">Si può misurare un capo con una foto?</h2>
+    <p class="lens" data-it="Misura è una web app da telefono per negozi vintage e second-hand: si fotografa il capo steso, con accanto una stecca da 50 cm, e l’app calcola le misure in centimetri, pronte per l’annuncio. Il negoziante le controlla, le corregge se serve e le esporta verso il sito del negozio." data-en="Misura is a phone web app for vintage and second-hand shops: you photograph the garment laid flat, with a 50 cm stick beside it, and the app works out its measurements in centimetres, ready for the listing. The shopkeeper checks them, corrects them if needed and exports them to the shop’s website.">Misura è una web app da telefono per negozi vintage e second-hand: si fotografa il capo steso, con accanto una stecca da 50 cm, e l’app calcola le misure in centimetri, pronte per l’annuncio. Il negoziante le controlla, le corregge se serve e le esporta verso il sito del negozio.</p>
+    <p class="intro" data-it="Come Forma, l’ho costruita con agenti AI (Claude Code) facendo da architetto e revisore: prima una specifica scritta, poi passi piccoli, ognuno rivisto e coperto da test su foto sintetiche. Tutto gira nel browser del telefono: niente server, niente account, niente app store." data-en="Like Forma, I built it with AI agents (Claude Code), acting as architect and reviewer: a written specification first, then small steps, each one reviewed and covered by tests on synthetic photos. Everything runs in the phone’s browser: no server, no account, no app store.">Come Forma, l’ho costruita con agenti AI (Claude Code) facendo da architetto e revisore: prima una specifica scritta, poi passi piccoli, ognuno rivisto e coperto da test su foto sintetiche. Tutto gira nel browser del telefono: niente server, niente account, niente app store.</p>
+  </section>
+
+  <section class="wrap phones" aria-labelledby="schermate">
+    <div class="section-head">
+      <h2 id="schermate"><i data-it="L&#x27;app" data-en="The app">L&#x27;app</i> — <span data-it="dallo scatto all’annuncio" data-en="from photo to listing">dallo scatto all’annuncio</span></h2>
+      <span class="mono" data-it="Cinque passi · telefono, anche offline" data-en="Five steps · phone, offline too">Cinque passi · telefono, anche offline</span>
+    </div>
+    <ol>
+      <li><figure><img src="assets/ms-catalogo-m.webp" srcset="assets/ms-catalogo-s.webp 360w, assets/ms-catalogo-m.webp 563w" sizes="(max-width:620px) 72vw, 300px" width="563" height="1218" alt="Catalogo: i capi misurati, pronti da esportare" data-it-alt="Catalogo: i capi misurati, pronti da esportare" data-en-alt="Catalogue: measured garments, ready to export" loading="lazy"><figcaption><span class="mono">S.01</span><h3 data-it="Il catalogo" data-en="The catalogue">Il catalogo</h3><p data-it="Qui finiscono i capi misurati: foto, misure principali, brand, taglia e prezzo. Il filtro «Da esportare» mostra quelli non ancora pubblicati. Da qui si misura un nuovo capo o si esporta." data-en="Measured garments end up here: photo, main measurements, brand, size and price. The “To export” filter shows the ones not yet published. From here you measure a new garment or export.">Qui finiscono i capi misurati: foto, misure principali, brand, taglia e prezzo. Il filtro «Da esportare» mostra quelli non ancora pubblicati. Da qui si misura un nuovo capo o si esporta.</p></figcaption></figure></li>
+      <li><figure><img src="assets/ms-stecca-m.webp" srcset="assets/ms-stecca-s.webp 360w, assets/ms-stecca-m.webp 563w" sizes="(max-width:620px) 72vw, 300px" width="563" height="1218" alt="La stecca da 50 cm, trovata nella foto, dà la scala" data-it-alt="La stecca da 50 cm, trovata nella foto, dà la scala" data-en-alt="The 50 cm stick, found in the photo, sets the scale" loading="lazy"><figcaption><span class="mono">S.02</span><h3 data-it="Lo scatto e la stecca" data-en="The shot and the stick">Lo scatto e la stecca</h3><p data-it="Si stende il capo e gli si appoggia accanto una stecca da 50 cm. Il telefono va tenuto in piano: una livella a bolla aiuta e lo scatto parte da solo quando è dritto. L’app trova la stecca e ne segna i due estremi; se serve si spostano con il dito, con una lente che ingrandisce." data-en="Lay the garment flat with a 50 cm stick beside it. Hold the phone level: a spirit level helps, and the shot fires by itself when the phone is straight. The app finds the stick and marks its two ends; if needed you drag them with your finger, under a magnifier.">Si stende il capo e gli si appoggia accanto una stecca da 50 cm. Il telefono va tenuto in piano: una livella a bolla aiuta e lo scatto parte da solo quando è dritto. L’app trova la stecca e ne segna i due estremi; se serve si spostano con il dito, con una lente che ingrandisce.</p></figcaption></figure></li>
+      <li><figure><img src="assets/ms-editor-m.webp" srcset="assets/ms-editor-s.webp 360w, assets/ms-editor-m.webp 563w" sizes="(max-width:620px) 72vw, 300px" width="563" height="1218" alt="Editor: punti proposti e misure in cm con il loro margine" data-it-alt="Editor: punti proposti e misure in cm con il loro margine" data-en-alt="Editor: proposed points and measurements in cm with their margin" loading="lazy"><figcaption><span class="mono">S.03</span><h3 data-it="Le misure" data-en="The measurements">Le misure</h3><p data-it="L’app raddrizza la foto, separa il capo dallo sfondo e lo gira con il collo in alto. Poi propone i punti standard della categoria — top, giacca, pantalone, gonna, vestito — e calcola le misure in centimetri, ciascuna con il suo margine. I punti si trascinano; le misure in più si aggiungono con +." data-en="The app straightens the photo, separates the garment from the background and turns it collar-up. Then it proposes the standard points for the category — top, jacket, trousers, skirt, dress — and works out the measurements in centimetres, each with its margin. Points can be dragged; extra measurements are added with +.">L’app raddrizza la foto, separa il capo dallo sfondo e lo gira con il collo in alto. Poi propone i punti standard della categoria — top, giacca, pantalone, gonna, vestito — e calcola le misure in centimetri, ciascuna con il suo margine. I punti si trascinano; le misure in più si aggiungono con +.</p></figcaption></figure></li>
+      <li><figure><img src="assets/ms-dettagli-m.webp" srcset="assets/ms-dettagli-s.webp 360w, assets/ms-dettagli-m.webp 563w" sizes="(max-width:620px) 72vw, 300px" width="563" height="1218" alt="Dettagli del capo, anche letti dalla foto dell’etichetta" data-it-alt="Dettagli del capo, anche letti dalla foto dell’etichetta" data-en-alt="Garment details, also read from a photo of the label" loading="lazy"><figcaption><span class="mono">S.04</span><h3 data-it="I dettagli" data-en="The details">I dettagli</h3><p data-it="Nome, prezzo, brand, taglia, composizione, paese e condizioni. Fotografando l’etichetta, il testo viene letto sul telefono e i campi si compilano da soli. «Salva e misura il prossimo» riparte subito con un altro capo." data-en="Name, price, brand, size, composition, country and condition. Photograph the label and its text is read on the phone, filling in the fields. “Save and measure the next” starts straight away on another garment.">Nome, prezzo, brand, taglia, composizione, paese e condizioni. Fotografando l’etichetta, il testo viene letto sul telefono e i campi si compilano da soli. «Salva e misura il prossimo» riparte subito con un altro capo.</p></figcaption></figure></li>
+      <li><figure><img src="assets/ms-esporta-m.webp" srcset="assets/ms-esporta-s.webp 360w, assets/ms-esporta-m.webp 563w" sizes="(max-width:620px) 72vw, 300px" width="563" height="1218" alt="Esportazione CSV per Shopify e Wix, con copia di sicurezza" data-it-alt="Esportazione CSV per Shopify e Wix, con copia di sicurezza" data-en-alt="CSV export for Shopify and Wix, with a backup copy" loading="lazy"><figcaption><span class="mono">S.05</span><h3 data-it="L’esportazione" data-en="The export">L’esportazione</h3><p data-it="Si scelgono i capi e si scarica il CSV per Shopify o per Wix, pronto da importare nel negozio online, oppure si copia il testo dell’annuncio. Tutto resta sul telefono, quindi una copia di sicurezza salva e ripristina il catalogo." data-en="Pick the garments and download the CSV for Shopify or Wix, ready to import into the online shop, or copy the listing text. Everything stays on the phone, so a backup copy saves and restores the catalogue.">Si scelgono i capi e si scarica il CSV per Shopify o per Wix, pronto da importare nel negozio online, oppure si copia il testo dell’annuncio. Tutto resta sul telefono, quindi una copia di sicurezza salva e ripristina il catalogo.</p></figcaption></figure></li>
+    </ol>
+  </section>
+
+  <section class="wrap engine band" aria-labelledby="motore">
+    <div class="section-head">
+      <h2 id="motore"><i data-it="Il motore" data-en="The engine">Il motore</i> — <span data-it="dalla foto al centimetro" data-en="from photo to centimetre">dalla foto al centimetro</span></h2>
+      <span class="mono" data-it="TypeScript puro · in un Web Worker" data-en="Plain TypeScript · in a Web Worker">TypeScript puro · in un Web Worker</span>
+    </div>
+    <ol>
+      <li><span class="mono">01</span><h3 data-it="La stecca" data-en="The stick">La stecca</h3><p data-it="Un listello da 50 cm accanto al capo: l’app lo trova da sola, come la forma più lunga e sottile della foto, e i suoi due estremi danno la scala." data-en="A 50 cm strip beside the garment: the app finds it by itself as the longest, thinnest shape in the photo, and its two ends set the scale.">Un listello da 50 cm accanto al capo: l’app lo trova da sola, come la forma più lunga e sottile della foto, e i suoi due estremi danno la scala.</p></li>
+      <li><span class="mono">02</span><h3 data-it="L’inclinazione" data-en="The tilt">L’inclinazione</h3><p data-it="I sensori del telefono, e la foto stessa — i bordi della stecca che convergono come binari — dicono quanto il telefono era inclinato. La vista viene raddrizzata." data-en="The phone’s sensors, and the photo itself — the stick’s edges converging like rails — tell how far the phone was tilted. The view is straightened.">I sensori del telefono, e la foto stessa — i bordi della stecca che convergono come binari — dicono quanto il telefono era inclinato. La vista viene raddrizzata.</p></li>
+      <li><span class="mono">03</span><h3 data-it="Il capo" data-en="The garment">Il capo</h3><p data-it="Il capo si separa dallo sfondo e si mette dritto: asse di simmetria, scollo e gambe dicono dov’è l’alto." data-en="The garment is separated from the background and turned upright: symmetry axis, neckline and legs tell which way is up.">Il capo si separa dallo sfondo e si mette dritto: asse di simmetria, scollo e gambe dicono dov’è l’alto.</p></li>
+      <li><span class="mono">04</span><h3 data-it="Le misure" data-en="The measurements">Le misure</h3><p data-it="Per ogni categoria i punti standard della vendita — petto, lunghezza, manica, vita, cavallo — proposti in automatico e trascinabili con una lente." data-en="For each category the standard selling points — chest, length, sleeve, waist, rise — proposed automatically and draggable with a magnifier.">Per ogni categoria i punti standard della vendita — petto, lunghezza, manica, vita, cavallo — proposti in automatico e trascinabili con una lente.</p></li>
+      <li><span class="mono">05</span><h3 data-it="Il margine" data-en="The margin">Il margine</h3><p data-it="Ogni misura porta la sua incertezza in centimetri, calcolata dalla qualità dello scatto. Se foto e sensori non sono d’accordo, l’app lo dice." data-en="Every measurement carries its uncertainty in centimetres, worked out from the quality of the shot. If photo and sensors disagree, the app says so.">Ogni misura porta la sua incertezza in centimetri, calcolata dalla qualità dello scatto. Se foto e sensori non sono d’accordo, l’app lo dice.</p></li>
+      <li><span class="mono">06</span><h3 data-it="L’etichetta" data-en="The label">L’etichetta</h3><p data-it="Una foto dell’etichetta, letta sul telefono, compila taglia, composizione e paese di produzione." data-en="A photo of the label, read on the phone, fills in size, fibre composition and country of manufacture.">Una foto dell’etichetta, letta sul telefono, compila taglia, composizione e paese di produzione.</p></li>
+    </ol>
+  </section>
+
+  <section class="wrap privacy safe" aria-labelledby="sicura">
+    <div class="section-head">
+      <h2 id="sicura"><i data-it="Privacy" data-en="Privacy">Privacy</i> — <span data-it="le foto restano sul telefono" data-en="the photos stay on the phone">le foto restano sul telefono</span></h2>
+      <span class="mono" data-it="Nessun server · nessun account" data-en="No server · no account">Nessun server · nessun account</span>
+    </div>
+    <ul>
+      <li data-it="Le foto vengono elaborate solo nel browser del telefono, in un Web Worker: non partono verso nessun server." data-en="Photos are processed only in the phone’s browser, in a Web Worker: they are never sent to a server.">Le foto vengono elaborate solo nel browser del telefono, in un Web Worker: non partono verso nessun server.</li>
+      <li data-it="Prima di salvare o esportare, i metadati della foto (EXIF, posizione GPS compresa) vengono tolti." data-en="Before saving or exporting, photo metadata (EXIF, including GPS location) is removed.">Prima di salvare o esportare, i metadati della foto (EXIF, posizione GPS compresa) vengono tolti.</li>
+      <li data-it="Il catalogo vive sul dispositivo (IndexedDB), con una copia di sicurezza da scaricare e ripristinare." data-en="The catalogue lives on the device (IndexedDB), with a backup copy to download and restore.">Il catalogo vive sul dispositivo (IndexedDB), con una copia di sicurezza da scaricare e ripristinare.</li>
+      <li data-it="La lettura dell’etichetta gira in locale: i file del riconoscimento del testo sono serviti dallo stesso dominio." data-en="Label reading runs locally: the text-recognition files are served from the same domain.">La lettura dell’etichetta gira in locale: i file del riconoscimento del testo sono serviti dallo stesso dominio.</li>
+      <li data-it="I CSV sono protetti dalle formule nascoste nelle celle; la pagina ha una Content Security Policy restrittiva e nessuno script esterno." data-en="CSV files are protected against formulas hidden in cells; the page has a strict Content Security Policy and no external scripts.">I CSV sono protetti dalle formule nascoste nelle celle; la pagina ha una Content Security Policy restrittiva e nessuno script esterno.</li>
+    </ul>
+  </section>
+
+  <section class="wrap grid arch" aria-labelledby="architettura">
+    <div class="arch-head">
+    <div class="section-head">
+      <h2 id="architettura"><i data-it="Architettura" data-en="Architecture">Architettura</i> — <span data-it="moduli puri, testati uno per uno" data-en="pure modules, tested one by one">moduli puri, testati uno per uno</span></h2>
+      <span class="mono">React · TypeScript · PWA</span>
+    </div>
+    </div>
+    <ol class="layers">
+      <li><code>src/ui</code><span data-it="Interfaccia React: scatto con livella, editor touch con lente, catalogo, esportazione" data-en="React interface: capture with spirit level, touch editor with magnifier, catalogue, export">Interfaccia React: scatto con livella, editor touch con lente, catalogo, esportazione</span></li>
+      <li><code>worker/analyze</code><span data-it="Analisi fuori dal thread dell’interfaccia: lo schermo non si blocca mai" data-en="Analysis off the interface thread: the screen never freezes">Analisi fuori dal thread dell’interfaccia: lo schermo non si blocca mai</span></li>
+      <li><code>lib/stick · tilt · camera</code><span data-it="Stecca, inclinazione da sensori e da foto, modello della fotocamera e del grandangolo" data-en="Stick, tilt from sensors and photo, camera and ultra-wide model">Stecca, inclinazione da sensori e da foto, modello della fotocamera e del grandangolo</span></li>
+      <li><code>lib/rectify · segmentation · orient</code><span data-it="Raddrizzamento, separazione del capo dallo sfondo, verso del capo" data-en="Rectification, garment separation from the background, garment orientation">Raddrizzamento, separazione del capo dallo sfondo, verso del capo</span></li>
+      <li><code>lib/garments · measure</code><span data-it="Misure per categoria, punti proposti, incertezza in centimetri" data-en="Measurements per category, proposed points, uncertainty in centimetres">Misure per categoria, punti proposti, incertezza in centimetri</span></li>
+      <li><code>lib/catalog · export · label</code><span data-it="Catalogo in IndexedDB, CSV Shopify e Wix, backup, lettura dell’etichetta" data-en="IndexedDB catalogue, Shopify and Wix CSV, backup, label reading">Catalogo in IndexedDB, CSV Shopify e Wix, backup, lettura dell’etichetta</span></li>
+    </ol>
+    <ul class="stack mono" aria-label="Tecnologie" data-it-label="Tecnologie" data-en-label="Technologies"><li>React 19</li> <li>TypeScript</li> <li>Vite</li> <li>PWA</li> <li>Web Worker</li> <li>IndexedDB</li> <li>Tesseract.js</li> <li>Vitest</li> <li>Claude Code</li></ul>
+  </section>
+</article>
+</main>
+
+<footer class="mono">
+  <p>Filippo Antonio Visentin — MISURA</p>
+  <p><a href="index.html" data-it="Tavola dei progetti" data-en="Project board">Tavola dei progetti</a> · <a href="info.html#privacy">Privacy</a></p>
+  <p><a href="mailto:filippoantonio.visentin@mail.polimi.it">filippoantonio.visentin@mail.polimi.it</a></p>
+</footer>
+</body>
+</html>

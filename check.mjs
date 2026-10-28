@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
 const context={window:{}};vm.createContext(context);
-vm.runInContext(fs.readFileSync('dist/dims.js','utf8')+fs.readFileSync('dist/data.js','utf8')+';globalThis.items=projects;globalThis.forma=forma;',context);
+vm.runInContext(fs.readFileSync('dist/dims.js','utf8')+fs.readFileSync('dist/data.js','utf8')+';globalThis.items=projects;globalThis.forma=forma;globalThis.misura=misura;',context);
 const dims=context.window.IMAGE_DIMS,ids=new Set(),used=new Map();
 const use=(name,where)=>{if(used.has(name))throw Error(`Duplicate image ${name}: ${used.get(name)} and ${where}`);used.set(name,where);for(const s of ['','-m','-s'])if(!fs.existsSync(`dist/assets/${name}${s}.webp`))throw Error('Missing dist/assets/'+name+s+'.webp');if(!dims[name])throw Error('Missing dimensions for '+name)};
 const both=(x,what)=>{for(const l of ['it','en'])if(!x?.[l])throw Error('Missing translation: '+what)};
@@ -19,6 +19,7 @@ use('about-ritratto','about');
 for(const f of [context.forma.ai.video,context.forma.ai.poster])if(!fs.existsSync('dist/'+f))throw Error('Missing dist/'+f);both(context.forma.ai.label,'ai label');
 vm.runInContext('globalThis.profile=profile;',context);for(const d of context.profile.docs){if(!fs.existsSync('dist/'+d.href))throw Error('Missing dist/'+d.href);both(d.label,d.href);both(d.meta,d.href)}
 context.forma.shots.forEach(s=>{use(s.name,'code');both(s.cap,s.name)});
+context.misura.shots.forEach(s=>{use(s.name,'misura');both(s.cap,s.name)});
 const files=fs.readdirSync('dist/assets').filter(f=>!/-(m|s)\.webp$/.test(f)).map(f=>f.replace('.webp',''));
 const unused=files.filter(f=>!used.has(f));if(unused.length)throw Error('Unused assets: '+unused.join(', '));
 console.log(`Validated ${ids.size} projects, bilingual content and ${used.size} unique images (no duplicates, no orphans).`);
@@ -26,7 +27,7 @@ console.log(`Validated ${ids.size} projects, bilingual content and ${used.size} 
 // Security rules
 // Every page: the lavagna (index.html + one page per project), Code (forma.html) and About (info.html)
 const read=f=>fs.readFileSync('dist/'+f,'utf8');
-const pages=['index.html','forma.html','info.html',...context.items.map(p=>p.id+'.html')];
+const pages=['index.html','forma.html','misura.html','info.html',...context.items.map(p=>p.id+'.html')];
 for(const page of pages){
   if(!fs.existsSync('dist/'+page))throw Error('Missing dist/'+page);
   const html=read(page);

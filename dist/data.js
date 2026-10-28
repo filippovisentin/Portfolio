@@ -151,6 +151,16 @@ const forma = {
  stack:['Rust','wgpu','egui','openNURBS','OpenCascade','Claude Code','GitHub Actions'],
  note:P('Progetto indipendente e clean-room: Rhino è usato solo come riferimento di comportamento (come rispondono i comandi), senza copiare codice, documentazione, icone o interfaccia di McNeel. Non è affiliato né approvato da Robert McNeel & Associates; Rhino e Rhinoceros sono marchi registrati di Robert McNeel & Associates. openNURBS è usato come libreria con la sua licenza. Codice sotto licenza MIT o Apache-2.0.','An independent, clean-room project: Rhino is used only as a behavioural reference (how commands respond), with no McNeel code, documentation, icons or interface copied. It is not affiliated with or endorsed by Robert McNeel & Associates; Rhino and Rhinoceros are registered trademarks of Robert McNeel & Associates. openNURBS is used as a library under its own licence. Code licensed under MIT or Apache-2.0.')
 };
+
+// MISURA: seconda applicazione della pagina Codice (misura.html). Il repository è privato: niente link.
+const misura = {
+ name:'MISURA',
+ shots:[img('ms-catalogo','Catalogo: i capi misurati, pronti da esportare','Catalogue: measured garments, ready to export'),
+  img('ms-stecca','La stecca da 50 cm, trovata nella foto, dà la scala','The 50 cm stick, found in the photo, sets the scale'),
+  img('ms-editor','Editor: punti proposti e misure in cm con il loro margine','Editor: proposed points and measurements in cm with their margin'),
+  img('ms-dettagli','Dettagli del capo, anche letti dalla foto dell’etichetta','Garment details, also read from a photo of the label'),
+  img('ms-esporta','Esportazione CSV per Shopify e Wix, con copia di sicurezza','CSV export for Shopify and Wix, with a backup copy')]
+};
 const repos=[
  {name:'forma',lang:'Rust',url:'https://github.com/filippovisentin/forma',desc:P('Modellatore 3D personale in stile Rhino, costruito con agenti AI.','Personal Rhino-style NURBS modeller, built with AI agents.')},
  {name:'Portfolio',lang:'JavaScript',url:'https://github.com/filippovisentin/Portfolio',live:'https://filippovisentin.pages.dev/',desc:P('Questo sito: HTML, CSS e JavaScript senza dipendenze, pubblicato con GitHub Pages.','This site: dependency-free HTML, CSS and JavaScript, published with GitHub Pages.')},
