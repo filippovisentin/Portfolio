@@ -11,6 +11,7 @@ If you find a vulnerability in this site, email filippoantonio.visentin@mail.pol
 ## Come è protetto il sito / How the site is protected
 
 - Sito statico: nessun server applicativo, nessun database, nessun modulo, nessun cookie, nessun tracciamento.
+- Nel browser restano solo preferenze tecniche, mai inviate: lingua e tema (`localStorage`: `portfolio-language`, `fav-theme`), vista della tavola e apertura già vista (`sessionStorage`). Informativa completa in Info → Privacy e cookie (`info.html#privacy`).
 - Nessuna dipendenza di terze parti: script, font, immagini e video sono serviti dallo stesso dominio.
 - Content Security Policy restrittiva (`<meta>` in ogni pagina di `dist/`; header completi in `dist/_headers` per Cloudflare Pages o Netlify): solo script dello stesso dominio, niente plugin, niente form, niente `<base>` esterno.
 - HTTPS obbligatorio con HSTS (GitHub Pages).

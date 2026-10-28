@@ -10,7 +10,9 @@
   const root = document.documentElement;
   root.classList.add('intro');
   // riserva: qualunque cosa accada, la pagina non resta nascosta
-  const failsafe = setTimeout(() => root.classList.remove('intro'), 7000);
+  // a fine apertura la pagina si mostra e theme.js può chiedere il tema ("introend")
+  const reveal = () => { if (root.classList.contains('intro')) { root.classList.remove('intro'); dispatchEvent(new Event('introend')) } };
+  const failsafe = setTimeout(reveal, 7000);
 
   addEventListener('DOMContentLoaded', () => {
     const it = root.lang !== 'en';
@@ -56,7 +58,7 @@
       loader.classList.add('set');
       setTimeout(() => {
         loader.classList.add('out');
-        root.classList.remove('intro');
+        reveal();
         clearTimeout(failsafe);
       }, fast ? 150 : 650);
       setTimeout(() => loader.remove(), fast ? 1100 : 1700);

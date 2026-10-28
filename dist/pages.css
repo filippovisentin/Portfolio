@@ -172,3 +172,8 @@ button{font:inherit;color:inherit}
 .band .actions .play:hover{background:var(--paper);color:var(--ink);border-color:var(--ink)}
 .band .badge{border-color:var(--lime);color:var(--lime)}
 .band .ai-video video{border:0}
+
+/* privacy e cookie: testo breve in fondo a Info */
+.privacy ul{list-style:none;padding:0;margin:28px 0 0;max-width:52em;display:grid;gap:14px}
+.privacy li{padding-left:1.4em;position:relative;line-height:1.55}
+.privacy li::before{content:"—";position:absolute;left:0;color:var(--soft)}

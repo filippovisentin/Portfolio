@@ -95,13 +95,10 @@ nav a{text-decoration:none}nav a[aria-current]{text-decoration:underline;text-un
 .pr .p3{--ux:88%;--uy:30%;--uw:26%;--ur:-3deg;--fx:14px;--fy:6px}
 .sp .u1{--ux:24%;--uy:-26%;--uw:54%;--ur:-1.5deg;--fx:0px;--fy:-12px;--uo:.3}
 
-/* segni di tavola: crocini di registro agli angoli, scala grafica e nord */
+/* segni di tavola: crocini di registro agli angoli */
 .board::before,.board::after{content:"";position:absolute;width:14px;height:14px;pointer-events:none;
   background:linear-gradient(var(--ink),var(--ink)) 50% 0/1px 100% no-repeat,linear-gradient(var(--ink),var(--ink)) 0 50%/100% 1px no-repeat}
 .board::before{left:-7px;top:-7px}.board::after{right:-7px;bottom:-7px}
-.marks{position:absolute;left:85%;top:40%;width:130px;color:var(--ink)}
-.marks svg{display:block;width:100%;height:auto;overflow:visible}
-.marks text{font:9px "Courier Prime",monospace;fill:var(--soft);letter-spacing:.04em}
 
 /* ingresso: una sola volta, poi tutto fermo */
 @keyframes rise{from{opacity:0;transform:translateY(18px)}}
@@ -155,7 +152,7 @@ footer p{margin:0}
 /* sotto i 1000px: sequenza verticale, il filo sparisce, resta un leggero sfalsamento */
 @media (max-width:1000px){
   .board{aspect-ratio:auto;margin-top:32px}
-  .marks,.board::before,.board::after{display:none}
+  .board::before,.board::after{display:none}
   .work{position:relative;left:auto;top:auto;width:auto;margin:0 0 80px}
   /* in sequenza la didascalia precede il disegno: nessun dubbio su chi appartenga a chi */
   .work a{display:flex;flex-direction:column}

@@ -1,0 +1,59 @@
+/* Tema e puntatore, comuni a tutte le pagine. Script in theme.js.
+   Due temi: chiaro (inchiostro su carta) e negativo (lavagna: disegni bianchi su nero).
+   Il negativo inverte i colori di base; sulla tavola i disegni si invertono uno per uno,
+   così le fotografie restano in positivo. La carta è nero pieno: il foglio invertito di ogni disegno
+   diventa #000 e sparisce sul fondo (i blocchi della tavola sono gruppi a sé, il "screen" non arriva alla pagina). */
+html[data-theme="dark"]{--paper:#000;--ink:#ececec;--soft:#9a9a9a;color-scheme:dark}
+html[data-theme="dark"] :is(.skip:focus,.study){color:#111}
+html[data-theme="dark"] .band{--paper:#161616;--grid:#333}   /* in Forma le fasce restano distinguibili */
+
+/* tavola e indice in negativo: carta nera, tratto bianco */
+html[data-theme="dark"] .draw{mix-blend-mode:screen}
+html[data-theme="dark"] :is(.draw .line,.draw .under,.index .thumb img:not(.photo)){mix-blend-mode:screen;filter:grayscale(1) contrast(1.25) brightness(1.03) invert(1)}
+html[data-theme="dark"] .draw .ph{filter:none;mix-blend-mode:normal;opacity:.5}
+
+/* puntatore: mirino da CAD, piccolo e nitido. Una croce continua nera da 1 px, a pixel interi,
+   con un filo bianco attorno perché si veda anche sul negativo. Accanto le coordinate (theme.js): nere nel chiaro, lime nel negativo. */
+@media (pointer:fine){
+  html,body,a,button,label,summary{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='21' shape-rendering='crispEdges'%3E%3Cpath d='M10.5 1v19M1 10.5h19' stroke='%23fff' stroke-width='3'/%3E%3Cpath d='M10.5 2v17M2 10.5h17' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E") 10 10,crosshair}
+}
+.coords{position:fixed;left:0;top:0;z-index:10002;pointer-events:none;font:11px/1 "Courier Prime",ui-monospace,monospace;letter-spacing:.04em;white-space:nowrap;
+  color:#111;text-shadow:0 0 3px #fff,0 0 3px #fff;opacity:0;transition:opacity .2s ease;will-change:transform}
+.coords.on{opacity:1}
+html[data-theme="dark"] .coords{color:var(--lime);text-shadow:0 0 3px #000,0 0 3px #000}
+
+/* il nome in alto: su una riga, più grande, con sotto la formazione in mono.
+   Evidenziatore chiaro al passaggio, lime pieno al clic: solo sul nome, non sul sottotitolo. */
+.brand{display:grid;gap:6px;text-decoration:none;line-height:1}
+.brand-name{justify-self:start;font-weight:800;font-size:clamp(20px,2.3vw,34px);letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap;
+  padding:3px 5px;margin:-3px -5px;transition:background-color .15s ease,color .15s ease}
+.brand-sub{font:11px/1.2 "Courier Prime",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);opacity:.8}
+.brand:hover .brand-name{background-color:#ecffad;color:#111}
+.brand:active .brand-name,.brand:focus-visible .brand-name{background-color:var(--lime);color:#111}
+.brand:focus-visible{outline:none}
+
+/* pulsante del tema, accanto alla lingua: un quadrato mezzo pieno */
+#theme{appearance:none;display:inline-flex;align-items:center;justify-content:center;width:26px;height:24px;padding:0;border:1px solid var(--ink);background:none;color:var(--ink)}
+#theme i{width:11px;height:11px;border:1px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
+#theme:hover{background:var(--lime);color:#111}
+#theme:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* scelta del tema, una volta, dopo l'apertura: due quadrati, nero e bianco, con il nome sotto.
+   Passando sopra (o con il tasto Tab) la pagina intera si mostra in anteprima nel tema. */
+.theme-ask{position:fixed;inset:0;z-index:10001;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:var(--gut);
+  background:var(--paper);color:var(--ink);font:12px/1.5 "Courier Prime",ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;
+  transition:background-color .3s ease,color .3s ease,opacity .35s ease;animation:ta-in .5s cubic-bezier(.23,1,.32,1) both}
+.theme-ask.out{opacity:0;pointer-events:none}
+@keyframes ta-in{from{opacity:0;transform:translateY(8px)}}
+.ta-q{margin:0;color:var(--soft);text-align:center}
+.ta-opts{display:flex;gap:28px}
+.theme-ask button{appearance:none;border:0;background:none;padding:0;font:inherit;color:inherit;display:flex;flex-direction:column;align-items:center;gap:12px}
+.theme-ask i{display:block;width:clamp(72px,8vw,112px);aspect-ratio:1;border:1px solid var(--ink);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.theme-ask [data-t="dark"] i{background:#000;border-color:#000}
+html[data-theme="dark"] .theme-ask [data-t="dark"] i{border-color:var(--ink)}
+.theme-ask [data-t="light"] i{background:#fff}
+.theme-ask button:hover i,.theme-ask button:focus-visible i{transform:translateY(-6px)}
+.theme-ask button span{padding:1px 4px}
+.theme-ask button:hover span,.theme-ask button:focus-visible span{background:var(--lime);color:#111}
+.theme-ask button:focus-visible{outline:none}
+@media (prefers-reduced-motion:reduce){.theme-ask{animation:none;transition:none}.theme-ask i{transition:none}}
