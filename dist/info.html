@@ -14,14 +14,16 @@
 <link rel="stylesheet" href="theme.css?v=5.4.1">
 <script src="theme.js?v=5.4.1"></script>
 <script src="motion.js?v=5.4.1" defer></script>
-<link rel="stylesheet" href="pages.css?v=5.4.1">
+<link rel="stylesheet" href="pages.css?v=5.4.3">
 <meta name="description" content="Filippo Antonio Visentin — designer di prodotto e d’interni, Politecnico di Milano. Contatti, CV e portfolio in PDF.">
 <script src="lang.js?v=5.4.1" defer></script>
 <script src="about.js?v=5.4.1" defer></script>
+<link rel="stylesheet" href="return-top.css?v=5.4.3">
+<script src="return-top.js?v=5.4.3" defer></script>
 </head>
 <body>
 <a class="skip" href="#main" data-it="Vai al contenuto" data-en="Skip to content">Vai al contenuto</a>
-<header>
+<header id="inizio" tabindex="-1">
   <a class="brand" href="index.html" translate="no"><span class="brand-name">Filippo Antonio Visentin</span><span class="brand-sub">Design &amp; Engineering · POLI.design</span></a>
   <nav aria-label="Principale" data-it-label="Principale" data-en-label="Main">
     <a href="index.html" data-it="Progetti" data-en="Work">Progetti</a>
@@ -63,18 +65,19 @@
         <li><a class="doc" href="docs/Filippo-Antonio-Visentin-CV.pdf" target="_blank" rel="noopener noreferrer" type="application/pdf"><span class="arrow" aria-hidden="true">↓</span><strong data-it="Scarica il CV" data-en="Download CV">Scarica il CV</strong><span class="mono" data-it="PDF · 1 pagina · EN · 110 KB" data-en="PDF · 1 page · EN · 110 KB">PDF · 1 pagina · EN · 110 KB</span><span class="sr-only" data-it=" (si apre in una nuova scheda)" data-en=" (opens in a new tab)"> (si apre in una nuova scheda)</span></a></li>
         <li><a class="doc" href="docs/Filippo-Antonio-Visentin-Portfolio.pdf" target="_blank" rel="noopener noreferrer" type="application/pdf"><span class="arrow" aria-hidden="true">↓</span><strong data-it="Scarica il portfolio" data-en="Download portfolio">Scarica il portfolio</strong><span class="mono" data-it="PDF · 19 pagine · 5 MB" data-en="PDF · 19 pages · 5 MB">PDF · 19 pagine · 5 MB</span><span class="sr-only" data-it=" (si apre in una nuova scheda)" data-en=" (opens in a new tab)"> (si apre in una nuova scheda)</span></a></li>
       </ul>
-    </div>
-  </section>
-
-  <section class="wrap grid bio" aria-labelledby="chi">
+  <section class="bio bio-inline" aria-labelledby="chi">
     <h2 id="chi" class="mono" data-it="Chi sono" data-en="About me">Chi sono</h2>
     <div class="bio-text">
-      <p class="lead" data-it="Sono un designer di prodotto e d’interni. La mia ricerca muove dall’osservazione delle interazioni tra le persone e dei modi reali in cui spazi e oggetti vengono abitati e utilizzati, perché **la forma derivi dall’uso e non lo preceda**." data-en="I am a product and interior designer. My research starts from observing how people interact and how spaces and objects are actually lived in and used, so that **form follows use rather than preceding it**.">Sono un designer di prodotto e d’interni. La mia ricerca muove dall’osservazione delle interazioni tra le persone e dei modi reali in cui spazi e oggetti vengono abitati e utilizzati, perché <strong class="hl">la forma derivi dall’uso e non lo preceda</strong>.</p>
-      <p data-it="Interpreto il design come un gesto che accompagna l’esperienza anziché imporsi, e cerco l’equilibrio tra **rigore tecnico e qualità materica**. **Materiali e luce** sono strumenti progettuali che uso per dare calore e carattere; il riferimento alla natura si traduce in un linguaggio contemporaneo." data-en="I see design as a gesture that accompanies experience instead of imposing itself, and I look for a balance between **technical rigour and material quality**. **Materials and light** are design tools I use to give warmth and character, while references to nature are translated into a contemporary language.">Interpreto il design come un gesto che accompagna l’esperienza anziché imporsi, e cerco l’equilibrio tra <strong class="hl">rigore tecnico e qualità materica</strong>. <strong class="hl">Materiali e luce</strong> sono strumenti progettuali che uso per dare calore e carattere; il riferimento alla natura si traduce in un linguaggio contemporaneo.</p>
-      <p data-it="Nell’ultimo periodo mi dedico alla progettazione e **prototipazione di pezzi stampati in 3D**, a resina e a filamento, e allo sviluppo di **strumenti digitali** come Forma, il mio modellatore 3D open source: è il mio modo di progettare con l’AI." data-en="Recently I have been focusing on designing and **prototyping parts made with resin and filament 3D printing**, and on building **digital tools** such as Forma, my open-source 3D modeller: it is how I design with AI.">Nell’ultimo periodo mi dedico alla progettazione e <strong class="hl">prototipazione di pezzi stampati in 3D</strong>, a resina e a filamento, e allo sviluppo di <strong class="hl">strumenti digitali</strong> come Forma, il mio modellatore 3D open source: è il mio modo di progettare con l’AI.</p>
+      <p class="lead" data-it="Sono un designer di prodotto e d’interni. Osservo come le persone si muovono, si incontrano e usano gli spazi e gli oggetti. È da queste abitudini che parto per progettare: **la forma nasce dall’uso**." data-en="I am a product and interior designer. I observe how people move, meet and use spaces and objects. These everyday habits are where I start designing: **form grows out of use**.">Sono un designer di prodotto e d’interni. Osservo come le persone si muovono, si incontrano e usano gli spazi e gli oggetti. È da queste abitudini che parto per progettare: <strong class="hl">la forma nasce dall’uso</strong>.</p>
+      <p data-it="Cerco soluzioni che tengano insieme **precisione tecnica e cura dei materiali**. Lavoro con **materiali e luce** per dare carattere agli ambienti. La natura, e in particolare la montagna, è un riferimento che ritorna nei miei progetti." data-en="I look for solutions that bring together **technical precision and care for materials**. I work with **materials and light** to give spaces their character. Nature, particularly the mountains, is a recurring reference in my projects.">Cerco soluzioni che tengano insieme <strong class="hl">precisione tecnica e cura dei materiali</strong>. Lavoro con <strong class="hl">materiali e luce</strong> per dare carattere agli ambienti. La natura, e in particolare la montagna, è un riferimento che ritorna nei miei progetti.</p>
+      <p data-it="Oggi mi dedico alla **progettazione e prototipazione con la stampa 3D**, a resina e a filamento. Sviluppo anche **strumenti digitali** come FORMA, il mio modellatore 3D open source, lavorando con agenti AI." data-en="I am currently focused on **design and prototyping with resin and filament 3D printing**. I also develop **digital tools** such as FORMA, my open-source 3D modeller, working with AI agents.">Oggi mi dedico alla <strong class="hl">progettazione e prototipazione con la stampa 3D</strong>, a resina e a filamento. Sviluppo anche <strong class="hl">strumenti digitali</strong> come FORMA, il mio modellatore 3D open source, lavorando con agenti AI.</p>
       <p><a class="inline" href="forma.html" data-it="Scopri Forma →" data-en="Discover Forma →">Scopri Forma →</a></p>
     </div>
   </section>
+    </div>
+  </section>
+
+
 
   <section class="wrap" aria-labelledby="cv">
     <div class="section-head">
@@ -93,7 +96,7 @@
 
   <section class="wrap closing" aria-labelledby="relazione">
     <span class="mono" data-it="Iniziamo una conversazione" data-en="Start a conversation">Iniziamo una conversazione</span>
-    <h2 id="relazione"><a href="mailto:filippoantonio.visentin@mail.polimi.it" data-it="Mettiamoci in relazione →" data-en="Let’s connect →">Mettiamoci in relazione →</a></h2>
+    <h2 id="relazione"><a href="mailto:filippoantonio.visentin@mail.polimi.it" data-it="Parliamone →" data-en="Let’s talk →">Parliamone →</a></h2>
   </section>
   <section class="wrap privacy" id="privacy" aria-labelledby="privacy-t">
     <div class="section-head">
@@ -108,6 +111,7 @@
     </ul>
   </section>
 </article>
+<div class="return-top"><a href="#inizio" data-return-top><span data-it="Torna all’inizio" data-en="Back to top">Torna all’inizio</span><span aria-hidden="true">↑</span></a></div>
 </main>
 
 <footer class="mono">

@@ -1,0 +1,6 @@
+.return-top{display:flex;justify-content:flex-end;margin:48px var(--gut) 0;border-top:1px solid var(--ink);padding-top:12px}
+.return-top a{display:inline-flex;align-items:center;gap:20px;min-height:44px;padding:0 12px;border:1px solid var(--ink);text-decoration:none;color:var(--ink);background:var(--paper);touch-action:manipulation}
+.return-top a:hover,.return-top a:active{background:var(--ink);color:var(--paper)}
+.return-top a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+#inizio{scroll-margin-top:24px}
+#inizio:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}

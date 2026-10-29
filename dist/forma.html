@@ -18,10 +18,14 @@
 <meta name="description" content="FORMA — Un modellatore 3D in stile Rhino 8, scritto in Rust insieme ad agenti AI.">
 <script src="lang.js?v=5.4.1" defer></script>
 <script src="forma.js?v=5.4.1" defer></script>
+<link rel="stylesheet" href="apps.css?v=5.4.2">
+<script src="apps.js?v=5.4.2" defer></script>
+<link rel="stylesheet" href="return-top.css?v=5.4.3">
+<script src="return-top.js?v=5.4.3" defer></script>
 </head>
-<body>
+<body data-app="forma">
 <a class="skip" href="#main" data-it="Vai al contenuto" data-en="Skip to content">Vai al contenuto</a>
-<header>
+<header id="inizio" tabindex="-1">
   <a class="brand" href="index.html" translate="no"><span class="brand-name">Filippo Antonio Visentin</span><span class="brand-sub">Design &amp; Engineering · POLI.design</span></a>
   <nav aria-label="Principale" data-it-label="Principale" data-en-label="Main">
     <a href="index.html" data-it="Progetti" data-en="Work">Progetti</a>
@@ -32,20 +36,45 @@
   </nav>
 </header>
 
-<div class="crumbs">
+
+
+<main id="main" tabindex="-1">
+
+<section class="app-overview wrap" aria-labelledby="apps-heading">
+  <div class="app-intro">
+    <h1 id="apps-heading" data-it="Strumenti che progetto" data-en="Tools I design">Strumenti che progetto</h1>
+    <p data-it="Due app, nate da esigenze concrete. Scegli un progetto per scoprire come funziona e come l’ho costruito." data-en="Two apps, built around real needs. Choose a project to see how it works and how I built it.">Due app, nate da esigenze concrete. Scegli un progetto per scoprire come funziona e come l’ho costruito.</p>
+  </div>
+  <div class="app-choices">
+    <a class="app-choice" data-app-choice="forma" href="forma.html#progetto" aria-labelledby="preview-forma">
+      <div class="app-choice-top mono"><span class="app-number">01</span><span data-it="Modellazione 3D · Desktop" data-en="3D modelling · Desktop">Modellazione 3D · Desktop</span></div>
+      <div class="app-preview"><img src="assets/fm-overview-m.webp" srcset="assets/fm-overview-s.webp 720w, assets/fm-overview-m.webp 1600w" sizes="(max-width:700px) 90vw, 45vw" width="1400" height="875" alt="FORMA: il modellatore con quattro viste e una stanza in 3D" data-it-alt="FORMA: il modellatore con quattro viste e una stanza in 3D" data-en-alt="FORMA: the modeller with four viewports and a 3D room" fetchpriority="high"></div>
+      <h2 id="preview-forma">FORMA</h2>
+      <p data-it="Un modellatore 3D per costruire il mio modo di progettare." data-en="A 3D modeller for building my own way of designing.">Un modellatore 3D per costruire il mio modo di progettare.</p>
+      <p class="app-summary" data-it="Disegno spazi, arredi e dettagli costruttivi con misure precise, lavorando in quattro viste. Ho costruito FORMA per il mio lavoro di interior design: riprende comandi e strumenti familiari a chi usa Rhino e permette di modellare anche partendo da una richiesta in linguaggio naturale, con un’AI sul computer." data-en="I draw spaces, furniture and construction details with precise measurements, working in four viewports. I built FORMA for my interior-design work: it uses commands and tools familiar to Rhino users and can also model from a plain-language request, with AI running on the computer.">Disegno spazi, arredi e dettagli costruttivi con misure precise, lavorando in quattro viste. Ho costruito FORMA per il mio lavoro di interior design: riprende comandi e strumenti familiari a chi usa Rhino e permette di modellare anche partendo da una richiesta in linguaggio naturale, con un’AI sul computer.</p>
+      <span class="app-choice-action"><span data-it="Esplora il progetto" data-en="Explore the project">Esplora il progetto</span><span aria-hidden="true">↘</span></span>
+    </a>
+    <a class="app-choice" data-app-choice="misura" href="misura.html#progetto" aria-labelledby="preview-misura">
+      <div class="app-choice-top mono"><span class="app-number">02</span><span data-it="Abbigliamento · Web app mobile" data-en="Clothing · Mobile web app">Abbigliamento · Web app mobile</span></div>
+      <div class="app-preview app-preview-phone"><img src="assets/ms-editor-m.webp" width="563" height="1218" alt="MISURA: la schermata del telefono con le misure del capo" data-it-alt="MISURA: la schermata del telefono con le misure del capo" data-en-alt="MISURA: the phone screen showing garment measurements"></div>
+      <h2 id="preview-misura">MISURA</h2>
+      <p data-it="Dalla foto di un capo alle misure e al catalogo." data-en="From a garment photo to measurements and a catalogue.">Dalla foto di un capo alle misure e al catalogo.</p>
+      <p class="app-summary" data-it="Pensata per chi vende abbigliamento vintage e second-hand, MISURA ricava le misure da una foto del capo con una stecca di riferimento. Il negoziante controlla i punti, aggiunge i dettagli ed esporta il catalogo per Shopify o Wix. Funziona nel browser del telefono, anche offline, e le foto restano sul dispositivo." data-en="Made for vintage and second-hand clothing sellers, MISURA works out measurements from a photo of a garment beside a reference stick. The shopkeeper checks the points, adds the details and exports the catalogue for Shopify or Wix. It runs in the phone’s browser, offline too, and photos stay on the device.">Pensata per chi vende abbigliamento vintage e second-hand, MISURA ricava le misure da una foto del capo con una stecca di riferimento. Il negoziante controlla i punti, aggiunge i dettagli ed esporta il catalogo per Shopify o Wix. Funziona nel browser del telefono, anche offline, e le foto restano sul dispositivo.</p>
+      <span class="app-choice-action"><span data-it="Esplora il progetto" data-en="Explore the project">Esplora il progetto</span><span aria-hidden="true">↘</span></span>
+    </a>
+  </div>
+</section>
+<article id="progetto" aria-labelledby="project-heading">
+  <div class="crumbs">
   <span class="mono" data-it="Codice · Software open source" data-en="Code · Open-source software">Codice · Software open source</span>
   <span class="mono">v1.0.0 · MIT / Apache-2.0</span>
 </div>
-<nav class="apps wrap" aria-label="Applicazioni" data-it-label="Applicazioni" data-en-label="Applications"><a href="forma.html" aria-current="page">FORMA</a><a href="misura.html">MISURA</a></nav>
-
-<main id="main" tabindex="-1">
-<article>
   <div class="wrap grid title">
-    <h1>FORMA</h1>
-    <p class="sub" data-it="Un programma gratuito per disegnare in 3D, che si usa come Rhino." data-en="A free program for 3D modelling that works like Rhino.">Un programma gratuito per disegnare in 3D, che si usa come Rhino.</p>
+    <h2 id="project-heading" tabindex="-1">FORMA</h2>
+    <p class="sub" data-it="Un modellatore 3D gratuito con comandi e strumenti ispirati a Rhino." data-en="A free 3D modeller with commands and tools inspired by Rhino.">Un modellatore 3D gratuito con comandi e strumenti ispirati a Rhino.</p>
     <div class="blurb">
       <p class="desc" data-it="Forma serve a **modellare spazi e oggetti**, come una stanza, un mobile o un dettaglio costruttivo, con **misure esatte in centimetri**. Si scrive un comando (Box, Extrude, Offset…) o si clicca un’icona, e il modello si costruisce in **quattro viste**: pianta, fronte, lato e prospettiva." data-en="Forma is for **modelling spaces and objects**, such as a room, a piece of furniture or a construction detail, with **exact measurements in centimetres**. You type a command (Box, Extrude, Offset…) or click an icon, and the model is built in **four views**: plan, front, side and perspective.">Forma serve a <strong class="hl">modellare spazi e oggetti</strong>, come una stanza, un mobile o un dettaglio costruttivo, con <strong class="hl">misure esatte in centimetri</strong>. Si scrive un comando (Box, Extrude, Offset…) o si clicca un’icona, e il modello si costruisce in <strong class="hl">quattro viste</strong>: pianta, fronte, lato e prospettiva.</p>
-      <p class="desc" data-it="**Chi conosce Rhino 8 si ritrova subito**: stessi nomi dei comandi, stessi snap, gumball, layer e file .3dm. Gira su **Windows e Linux**, e con **Ask AI** puoi descrivere a parole il modello che vuoi: lo scrive un’AI che lavora sul tuo computer, senza internet." data-en="**Anyone who knows Rhino 8 feels at home**: the same command names, the same snaps, a gumball, layers and .3dm files. It runs on **Windows and Linux**, and with **Ask AI** you can describe the model you want in words: an AI running on your own computer writes it, with no internet needed."><strong class="hl">Chi conosce Rhino 8 si ritrova subito</strong>: stessi nomi dei comandi, stessi snap, gumball, layer e file .3dm. Gira su <strong class="hl">Windows e Linux</strong>, e con <strong class="hl">Ask AI</strong> puoi descrivere a parole il modello che vuoi: lo scrive un’AI che lavora sul tuo computer, senza internet.</p>
+      <p class="desc" data-it="FORMA riprende **comandi e strumenti familiari a chi usa Rhino 8**: snap, gumball, layer e file .3dm. Funziona su **Windows e Linux**. Con **Ask AI** puoi descrivere il modello a parole: un modello AI locale genera lo script per costruirlo, senza connessione a internet." data-en="FORMA uses **commands and tools familiar to Rhino 8 users**: snaps, gumball, layers and .3dm files. It runs on **Windows and Linux**. With **Ask AI**, you can describe a model in words: a local AI model generates the script to build it, without an internet connection.">FORMA riprende <strong class="hl">comandi e strumenti familiari a chi usa Rhino 8</strong>: snap, gumball, layer e file .3dm. Funziona su <strong class="hl">Windows e Linux</strong>. Con <strong class="hl">Ask AI</strong> puoi descrivere il modello a parole: un modello AI locale genera lo script per costruirlo, senza connessione a internet.</p>
       <p class="links"><a href="https://github.com/filippovisentin/forma" target="_blank" rel="noopener noreferrer">Repository ↗<span class="sr-only" data-it=" (si apre in una nuova scheda)" data-en=" (opens in a new tab)"> (si apre in una nuova scheda)</span></a> <a href="https://github.com/filippovisentin/forma/releases/latest" target="_blank" rel="noopener noreferrer"><span data-it="Ultima release ↗" data-en="Latest release ↗">Ultima release ↗</span><span class="sr-only" data-it=" (si apre in una nuova scheda)" data-en=" (opens in a new tab)"> (si apre in una nuova scheda)</span></a> <a href="https://github.com/filippovisentin/forma/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog ↗<span class="sr-only" data-it=" (si apre in una nuova scheda)" data-en=" (opens in a new tab)"> (si apre in una nuova scheda)</span></a></p>
     </div>
   </div>
@@ -53,7 +82,7 @@
   <section class="wrap grid question" aria-labelledby="domanda">
     <h2 id="domanda" data-it="Un designer può costruirsi il proprio strumento di lavoro?" data-en="Can a designer build their own working tool?">Un designer può costruirsi il proprio strumento di lavoro?</h2>
     <p class="lens" data-it="L’ho costruito per il mio lavoro di interior design al Politecnico di Milano, e per rispondere a una domanda precisa: gli agenti AI possono realizzare **un vero programma CAD**, se una persona fa da architetto e da revisore?" data-en="I built it for my interior-design work at the Politecnico di Milano, and to answer a specific question: can AI agents build **a real CAD program** if a person acts as architect and reviewer?">L’ho costruito per il mio lavoro di interior design al Politecnico di Milano, e per rispondere a una domanda precisa: gli agenti AI possono realizzare <strong class="hl">un vero programma CAD</strong>, se una persona fa da architetto e da revisore?</p>
-    <p class="intro" data-it="**Quasi tutto il codice è scritto da agenti** (Claude Code); io definisco l’architettura, **rivedo ogni modifica** e sono l’unico utente. Le regole sono rigide: ogni azione è un comando, gli strati del codice sono verificati automaticamente, ogni comando ha i suoi test e nulla è concluso finché l’integrazione continua non è verde su Linux e Windows." data-en="**Almost all the code is written by agents** (Claude Code); I define the architecture, **review every change** and am the only user. The rules are strict: every action is a command, the code layering is checked automatically, every command ships with tests, and nothing is done until continuous integration is green on Linux and Windows."><strong class="hl">Quasi tutto il codice è scritto da agenti</strong> (Claude Code); io definisco l’architettura, <strong class="hl">rivedo ogni modifica</strong> e sono l’unico utente. Le regole sono rigide: ogni azione è un comando, gli strati del codice sono verificati automaticamente, ogni comando ha i suoi test e nulla è concluso finché l’integrazione continua non è verde su Linux e Windows.</p>
+    <p class="intro" data-it="**Quasi tutto il codice è scritto con agenti AI** (Claude Code). Io definisco l’architettura, **rivedo ogni modifica** e uso il programma nel mio lavoro; al momento sono l’unico utente. Ogni azione passa da un comando e ha i propri test. I controlli automatici verificano la separazione tra i moduli; ogni modifica deve superare i test su Linux e Windows." data-en="**Almost all the code is written with AI agents** (Claude Code). I define the architecture, **review every change** and use the program in my work; I am currently its only user. Every action runs through a command and has its own tests. Automated checks verify module boundaries; each change must pass the tests on Linux and Windows."><strong class="hl">Quasi tutto il codice è scritto con agenti AI</strong> (Claude Code). Io definisco l’architettura, <strong class="hl">rivedo ogni modifica</strong> e uso il programma nel mio lavoro; al momento sono l’unico utente. Ogni azione passa da un comando e ha i propri test. I controlli automatici verificano la separazione tra i moduli; ogni modifica deve superare i test su Linux e Windows.</p>
   </section>
 
   <section class="wrap try-wrap band" aria-labelledby="prova">
@@ -138,13 +167,13 @@
   <section class="wrap method" aria-labelledby="metodo">
     <div class="section-head">
       <h2 id="metodo"><i data-it="Progettare con l&#x27;AI" data-en="Designing with AI">Progettare con l&#x27;AI</i> — <span data-it="il metodo" data-en="the method">il metodo</span></h2>
-      <span class="mono" data-it="Il designer come regista" data-en="The designer as director">Il designer come regista</span>
+      <span class="mono" data-it="Definire e verificare" data-en="Define and review">Definire e verificare</span>
     </div>
-    <p class="lead" data-it="Uso l’intelligenza artificiale **come uno strumento di progetto, non come un autore**. Io definisco il problema, scelgo, verifico e decido; gli agenti AI accelerano le parti ripetitive e mi permettono di costruire strumenti che da solo non avrei potuto scrivere." data-en="I use artificial intelligence **as a design tool, not as an author**. I define the problem, choose, check and decide; AI agents speed up the repetitive parts and let me build tools I could not have written alone.">Uso l’intelligenza artificiale <strong class="hl">come uno strumento di progetto, non come un autore</strong>. Io definisco il problema, scelgo, verifico e decido; gli agenti AI accelerano le parti ripetitive e mi permettono di costruire strumenti che da solo non avrei potuto scrivere.</p>
+    <p class="lead" data-it="Lavoro con gli agenti AI per sviluppare i miei strumenti. **Definisco il problema, scrivo le specifiche e verifico il risultato**. Gli agenti mi aiutano a scrivere il codice e a gestire le attività ripetitive; ogni scelta viene rivista durante lo sviluppo." data-en="I work with AI agents to develop my tools. **I define the problem, write the specifications and check the result**. The agents help me write code and handle repetitive tasks; each decision is reviewed during development.">Lavoro con gli agenti AI per sviluppare i miei strumenti. <strong class="hl">Definisco il problema, scrivo le specifiche e verifico il risultato</strong>. Gli agenti mi aiutano a scrivere il codice e a gestire le attività ripetitive; ogni scelta viene rivista durante lo sviluppo.</p>
     <ol>
-      <li><span class="mono">01</span><h3 data-it="Il designer come regista" data-en="The designer as director">Il designer come regista</h3><p data-it="Scrivo il brief, divido il lavoro in passi piccoli e rivedo ogni risultato: l’AI propone, **la decisione resta mia**." data-en="I write the brief, split the work into small steps and review every result: AI proposes, **the decision stays mine**.">Scrivo il brief, divido il lavoro in passi piccoli e rivedo ogni risultato: l’AI propone, <strong class="hl">la decisione resta mia</strong>.</p></li>
+      <li><span class="mono">01</span><h3 data-it="Definire e verificare" data-en="Define and review">Definire e verificare</h3><p data-it="Scrivo il brief, divido il lavoro in passi piccoli e rivedo ogni risultato: l’AI propone, **la decisione resta mia**." data-en="I write the brief, split the work into small steps and review every result: AI proposes, **the decision stays mine**.">Scrivo il brief, divido il lavoro in passi piccoli e rivedo ogni risultato: l’AI propone, <strong class="hl">la decisione resta mia</strong>.</p></li>
       <li><span class="mono">02</span><h3 data-it="Costruire i propri strumenti" data-en="Building my own tools">Costruire i propri strumenti</h3><p data-it="Forma, il mio modellatore 3D in Rust, è nato così: **io ho fatto da architetto e revisore**, gli agenti AI hanno scritto il codice." data-en="Forma, my 3D modeller written in Rust, was made this way: **I acted as architect and reviewer**, AI agents wrote the code.">Forma, il mio modellatore 3D in Rust, è nato così: <strong class="hl">io ho fatto da architetto e revisore</strong>, gli agenti AI hanno scritto il codice.</p></li>
-      <li><span class="mono">03</span><h3 data-it="L’AI dentro lo strumento" data-en="AI inside the tool">L’AI dentro lo strumento</h3><p data-it="Con Ask AI una richiesta in linguaggio naturale diventa uno script che modella in Forma. Gira sul mio computer e **nulla parte senza il mio Run**." data-en="With Ask AI a plain-language request becomes a script that models in Forma. It runs on my own computer and **nothing starts until I press Run**.">Con Ask AI una richiesta in linguaggio naturale diventa uno script che modella in Forma. Gira sul mio computer e <strong class="hl">nulla parte senza il mio Run</strong>.</p></li>
+      <li><span class="mono">03</span><h3 data-it="L’AI dentro lo strumento" data-en="AI inside the tool">L’AI dentro lo strumento</h3><p data-it="Con Ask AI, una richiesta in linguaggio naturale diventa uno script per modellare in FORMA. L’AI viene eseguita sul mio computer e **lo script parte solo quando premo Run**." data-en="With Ask AI, a plain-language request becomes a script for modelling in FORMA. The AI runs on my computer and **the script starts only when I press Run**.">Con Ask AI, una richiesta in linguaggio naturale diventa uno script per modellare in FORMA. L’AI viene eseguita sul mio computer e <strong class="hl">lo script parte solo quando premo Run</strong>.</p></li>
       <li><span class="mono">04</span><h3 data-it="Anche questo sito" data-en="This website too">Anche questo sito</h3><p data-it="Il portfolio è stato progettato e sviluppato insieme a un agente AI, con **controlli automatici** su immagini, traduzioni e sicurezza." data-en="This portfolio was designed and built together with an AI agent, with **automatic checks** on images, translations and security.">Il portfolio è stato progettato e sviluppato insieme a un agente AI, con <strong class="hl">controlli automatici</strong> su immagini, traduzioni e sicurezza.</p></li>
     </ol>
   </section>
@@ -186,6 +215,7 @@
     <a class="to" href="info.html"><span class="mono" data-it="Chi sono e contatti →" data-en="About and contact →">Chi sono e contatti →</span><strong data-it="Info / Contatti" data-en="About / Contact">Info / Contatti</strong></a>
   </nav>
 </article>
+<div class="return-top"><a href="#inizio" data-return-top><span data-it="Torna all’inizio" data-en="Back to top">Torna all’inizio</span><span aria-hidden="true">↑</span></a></div>
 </main>
 
 <footer class="mono">

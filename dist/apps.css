@@ -1,0 +1,27 @@
+/* App chooser: equal space for a desktop viewport and a complete phone screen. */
+.app-overview{padding-top:32px;padding-bottom:54px}
+.app-intro{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:32px}
+.app-intro h1{margin:0;max-width:12em;font-size:clamp(32px,4.8vw,72px);line-height:1;letter-spacing:-.035em;font-weight:800}
+.app-intro p{margin:0;max-width:24em;font-size:16px;color:var(--soft)}
+.app-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.app-choice{display:flex;flex-direction:column;min-width:0;text-decoration:none;border-top:1px solid var(--ink);padding-top:12px}
+.app-choice:focus-visible{outline:2px solid var(--ink);outline-offset:6px}
+.app-choice-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.app-choice-top .app-number{font-weight:700;color:var(--ink)}
+.app-preview{height:clamp(220px,25vw,390px);display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--ink) 5%,var(--paper));overflow:hidden;padding:24px}
+.app-preview img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 5px 22px #00000018;transition:transform .25s ease}
+.app-preview-phone img{border-radius:12px}
+.app-choice:hover .app-preview img{transform:translateY(-4px)}
+.app-choice h2{margin:20px 0 8px;font-size:clamp(28px,3.2vw,48px);line-height:1;letter-spacing:-.025em}
+.app-choice p{margin:0 0 18px;max-width:29em;font-size:17px;line-height:1.45}
+.app-choice .app-summary{max-width:38em;font-size:16px;line-height:1.6;color:var(--soft);margin-bottom:24px}
+.app-choice-action{display:flex;justify-content:space-between;align-items:center;min-height:44px;margin-top:auto;border-bottom:1px solid var(--ink)}
+.app-choice[aria-current] .app-choice-action{border-bottom:3px solid var(--ink)}
+.app-choice[aria-current] h2{align-self:start;background:var(--lime);color:#111}
+.app-choice[aria-current] .app-number::after{content:' / ✓'}
+#progetto{scroll-margin-top:24px;border-top:1px solid var(--ink);padding-top:18px}
+#progetto[hidden]{display:none}
+#progetto .title h2{grid-column:1/-1;margin:0;font-weight:800;font-size:clamp(34px,13.2vw,236px);line-height:.84;letter-spacing:-.035em;text-transform:uppercase}
+#progetto .title h2:focus{outline:none}
+@media(max-width:700px){.app-intro{display:block}.app-intro p{margin-top:18px}.app-choices{grid-template-columns:1fr;gap:36px}.app-preview{height:260px;padding:20px}.app-overview{padding-bottom:36px}}
+@media(prefers-reduced-motion:reduce){.app-preview img{transition:none}.app-choice:hover .app-preview img{transform:none}}

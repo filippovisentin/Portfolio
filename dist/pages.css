@@ -125,6 +125,10 @@ button{font:inherit;color:inherit}
 .bio-text{grid-column:4/11}
 .bio-text p{margin:0 0 16px;max-width:40em}
 .bio-text .lead{font-size:clamp(20px,2vw,28px);line-height:1.3;margin-bottom:28px}
+.reach .bio-inline{margin-top:36px;padding-top:20px;border-top:1px solid var(--ink)}
+.reach .bio-inline h2{margin-bottom:20px}
+.bio-inline .bio-text{margin-top:0}
+.bio-inline .bio-text .lead{font-size:clamp(20px,1.7vw,25px);line-height:1.4;margin-bottom:20px}
 .inline{font-weight:700;text-decoration:none}
 .inline:hover,.inline:focus-visible{background:linear-gradient(transparent 62%,var(--lime) 62%)}
 .cv{margin-top:36px}
