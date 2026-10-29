@@ -29,7 +29,7 @@
     const b = items[current];
     const [code, name] = [...b.querySelectorAll('.t > span')].map(s => s.textContent.trim());
     img.src = b.dataset.large;
-    img.alt = `Dettaglio ingrandito: ${name}`;
+    img.alt = `${document.documentElement.lang === 'en' ? 'Enlarged detail' : 'Dettaglio ingrandito'}: ${name}`;
     title.textContent = `${code} · ${name}`;
     count.textContent = `${current + 1} / ${items.length}`;
   };
@@ -43,6 +43,7 @@
     if (e.key === 'ArrowLeft') show(current - 1);
     if (e.key === 'ArrowRight') show(current + 1);
   });
+  addEventListener('langchange', () => { if (viewer.open) show(current) });
   // al termine riporta il focus al dettaglio mostrato per ultimo
   viewer.addEventListener('close', () => { img.removeAttribute('src'); items[current].focus() });
 })();

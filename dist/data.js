@@ -168,3 +168,26 @@ const repos=[
 ];
 const profile={github:'https://github.com/filippovisentin',linkedin:'https://www.linkedin.com/in/filippo-antonio-visentin-b0317b2a5',email:'filippoantonio.visentin@mail.polimi.it',
  docs:[{href:'docs/Filippo-Antonio-Visentin-CV.pdf',label:P('Scarica il CV','Download CV'),meta:P('PDF · 1 pagina · EN · 110 KB','PDF · 1 page · EN · 110 KB')},{href:'docs/Filippo-Antonio-Visentin-Portfolio.pdf',label:P('Scarica il portfolio','Download portfolio'),meta:P('PDF · 19 pagine · 5 MB','PDF · 19 pages · 5 MB')}]};
+
+
+// Additional source drawings, original renders and workshop photographs.
+const researchAssets = [
+  img("mb-render-originale","Render D5 originale del percorso","Original D5 render of the exhibition route"),
+  img("mb-studio-luce","Luce sulla partizione, prima della postproduzione","Light on the partition before post-production"),
+  img("bv-studio-aperture","Schizzi condivisi: aperture e configurazioni","Shared project sketches: openings and configurations"),
+  img("bv-studio-spazio","Schizzi condivisi: relazioni tra gli elementi interni","Shared project sketches: relationships between interior elements"),
+  img("ot-concept-sistema","Diagrammi di concept e sviluppo del sistema Oltre","Concept diagrams and development of the Oltre system"),
+  img("ot-partitura","La partitura allestitiva delle sale","Exhibition layout across the rooms"),
+  img("ot-identita","Mockup dell’identità della mostra nello spazio urbano","Mockup of the exhibition identity in the urban setting"),
+  img("pl-contesto-parco","Studio del contesto e del sistema nel parco","Study of the site and the system in the park"),
+  img("pl-studio-lampada","Studio della lampada e dell’aggregazione","Study of the lamp and seating arrangement"),
+  img("cp-mappa-attivita","Analisi delle attività di Cascina Linterno","Activity analysis for Cascina Linterno"),
+  img("cp-mappa-flussi","Studio dei movimenti e degli spazi aperti della Cascina","Study of movement and open spaces at the Cascina"),
+  img("pr-pianta-sezioni","Pianta e sezioni dell’allestimento","Exhibition plan and sections"),
+  img("pr-schema-luce","Schema della luce nell’allestimento","Exhibition lighting layout"),
+  img("sp-concept-modulo","Concept di Walking Tree: albero, modulo e risonatore","Walking Tree concept: tree, module and resonator"),
+  img("pt-telaio","Telaio e componenti sul banco","Frame and components on the workbench"),
+  img("pt-componente","Componente stampato: la mano come riferimento di scala","Printed component: a hand provides a sense of scale"),
+  img("pt-componenti","Pezzi stampati affiancati sul banco","Printed parts side by side on the workbench"),
+  img("pt-assemblaggio","Componenti e assemblaggio FPV","FPV components and assembly")
+];

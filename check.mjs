@@ -15,6 +15,8 @@ for(const p of context.items){
   p.gallery.forEach(g=>{use(g.name,p.id+' gallery');both(g.cap,g.name)});
   p.technical.forEach(s=>{use(s.name,p.id+' atlas');both(s.cap,s.name)});
 }
+vm.runInContext('globalThis.researchAssets=researchAssets;',context);
+context.researchAssets.forEach(a=>{use(a.name,'research/workshop');both(a.cap,a.name)});
 use('about-ritratto','about');
 for(const f of [context.forma.ai.video,context.forma.ai.poster])if(!fs.existsSync('dist/'+f))throw Error('Missing dist/'+f);both(context.forma.ai.label,'ai label');
 vm.runInContext('globalThis.profile=profile;',context);for(const d of context.profile.docs){if(!fs.existsSync('dist/'+d.href))throw Error('Missing dist/'+d.href);both(d.label,d.href);both(d.meta,d.href)}
@@ -27,7 +29,7 @@ console.log(`Validated ${ids.size} projects, bilingual content and ${used.size} 
 // Security rules
 // Every page: the lavagna (index.html + one page per project), Code (forma.html) and About (info.html)
 const read=f=>fs.readFileSync('dist/'+f,'utf8');
-const pages=['index.html','forma.html','misura.html','info.html',...context.items.map(p=>p.id+'.html')];
+const pages=['index.html','forma.html','misura.html','info.html','prototipi.html',...context.items.map(p=>p.id+'.html')];
 for(const page of pages){
   if(!fs.existsSync('dist/'+page))throw Error('Missing dist/'+page);
   const html=read(page);
