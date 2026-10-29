@@ -1,6 +1,6 @@
 // Tema chiaro o negativo. Caricato in <head> senza defer, così la pagina non lampeggia nel tema sbagliato.
-// Sulla home la scelta si chiede ogni volta che finisce l'apertura (evento "introend" da intro.js, una volta per sessione),
-// partendo dal tema già scelto; poi un pulsante accanto alla lingua la cambia. Stili in theme.css.
+// Sulla prima apertura nome e scelta del tema condividono lo stesso velo semitrasparente.
+// Si parte dal tema già scelto; poi un pulsante accanto alla lingua lo cambia. Stili in theme.css e intro.css.
 (() => {
   const KEY = 'fav-theme', root = document.documentElement;
   let theme = null;
@@ -25,35 +25,48 @@
   };
 
   const ask = () => {
+    const intro = root.classList.contains('intro');
     const box = document.createElement('div');
-    box.className = 'theme-ask';
+    box.className = intro ? 'theme-ask intro-gate' : 'theme-ask';
     box.setAttribute('role', 'dialog');
     box.setAttribute('aria-modal', 'true');
-    box.setAttribute('aria-labelledby', 'ta-q');
+    box.setAttribute('aria-labelledby', intro ? 'ld-name ta-q' : 'ta-q');
     const [q, hint, dark, light] = it()
       ? ['Come vuoi vedere il sito?', 'Puoi cambiarlo quando vuoi con il quadrato accanto alla lingua.', 'Negativo', 'Chiaro']
       : ['How would you like to see the site?', 'You can change it any time with the square next to the language.', 'Negative', 'Light'];
-    box.innerHTML = `<p class="ta-q" id="ta-q">${q}</p><p class="ta-hint">${hint}</p><div class="ta-opts">
+    const choices = `<p class="ta-q" id="ta-q">${q}</p><p class="ta-hint">${hint}</p><div class="ta-opts">
       <button type="button" data-t="dark"><i></i><span>${dark}</span></button>
       <button type="button" data-t="light"><i></i><span>${light}</span></button></div>`;
+    box.innerHTML = intro ? `<div class="ld-copy">
+      <p class="ld-name" id="ld-name" translate="no"><span class="ld-name-text">Filippo Antonio Visentin</span></p>
+      <p class="ld-dim">Product &amp; interior design · Computational design · ${it() ? 'Prototipazione' : 'Prototyping'}</p>
+      <p class="ld-foot">Politecnico di Milano<br>Portfolio 2026</p>
+      <div class="ld-theme">${choices}</div></div>` : choices;
     document.body.append(box);
     const opts = [...box.querySelectorAll('button')], before = root.dataset.theme === 'dark' ? 'dark' : 'light';
     // anteprima: la pagina sotto, semitrasparente, prende il tema della scelta sotto il puntatore o il fuoco
     let done = false;
     const preview = t => { if (done) return; if (t === 'dark') root.dataset.theme = 'dark'; else delete root.dataset.theme };
     const close = t => {
+      if (done) return;
       preview(t || before);
       done = true;   // mentre il riquadro sparisce il puntatore "esce" dai quadrati: l'anteprima non deve più cambiare nulla
       if (t) set(t);
       box.classList.add('out');
-      setTimeout(() => box.remove(), 350);
+      setTimeout(() => {
+        box.remove();
+        if (intro) {
+          root.classList.remove('intro');
+          dispatchEvent(new Event('introend'));
+        }
+      }, 350);
       removeEventListener('keydown', keys, true);
       btn?.focus({ preventScroll: true });
     };
     // Esc chiude senza scegliere e lascia il tema di prima; Tab resta tra i due quadrati
     const keys = e => {
       if (e.key === 'Escape') { e.preventDefault(); close() }
-      else if (e.key === 'Tab') { e.preventDefault(); opts[(opts.indexOf(document.activeElement) + 1) % 2].focus() }
+      else if (e.key === 'Tab') { e.preventDefault(); opts[(opts.indexOf(document.activeElement) + (e.shiftKey ? -1 : 1) + opts.length) % opts.length].focus() }
     };
     opts.forEach(o => {
       o.addEventListener('click', () => close(o.dataset.t));
@@ -106,8 +119,8 @@
     }
     coords();
     if (!document.querySelector('.board')) return;
-    // dopo ogni apertura sulla home; senza apertura (già vista o movimento ridotto) solo se il tema non è mai stato scelto
-    if (root.classList.contains('intro')) addEventListener('introend', ask, { once: true });
-    else if (!theme) ask();
+    // Alla prima apertura il nome resta visibile fino alla scelta (o Esc).
+    // Nella stessa sessione si richiede il tema solo se non è ancora stato salvato.
+    if (root.classList.contains('intro') || !theme) ask();
   });
 })();
