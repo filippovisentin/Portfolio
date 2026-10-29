@@ -45,7 +45,7 @@ for(const page of pages){
   for(const m of html.matchAll(/target="_blank"[^>]*/g))if(!/rel="noopener noreferrer"/.test(m[0]))throw Error(page+': target=_blank link without rel="noopener noreferrer"');
   for(const m of html.matchAll(/srcset="([^"]+)"/g))for(const part of m[1].split(','))if(!fs.existsSync('dist/'+part.trim().split(' ')[0]))throw Error(page+': missing dist/'+part.trim().split(' ')[0]);
 }
-for(const f of ['data.js','dims.js','routes.js','lang.js','intro.js','theme.js','views.js','case.js','forma.js','about.js','motion.js','apps.js','return-top.js']){const s=read(f);if(/\beval\s*\(|new\s+Function\s*\(|document\.write\s*\(/.test(s))throw Error('Unsafe dynamic code in dist/'+f)}
+for(const f of ['data.js','dims.js','routes.js','lang.js','intro.js','theme.js','views.js','case.js','forma.js','about.js','motion.js','apps.js','return-top.js','misura-engine.js']){const s=read(f);if(/\beval\s*\(|new\s+Function\s*\(|document\.write\s*\(/.test(s))throw Error('Unsafe dynamic code in dist/'+f)}
 // 404: no scripts at all, CSP present, local files and links exist
 {const nf=read('404.html');
  if(!/<meta http-equiv="Content-Security-Policy"/.test(nf))throw Error('Missing Content-Security-Policy meta tag in dist/404.html');

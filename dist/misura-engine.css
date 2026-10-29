@@ -1,0 +1,78 @@
+/* Misura: local processing, illustrated with app screens and explanatory drawings. */
+.ms-process{margin-top:42px}
+.ms-process-intro{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.ms-process-intro h3{margin:0;max-width:15em;font-size:clamp(28px,3.2vw,48px);line-height:1.08;letter-spacing:-.025em}
+.ms-process-intro p{margin:0;max-width:39em;font-size:17px;line-height:1.6;color:var(--soft)}
+.ms-process-demo{display:grid;grid-template-columns:minmax(260px,5fr) minmax(0,7fr);gap:clamp(28px,6vw,96px);align-items:center;margin-top:44px}
+.ms-process-display{min-width:0;padding:24px 0;border-top:1px solid var(--grid);border-bottom:1px solid var(--grid)}
+.ms-device{position:relative;width:220px;max-width:85%;aspect-ratio:563/1218;margin:0 auto;background:#10100f;border:2px solid #77776d;border-radius:32px;padding:11px 8px 13px;overflow:hidden}
+.ms-device::before,.ms-device::after{content:'';position:absolute;left:-2px;width:3px;background:#a1a196;border-radius:2px;z-index:2}
+.ms-device::before{top:78px;height:31px}.ms-device::after{top:124px;height:43px}
+.ms-device-speaker{position:absolute;z-index:2;top:5px;left:36%;right:36%;height:7px;background:#10100f;border-radius:0 0 8px 8px}
+.ms-device figure{margin:0;width:100%;height:100%;border-radius:23px;overflow:hidden;background:#141412}
+.ms-device figure[hidden]{display:none}
+.ms-device img{width:100%;height:100%;object-fit:contain}
+.ms-device-home{position:absolute;bottom:5px;left:35%;right:35%;height:3px;border-radius:3px;background:#b5b5a9}
+.ms-process-caption{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px;text-align:center}
+.ms-process-caption [data-ms-count]{color:var(--ink)}
+.ms-process-controls{min-width:0;display:grid}
+.ms-step{appearance:none;display:grid;grid-template-columns:27px minmax(0,1fr) 18px;gap:12px;align-items:start;padding:17px 12px;border:0;border-bottom:1px solid var(--grid);background:transparent;color:var(--ink);text-align:left;font:inherit;cursor:pointer;transition:background-color .18s ease}
+.ms-step:first-child{border-top:1px solid var(--grid)}
+.ms-step-number{padding-top:1px;color:var(--soft)}
+.ms-step-copy{display:grid;gap:5px}
+.ms-step-copy strong{font-size:18px;font-weight:700;line-height:1.2}
+.ms-step-copy>span{font-size:14px;line-height:1.5;color:var(--soft);max-width:38em}
+.ms-step-arrow{opacity:0;font-size:18px;line-height:1}
+.ms-step[aria-pressed="true"]{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.ms-step[aria-pressed="true"] .ms-step-number,.ms-step[aria-pressed="true"] .ms-step-arrow{color:var(--lime);opacity:1}
+.ms-step:focus-visible{outline:2px solid var(--lime);outline-offset:3px;position:relative;z-index:1}
+.ms-conversion{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:24px 0;margin-top:28px;border-bottom:1px solid var(--grid)}
+.ms-conversion[hidden]{display:none}
+.ms-conversion p{margin:8px 0 0;font-size:17px;font-weight:700}
+.ms-equation{display:grid;gap:12px;align-content:center;font:clamp(11px,1.2vw,16px)/1.5 "Courier Prime",monospace}
+.ms-equation b,.ms-equation strong{font-weight:400;color:var(--lime)}
+.ms-local-scope{margin-top:36px;padding:24px;border:1px dashed var(--axis)}
+.ms-local-heading{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ms-local-heading>span:first-child{color:var(--ink)}
+.ms-local-path{display:grid;grid-template-columns:1fr 32px 1fr 32px 1fr;align-items:center;gap:16px;margin-top:28px}
+.ms-local-path>div{display:grid;gap:6px;padding:14px 0;border-top:2px solid var(--grid)}
+.ms-local-path>div.is-current{border-color:var(--lime)}
+.ms-local-path strong{font-size:16px;font-weight:700;line-height:1.25}
+.ms-local-arrow{color:var(--soft);text-align:center}
+.ms-local-scope>p{max-width:62em;margin:18px 0 0;color:var(--soft);font-size:14px;line-height:1.6}
+.engine .ms-demo-note{margin:20px 0 0;font-size:11px}
+.ms-engine-details{margin-top:36px;border-top:1px solid var(--grid);padding-top:16px}
+.ms-engine-details summary{font:12px/1.5 "Courier Prime",monospace;text-transform:uppercase;cursor:pointer;color:var(--soft);padding:8px 0}
+.ms-engine-details summary:focus-visible{outline:2px solid var(--lime);outline-offset:4px}
+@media(hover:hover) and (pointer:fine){.ms-step:hover{background:color-mix(in srgb,var(--ink) 4%,transparent)}}
+@media(max-width:800px){
+  .ms-process-intro{grid-template-columns:1fr;gap:20px}
+  .ms-process-intro h3{max-width:20em}
+  .ms-process-demo{grid-template-columns:minmax(200px,4fr) minmax(0,6fr);gap:24px}
+  .ms-device{width:200px;max-width:100%}
+  .ms-step{padding:14px 8px;grid-template-columns:23px minmax(0,1fr) 14px;gap:7px}
+  .ms-step-copy strong{font-size:16px}
+  .ms-step-copy>span{font-size:13px}
+  .ms-local-path{gap:8px;grid-template-columns:1fr 20px 1fr 20px 1fr}
+  .ms-local-path strong{font-size:14px}
+}
+@media(max-width:620px){
+  .ms-process{margin-top:30px}
+  .ms-process-demo{grid-template-columns:1fr;gap:24px;margin-top:28px}
+  .ms-process-display{padding:24px 0}
+  .ms-device{width:200px}
+  .ms-process-controls{grid-template-columns:1fr 1fr;gap:0 14px}
+  .ms-step{grid-template-columns:20px minmax(0,1fr);padding:14px 0}
+  .ms-step:nth-child(2){border-top:1px solid var(--grid)}
+  .ms-step-copy strong{font-size:15px}
+  .ms-step-copy>span{font-size:12px}
+  .ms-step-arrow{display:none}
+  .ms-conversion{grid-template-columns:1fr;gap:18px}
+  .ms-equation{font-size:11px}
+  .ms-local-scope{padding:20px 16px}
+  .ms-local-path{grid-template-columns:1fr;gap:0;margin-top:20px}
+  .ms-local-arrow{transform:rotate(90deg);justify-self:start;margin-left:4px}
+  .ms-local-path>div{padding:14px 0;width:100%}
+  .ms-local-path strong{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){.ms-step{transition:none}}
