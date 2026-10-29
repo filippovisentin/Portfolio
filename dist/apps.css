@@ -1,9 +1,10 @@
 /* App chooser: equal space for a desktop viewport and a complete phone screen. */
 .app-overview{padding-top:32px;padding-bottom:54px}
-.app-intro{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:32px}
+.app-intro{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:20px;row-gap:16px;align-items:end;margin-bottom:32px}
+.app-intro>h1{grid-column:1/9}.app-intro>p{grid-column:9/13}
 .app-intro h1{margin:0;max-width:12em;font-size:clamp(32px,4.8vw,72px);line-height:1;letter-spacing:-.035em;font-weight:800}
 .app-intro p{margin:0;max-width:24em;font-size:16px;color:var(--soft)}
-.app-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.app-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .app-choice{display:flex;flex-direction:column;min-width:0;text-decoration:none;border-top:1px solid var(--ink);padding-top:12px}
 .app-choice:focus-visible{outline:2px solid var(--ink);outline-offset:6px}
 .app-choice-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}

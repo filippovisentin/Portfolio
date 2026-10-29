@@ -14,7 +14,8 @@ button{font:inherit;color:inherit}
 .links a:hover,.links a:focus-visible{background:linear-gradient(transparent 62%,var(--lime) 62%)}
 
 /* prova: vista e console affiancate */
-.try{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:28px;margin-top:40px;align-items:start}
+.try>.viewport{grid-column:1/8}.try>.console{grid-column:8/13}
+.try{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;margin-top:40px;align-items:start}
 .try[hidden],.try-fallback:not(:only-of-type)[hidden]{display:none}
 .viewport{position:relative;border:1px solid var(--ink)}
 .viewport canvas{display:block;width:100%;aspect-ratio:16/10;cursor:grab;touch-action:none;background:var(--paper)}
@@ -74,7 +75,7 @@ button{font:inherit;color:inherit}
 
 /* metodo */
 .method .lead{max-width:44em;font-size:19px;line-height:1.5;margin:36px 0 0}
-.method ol{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.method ol{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .method li{border-top:1px solid var(--ink);padding-top:12px}
 .method h3{margin:8px 0;font-size:18px;font-weight:800;line-height:1.15}
 .method p{margin:0;font-size:15px}
@@ -91,7 +92,7 @@ button{font:inherit;color:inherit}
 .stack li{border:1px solid var(--ink);padding:4px 8px;color:var(--ink)}
 
 /* repository */
-.repos ul{list-style:none;padding:0;margin:36px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.repos ul{list-style:none;padding:0;margin:36px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .repos li{border-top:1px solid var(--ink);padding-top:12px;display:grid;gap:6px}
 .repos a{text-decoration:none;font-size:22px}
 .repos a:hover strong,.repos a:focus-visible strong{background:linear-gradient(transparent 62%,var(--lime) 62%)}
@@ -132,7 +133,7 @@ button{font:inherit;color:inherit}
 .inline{font-weight:700;text-decoration:none}
 .inline:hover,.inline:focus-visible{background:linear-gradient(transparent 62%,var(--lime) 62%)}
 .cv{margin-top:36px}
-.cv div{grid-template-columns:12em 1fr}
+.cv div{grid-template-columns:calc((100% - 220px) / 6 + 20px) 1fr;column-gap:20px}
 .cv ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}
 .cv li{padding-left:12em}
 .cv li b{display:inline-block;width:12em;margin-left:-12em;padding-right:12px;font-weight:700}
@@ -142,7 +143,7 @@ button{font:inherit;color:inherit}
 
 @media (max-width:900px){
   .title .blurb{grid-column:1/-1;margin-top:28px}
-  .try{grid-template-columns:1fr}
+  .try{grid-template-columns:1fr}.try>.viewport,.try>.console{grid-column:1/-1}
   .viewport canvas{aspect-ratio:4/3}
   .ai-text,.ai-video,.layers,.stack,.portrait,.reach,.bio h2,.bio-text{grid-column:1/-1}
   .ai-video,.stack,.bio-text{margin-top:36px}  .contact .reach{order:-1}.portrait{margin-top:36px}   /* sul telefono i contatti vengono prima della foto */
@@ -188,7 +189,7 @@ button{font:inherit;color:inherit}
 
 /* MISURA: due video verticali affiancati (1080 × 1920), interi e alti quanto lo schermo permette;
    didascalia e quota larghe quanto il video */
-.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:32px}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
 .demo figure{margin:0}
 .demo figure > *{box-sizing:border-box;max-width:calc(min(78vh,760px) * 9 / 16);margin-left:auto;margin-right:auto}
 .demo video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;border:1px solid var(--ink);background:#000}
@@ -196,14 +197,14 @@ button{font:inherit;color:inherit}
 
 /* MISURA: le cinque schermate due per riga, in ognuna telefono a sinistra e come funziona a destra;
    il motore su fascia nera */
-.phones ol{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(28px,4vw,64px)}
+.phones ol{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:1fr 1fr;column-gap:20px}
 .phones li{border-bottom:1px solid var(--ink)}
 .phones figure{margin:0;display:grid;grid-template-columns:minmax(140px,220px) minmax(0,1fr);gap:clamp(20px,2.5vw,36px);align-items:start;padding:clamp(28px,3vw,44px) 0}
 .phones img{display:block;width:100%;height:auto;border:1px solid var(--ink);border-radius:16px}
 .phones figcaption{display:block;max-width:30em;margin:0}
 .phones h3{margin:10px 0 12px;font-weight:800;font-size:clamp(22px,2.2vw,34px);line-height:1;text-transform:uppercase;letter-spacing:-.015em}
 .phones figcaption p{margin:0;font-size:clamp(15px,1.1vw,17px);line-height:1.55}
-.engine ol{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px 28px}
+.engine ol{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px 20px}
 .engine li{border-top:1px solid var(--ink);padding-top:12px}
 .engine h3{margin:8px 0;font-size:18px;font-weight:800;line-height:1.15}
 .engine p{margin:0;font-size:15px}
