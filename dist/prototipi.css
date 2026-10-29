@@ -40,7 +40,6 @@ figcaption b{font:11px/1.5 "Courier Prime",monospace;font-weight:400;color:var(-
 .assembly-copy .mono{margin:0 0 22px}
 .assembly-copy h2{max-width:8em;margin:0 0 24px;font-size:clamp(34px,5vw,72px);line-height:.98;letter-spacing:-.055em}
 .assembly-copy>p:not(.mono){max-width:32em;font-size:17px;line-height:1.55}
-.assembly-copy .credit{margin-top:42px;padding-top:10px;border-top:1px solid var(--ink);font-size:11px}
 .collaboration-roles{margin:28px 0 0;border-top:1px solid var(--ink)}
 .collaboration-roles>div{padding:14px 0;border-bottom:1px solid var(--ink)}
 .collaboration-roles dt{font-weight:700;font-size:15px}
@@ -89,7 +88,6 @@ footer p{margin:0}
  .assembly figure{width:85%;align-self:flex-start}
  .assembly-copy{padding:8px 0}
  .assembly-copy h2{font-size:clamp(42px,11vw,64px)}
- .assembly-copy .credit{margin-top:30px}
  .next{grid-template-columns:1fr;gap:16px;margin-top:100px}
  .next .to{text-align:left}
  footer{grid-template-columns:1fr}
